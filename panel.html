@@ -1,0 +1,123 @@
+<div id="rpm-416-visualization-container">
+  <style>
+    .dashboard-header {
+      margin-top: 1em;
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 1px solid #9a9a9a;
+    }
+
+    .dashboard-group {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .valuebar {
+      min-width: 100px;
+      height: 8px;
+      background-color: #9a9a9a;
+    }
+
+    .valuebar-inner {
+      height: 100%;
+      width: 0%;
+      float: left;
+    }
+  </style>
+
+  <div id="rpm-416-html-container">
+    <div class="row">
+      <div class="col-sm">
+        <header class="dashboard-header">Phase 1 (Group)</header>
+        <div class="dashboard-group">
+          <div>Voltage (channel 1)
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>Current (channel 4)
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>Power (channel 16)
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-group">
+          <div><span>Active:</span> <span>Energy:</span>
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div><span>Reactive:</span> <span>Energy:</span>
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <header class="dashboard-header">Phase 2 (Group)</header>
+      </div>
+      <div class="col-sm">
+        <header class="dashboard-header">Phase 3 (Group)</header>
+      </div>
+      <div class="col-sm">
+        <header class="dashboard-header">Three-phase system</header>
+        <div class="dashboard-group">
+          Line voltage
+          <div>AB:
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>BC:
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>CA:
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="dashboard-group">
+          <div>Analog voltage (Channel 10):
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>Analog current (Channel 11):
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+          <div>Current (Channel 7):
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-group">
+          <div>Temperature (Channels 8 and 9):
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+            <div class="valuebar" value="0">
+              <div class="valuevar-inner bg-success"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
