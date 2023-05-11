@@ -1,6 +1,6 @@
-<div id="rpm-416-visualization-container">
+<div id="rpm416-visualization-container">
   <style>
-    .rpm-416-container {
+    .rpm416-container {
       background-color: #c6d3d3;
     }
     .rpm416-header {
@@ -12,6 +12,14 @@
     .rpm416-group {
       margin-top: 8px;
       margin-bottom: 8px;
+    }
+
+    .rpm416-text-key {
+      color: #990c9e;
+    }
+
+    .rpm416-text-value {
+      color: #046ffd;
     }
 
     .rpm416-valuebar {
@@ -41,7 +49,7 @@
     }
     
     .rpm416-grouping-table td {
-      border: #cbcbcb 1px solid;
+      border: #aeaeae 1px solid;
       padding: 10px;
       display: inline-block;
       width: 48%;
@@ -88,8 +96,8 @@
     }
   </style>
 
-  <div id="rpm-416-html-container">
-    <div class="container rpm-416-container">
+  <div id="rpm416-html-container">
+    <div class="container rpm416-container">
       <div class="row">
         <div class="col-sm">
           <div class="rpm416-group rpm416-group-phase-1">
@@ -109,7 +117,10 @@
                       </div>
                       
                       <div>
-                        THDr: <span>0</span> Frequency: <span>0</span>
+                        <span class="rpm416-text-key">THDr:</span>
+                        <span class="rpm416-text-value">0</span>
+                        <span class="rpm416-text-key">Frequency:</span>
+                        <span class="rpm416-text-value">0</span>
                       </div>
                     </td>
                     <td class="rpm416-td-leftalign">
@@ -123,7 +134,10 @@
                       </div>
                       
                       <div>
-                        THDr: <span>0</span> Frequency: <span>0</span>
+                        <span class="rpm416-text-key">THDr:</span>
+                        <span class="rpm416-text-value">0</span>
+                        <span class="rpm416-text-key">Frequency:</span>
+                        <span class="rpm416-text-value">0</span>
                       </div>
                     </td>
                   </tr>
@@ -133,7 +147,8 @@
             <div class="rpm416-group">
               <div>Power (channel 16)
                 <div>
-                  Full: <span>0</span>
+                  <span class="rpm416-text-key">Full:</span>
+                  <span class="rpm416-text-value">0</span>
                   <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                     <div class="valuevar-inner bg-success"></div>
                   </div>
@@ -146,7 +161,10 @@
                   <tr>
                     <td>
                       <div>
-                        Active: <span>0</span> Energy: <span>0</span>
+                        <span class="rpm416-text-key">Active:</span>
+                        <span class="rpm416-text-value">0</span>
+                        <span class="rpm416-text-key">Energy:</span>
+                        <span class="rpm416-text-value">0</span>
                       </div>
                       
                       <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
@@ -155,7 +173,10 @@
                     </td>
                     <td>
                       <div>
-                        Reactive: <span>0</span> Energy: <span>0</span>
+                        <span class="rpm416-text-key">Reactive:</span>
+                        <span class="rpm416-text-value">0</span>
+                        <span class="rpm416-text-key">Energy:</span>
+                        <span class="rpm416-text-value">0</span>
                       </div>
                       
                       <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
@@ -167,7 +188,8 @@
               </table>
 
               <div>
-                Power ratio: <span>0</span>
+                <span class="rpm416-text-key">Power ratio:</span>
+                <span class="rpm416-text-value">0</span>
               </div>
             </div>
           </div>
