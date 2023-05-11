@@ -24,6 +24,14 @@
       float: left;
     }
 
+    .rpm416-valuebar-short {
+      width: 60%;
+    }
+
+    .rpm416-valuebar-long {
+      width: 90%;
+    }
+
     .rpm416-grouping-table {
       width: 100%;
       margin-top: 10px;
@@ -34,6 +42,10 @@
       padding: 10px;
       display: inline-block;
       width: 48%;
+    }
+
+    .rpm416-td-leftalign {
+      text-align: left;
     }
 
     .rpm416-group-phase-1 {
@@ -83,11 +95,11 @@
               <table class="rpm416-grouping-table">
                 <tbody>
                   <tr>
-                    <td>
+                    <td class="rpm416-td-leftalign">
                       <div>Voltage (channel 1)</div>
 
                       <div>
-                        <div class="rpm416-valuebar" value="0">
+                        <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                           <div class="valuevar-inner bg-success"></div>
                         </div>
                         <span>0</span>
@@ -97,11 +109,11 @@
                         THDr: <span>0</span> Frequency: <span>0</span>
                       </div>
                     </td>
-                    <td>
+                    <td class="rpm416-td-leftalign">
                       <div>Current (channel 4)</div>
 
                       <div>
-                        <div class="rpm416-valuebar" value="0">
+                        <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                           <div class="valuevar-inner bg-success"></div>
                         </div>
                         <span>0</span>
@@ -119,7 +131,7 @@
               <div>Power (channel 16)
                 <div>
                   Full: <span>0</span>
-                  <div class="rpm416-valuebar" value="0">
+                  <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                     <div class="valuevar-inner bg-success"></div>
                   </div>
                 </div>
@@ -134,7 +146,7 @@
                         Active: <span>0</span> Energy: <span>0</span>
                       </div>
                       
-                      <div class="rpm416-valuebar" value="0">
+                      <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
                     </td>
@@ -143,7 +155,7 @@
                         Reactive: <span>0</span> Energy: <span>0</span>
                       </div>
                       
-                      <div class="rpm416-valuebar" value="0">
+                      <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
                     </td>
