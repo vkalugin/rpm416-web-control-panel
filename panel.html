@@ -1,6 +1,6 @@
 <div id="rpm-416-visualization-container">
   <style>
-    .dashboard-header {
+    .rpm416-header {
       margin-top: 1em;
       font-size: medium;
       font-weight: bold;
@@ -8,19 +8,19 @@
       border-bottom: 1px solid #9a9a9a;
     }
 
-    .dashboard-group {
+    .rpm416-group {
       margin-top: 8px;
       margin-bottom: 8px;
     }
 
-    .valuebar {
+    .rpm416-valuebar {
       min-width: 100px;
       height: 8px;
       background-color: #9a9a9a;
       display: inline-block;
     }
 
-    .valuebar-inner {
+    .rpm416-valuebar-inner {
       height: 100%;
       width: 0%;
       float: left;
@@ -38,39 +38,39 @@
       width: 48%;
     }
 
-    .group-phase-1 {
+    .rpm416-group-phase-1 {
       border: #e8b20a 2px solid;
       padding: 5px;
     }
 
-    .color-phase-1 {
+    .rpm416-color-phase-1 {
       color: #e8b20a;
     }
 
-    .group-phase-2 {
+    .rpm416-group-phase-2 {
       border: #1a8e08 2px solid;
       padding: 5px;
     }
 
-    .color-phase-2 {
+    .rpm416-color-phase-2 {
       color: #1a8e08;
     }
 
-    .group-phase-3 {
+    .rpm416-group-phase-3 {
       border: #ed210f 2px solid;
       padding: 5px;
     }
 
-    .color-phase-3 {
+    .rpm416-color-phase-3 {
       color: #ed210f;
     }
 
-    .group-three-phase {
+    .rpm416-group-three-phase {
       border: #8663a9 2px solid;
       padding: 5px;
     }
 
-    .color-three-phase {
+    .rpm416-color-three-phase {
       color: #8663a9;
     }
   </style>
@@ -79,9 +79,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
-          <div class="dashboard-group group-phase-1">
-            <header class="dashboard-header color-phase-1">Phase 1 (Group)</header>
-            <div class="dashboard-group">
+          <div class="rpm416-group rpm416-group-phase-1">
+            <header class="rpm416-header rpm416-color-phase-1">Phase 1 (Group)</header>
+            <div class="rpm416-group">
               <table class="rpm416-grouping-table">
                 <tbody>
                   <tr>
@@ -89,7 +89,7 @@
                       <div>Voltage (channel 1)</div>
 
                       <div>
-                        <div class="valuebar" value="0">
+                        <div class="rpm416-valuebar" value="0">
                           <div class="valuevar-inner bg-success"></div>
                         </div>
                         <span>0</span>
@@ -103,7 +103,7 @@
                       <div>Current (channel 4)</div>
 
                       <div>
-                        <div class="valuebar" value="0">
+                        <div class="rpm416-valuebar" value="0">
                           <div class="valuevar-inner bg-success"></div>
                         </div>
                         <span>0</span>
@@ -117,11 +117,11 @@
                 </tbody>
               </table>
             </div>
-            <div class="dashboard-group">
+            <div class="rpm416-group">
               <div>Power (channel 16)
                 <div>
                   Full: <span>0</span>
-                  <div class="valuebar" value="0">
+                  <div class="rpm416-valuebar" value="0">
                     <div class="valuevar-inner bg-success"></div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@
                         Active: <span>0</span> Energy: <span>0</span>
                       </div>
                       
-                      <div class="valuebar" value="0">
+                      <div class="rpm416-valuebar" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
                     </td>
@@ -145,7 +145,7 @@
                         Reactive: <span>0</span> Energy: <span>0</span>
                       </div>
                       
-                      <div class="valuebar" value="0">
+                      <div class="rpm416-valuebar" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
                     </td>
@@ -158,28 +158,28 @@
               </div>
             </div>
           </div>
-          <div class="dashboard-group group-phase-2">
-            <header class="dashboard-header color-phase-2">Phase 2 (Group)</header>
+          <div class="rpm416-group rpm416-group-phase-2">
+            <header class="rpm416-header rpm416-color-phase-2">Phase 2 (Group)</header>
           </div>
-          <div class="dashboard-group group-phase-3">
-            <header class="dashboard-header color-phase-3">Phase 3 (Group)</header>
+          <div class="rpm416-group rpm416-group-phase-3">
+            <header class="rpm416-header rpm416-color-phase-3">Phase 3 (Group)</header>
           </div>
-          <div class="dashboard-group group-three-phase">
-            <header class="dashboard-header color-three-phase">Three-phase system</header>
-            <div class="dashboard-group">
+          <div class="rpm416-group rpm416-group-three-phase">
+            <header class="rpm416-header rpm416-color-three-phase">Three-phase system</header>
+            <div class="rpm416-group">
               Line voltage
               <div>AB:
-                <div class="valuebar" value="0">
+                <div class="rpm416-valuebar" value="0">
                   <div class="valuevar-inner bg-success"></div>
                 </div>
               </div>
               <div>BC:
-                <div class="valuebar" value="0">
+                <div class="rpm416-valuebar" value="0">
                   <div class="valuevar-inner bg-success"></div>
                 </div>
               </div>
               <div>CA:
-                <div class="valuebar" value="0">
+                <div class="rpm416-valuebar" value="0">
                   <div class="valuevar-inner bg-success"></div>
                 </div>
               </div>
@@ -187,29 +187,29 @@
           </div>
         </div>
         <div class="col-sm">
-          <div class="dashboard-group">
+          <div class="rpm416-group">
             <div>Analog voltage (Channel 10):
-              <div class="valuebar" value="0">
+              <div class="rpm416-valuebar" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
             </div>
             <div>Analog current (Channel 11):
-              <div class="valuebar" value="0">
+              <div class="rpm416-valuebar" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
             </div>
             <div>Current (Channel 7):
-              <div class="valuebar" value="0">
+              <div class="rpm416-valuebar" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
             </div>
           </div>
-          <div class="dashboard-group">
+          <div class="rpm416-group">
             <div>Temperature (Channels 8 and 9):
-              <div class="valuebar" value="0">
+              <div class="rpm416-valuebar" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
-              <div class="valuebar" value="0">
+              <div class="rpm416-valuebar" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
             </div>
