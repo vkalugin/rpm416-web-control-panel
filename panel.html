@@ -31,8 +31,30 @@
     }
     
     .rpm416-grouping-table td {
-      border: #cacaca 1px solid;
+      border: #cbcbcb 1px solid;
       padding: 10px;
+      display: inline-block;
+      width: 48%;
+    }
+
+    .group-phase-1 {
+      border: #e8b20a 2px solid;
+      padding: 5px;
+    }
+
+    .group-phase-2 {
+      border: #1a8e08 2px solid;
+      padding: 5px;
+    }
+
+    .group-phase-3 {
+      border: #ed210f 2px solid;
+      padding: 5px;
+    }
+
+    .group-three-phase {
+      border: #8663a9 2px solid;
+      padding: 5px;
     }
   </style>
 
@@ -40,7 +62,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
-          <div class="dashboard-group">
+          <div class="dashboard-group group-phase-1">
             <header class="dashboard-header">Phase 1 (Group)</header>
             <div class="dashboard-group">
               <table class="rpm416-grouping-table">
@@ -89,13 +111,13 @@
               </table>
             </div>
           </div>
-          <div class="dashboard-group">
+          <div class="dashboard-group group-phase-2">
             <header class="dashboard-header">Phase 2 (Group)</header>
           </div>
-          <div class="dashboard-group">
+          <div class="dashboard-group group-phase-3">
             <header class="dashboard-header">Phase 3 (Group)</header>
           </div>
-          <div class="dashboard-group">
+          <div class="dashboard-group group-three-phase">
             <header class="dashboard-header">Three-phase system</header>
             <div class="dashboard-group">
               Line voltage
