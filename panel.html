@@ -2,7 +2,7 @@
   <style>
     .dashboard-header {
       margin-top: 1em;
-      font-size: larger;
+      font-size: medium;
       font-weight: bold;
       text-align: center;
       border-bottom: 1px solid #9a9a9a;
@@ -42,9 +42,17 @@
       padding: 5px;
     }
 
+    .color-phase-1 {
+      color: #e8b20a;
+    }
+
     .group-phase-2 {
       border: #1a8e08 2px solid;
       padding: 5px;
+    }
+
+    .color-phase-2 {
+      color: #1a8e08;
     }
 
     .group-phase-3 {
@@ -52,9 +60,17 @@
       padding: 5px;
     }
 
+    .color-phase-3 {
+      color: #ed210f;
+    }
+
     .group-three-phase {
       border: #8663a9 2px solid;
       padding: 5px;
+    }
+
+    .color-three-phase {
+      color: #8663a9;
     }
   </style>
 
@@ -63,7 +79,7 @@
       <div class="row">
         <div class="col-sm">
           <div class="dashboard-group group-phase-1">
-            <header class="dashboard-header group-phase-1">Phase 1 (Group)</header>
+            <header class="dashboard-header color-phase-1">Phase 1 (Group)</header>
             <div class="dashboard-group">
               <table class="rpm416-grouping-table">
                 <tbody>
@@ -72,9 +88,9 @@
                       <div>Voltage (channel 1)</div>
 
                       <div>
-                        <span class="valuebar" value="0">
+                        <div class="valuebar" value="0">
                           <div class="valuevar-inner bg-success"></div>
-                        </span>
+                        </div>
                         <span>0</span>
                       </div>
                       
@@ -89,9 +105,9 @@
                       <div>Current (channel 4)</div>
 
                       <div>
-                        <span class="valuebar" value="0">
+                        <div class="valuebar" value="0">
                           <div class="valuevar-inner bg-success"></div>
-                        </span>
+                        </div>
                         <span>0</span>
                       </div>
                       
@@ -111,9 +127,9 @@
                 <div>
                   <span>Full:</span>
                   <span>0</span>
-                  <span class="valuebar" value="0">
+                  <div class="valuebar" value="0">
                     <div class="valuevar-inner bg-success"></div>
-                  </span>
+                  </div>
                 </div>
                 
               </div>
@@ -139,13 +155,13 @@
             </div>
           </div>
           <div class="dashboard-group group-phase-2">
-            <header class="dashboard-header group-phase-2">Phase 2 (Group)</header>
+            <header class="dashboard-header color-phase-2">Phase 2 (Group)</header>
           </div>
           <div class="dashboard-group group-phase-3">
-            <header class="dashboard-header group-phase-3">Phase 3 (Group)</header>
+            <header class="dashboard-header color-phase-3">Phase 3 (Group)</header>
           </div>
           <div class="dashboard-group group-three-phase">
-            <header class="dashboard-header group-three-phase">Three-phase system</header>
+            <header class="dashboard-header color-three-phase">Three-phase system</header>
             <div class="dashboard-group">
               Line voltage
               <div>AB:
