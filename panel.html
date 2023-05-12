@@ -681,16 +681,17 @@
                 max: 110,
               }
             },
-            data: {
-              labels: data.map(row => row.channel),
-              datasets: [
-                {
-                  label: "Temperature (Channels 8 and 9)",
-                  data: data.map(row => row.value)
-                }
-              ]
-            }
+          },
+          data: {
+            labels: data.map(row => row.channel),
+            datasets: [
+              {
+                label: "Temperature (Channels 8 and 9)",
+                data: data.map(row => row.value)
+              }
+            ]
           }
+        }
       );
     })();
   </script>
