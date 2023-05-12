@@ -495,7 +495,6 @@
                   </div>
                 </td>
                 <td rowspan="2">
-                  Temperature (Channels 8 and 9):
                   <div>
                     <canvas id="rpm416-temperatures-graph">Your browser does not support the canvas element.</canvas>
                   </div>
@@ -657,29 +656,6 @@
   </div>
 
   <script>
-    // (async function () {
-    //   const data = [
-    //     { channel: 8, value: NaN },
-    //     { channel: 9, value: NaN },
-    //   ];
-
-    //   new Chart(
-    //     document.querySelector("#rpm416-temperatures-graph"),
-    //     {
-    //       type: "bar",
-    //       data {
-    //         labels: data.map(row => row.channel),
-    //         datasets: [
-    //           {
-    //             label: "Temperature",
-    //             data: data.map(row => row.value)
-    //           }
-    //         ]
-    //       }
-    //     }
-    //   );
-    // }) ();
-
     (async function () {
       const data = [
         { channel: 8, value: NaN },
@@ -690,17 +666,26 @@
         document.querySelector("#rpm416-temperatures-graph"),
         {
           type: "bar",
+          options: {
+            animation: false,
+            scales: {
+              y: {
+                min: -50,
+                max: 110,
+              }
+            }
+          },
           data: {
             labels: data.map(row => row.channel),
             datasets: [
               {
-                label: "Temperature",
+                label: "Temperature (Channels 8 and 9)",
                 data: data.map(row => row.value)
               }
             ]
           }
         }
       );
-    })();
+    }) ();
   </script>
 </div>
