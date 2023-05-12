@@ -669,23 +669,29 @@
           options: {
             animation: false,
             scales: {
-              y: {
-                min: -50,
-                max: 110,
+              x: {
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return "channel " + value;
+                  },
+                },
+                y: {
+                  min: -50,
+                  max: 110,
+                }
               }
+            },
+            data: {
+              labels: data.map(row => row.channel),
+              datasets: [
+                {
+                  label: "Temperature (Channels 8 and 9)",
+                  data: data.map(row => row.value)
+                }
+              ]
             }
-          },
-          data: {
-            labels: data.map(row => row.channel),
-            datasets: [
-              {
-                label: "Temperature (Channels 8 and 9)",
-                data: data.map(row => row.value)
-              }
-            ]
           }
-        }
       );
-    }) ();
+    })();
   </script>
 </div>
