@@ -496,11 +496,8 @@
                 </td>
                 <td rowspan="2">
                   Temperature (Channels 8 and 9):
-                  <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
-                    <div class="valuevar-inner bg-success"></div>
-                  </div>
-                  <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
-                    <div class="valuevar-inner bg-success"></div>
+                  <div>
+                    <canvas id="rpm416-temperatures-graph">Your browser does not support the canvas element.</canvas>
                   </div>
 
                 </td>
@@ -587,16 +584,22 @@
                     <span class="rpm416-text-value">0</span>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;" disabled>Start recording</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;" disabled>Reset errors</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                      disabled>Start recording</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                      disabled>Reset errors</button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;" disabled>Stop recording</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;" disabled>Restart</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                      disabled>Stop recording</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                      disabled>Restart</button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;" disabled>Memory card</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;">Settings</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                      disabled>Memory card</button>
+                    <button type="button" class="btn btn-primary btn-sm"
+                      style="margin-top: 5px; width: 45%;">Settings</button>
                   </div>
                 </td>
               </tr>
@@ -652,3 +655,52 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // (async function () {
+    //   const data = [
+    //     { channel: 8, value: NaN },
+    //     { channel: 9, value: NaN },
+    //   ];
+
+    //   new Chart(
+    //     document.querySelector("#rpm416-temperatures-graph"),
+    //     {
+    //       type: "bar",
+    //       data {
+    //         labels: data.map(row => row.channel),
+    //         datasets: [
+    //           {
+    //             label: "Temperature",
+    //             data: data.map(row => row.value)
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   );
+    // }) ();
+
+    (async function () {
+      const data = [
+        { channel: 8, value: NaN },
+        { channel: 9, value: NaN },
+      ];
+
+      new Chart(
+        document.querySelector("#rpm416-temperatures-graph"),
+        {
+          type: "bar",
+          data: {
+            labels: data.map(row => row.channel),
+            datasets: [
+              {
+                label: "Temperature",
+                data: data.map(row => row.value)
+              }
+            ]
+          }
+        }
+      );
+    })();
+  </script>
+</div>
