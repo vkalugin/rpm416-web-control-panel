@@ -94,6 +94,15 @@
     .rpm416-color-three-phase {
       color: #8663a9;
     }
+
+    .rpm416-status-indicator {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      border-radius: 50%;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+    }
   </style>
 
   <div id="rpm416-html-container">
@@ -420,7 +429,7 @@
           </div>
         </div>
         <div class="col-sm">
-          <div class="rpm416-group">
+
             <table class="rpm416-grouping-table">
               <tbody>
                 <tr>
@@ -438,22 +447,38 @@
                 </tr>
               </tbody>
             </table>
-            <div>Current (Channel 7):
+            <table class="rpm416-grouping-table">
+              <tbody>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    Current (Channel 7):
               <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                 <div class="valuevar-inner bg-success"></div>
               </div>
-            </div>
-          </div>
-          <div class="rpm416-group">
-            <div>Temperature (Channels 8 and 9):
-              <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
-                <div class="valuevar-inner bg-success"></div>
-              </div>
-              <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
-                <div class="valuevar-inner bg-success"></div>
-              </div>
-            </div>
-          </div>
+                  </td>
+                  <td rowspan="2">
+                    Temperature (Channels 8 and 9):
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                    
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div><span class="rpm416-text-key">Input:</span> </div>
+                    <div><span class="rpm416-text-key">1:</span> <span class="rpm416-status-indicator bg-danger"></span></div>
+                    <div><span class="rpm416-text-key">2:</span> <span class="rpm416-status-indicator bg-danger"></span></div>
+                    <div><span class="rpm416-text-key">3:</span> <span class="rpm416-status-indicator bg-danger"></span></div>
+                    <div><span class="rpm416-text-key">4:</span> <span class="rpm416-status-indicator bg-danger"></span></div>
+                  </td>
+                </tr>
+
+            
+
         </div>
       </div>
     </div>
