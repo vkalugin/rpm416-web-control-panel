@@ -140,12 +140,26 @@
       padding: 4px;
       border: 3px solid transparent;
     }
+
+    .rpm416-popup-menu {
+      position: absolute;
+      left: 25%;
+      top: 25%;
+      min-width: 450px;
+      width: 50%;
+      z-index: 100;
+      background-color: whitesmoke;
+      display: none;
+      text-align: left;
+    }
   </style>
 
   <div id="rpm416-html-container">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" id="rpm416-button-view-rdf">View RDF</button>
+    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" id="rpm416-button-view">View</button>
     <div class="container rpm416-container">
       <div class="row">
         <div class="col-sm">
@@ -653,6 +667,21 @@
         </div>
       </div>
     </div>
+
+    <div class="rpm416-popup-menu" id="rpm416-rdf-file-analysis">
+      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-rdf-file-analysis-close"><span aria-hidden="true">&times;</span></button>
+
+      <header class="rpm416-header">RDF File analysis</header>
+
+      <div></div>
+    </div>
+
+    <div class="rpm416-popup-menu" id="rpm416-data-graphs">
+      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span aria-hidden="true">&times;</span></button>
+
+      <header class="rpm416-header">Data graphs</header>
+      <div></div>
+    </div>
   </div>
 
   <script>
@@ -694,5 +723,21 @@
         }
       );
     })();
+
+    document.querySelector("#rpm416-button-view-rdf").addEventListener("click", function () {
+      document.querySelector("#rpm416-rdf-file-analysis").style.display = "block";
+    });
+
+    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-rdf-data-graphs").style.display = "block";
+    });
+
+    document.querySelector("#rpm416-button-rdf-file-analysis-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-rdf-file-analysis").style.display = "none";
+    });
+
+    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-rdf-data-graphs").style.display = "none";
+    });
   </script>
 </div>
