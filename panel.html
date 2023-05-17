@@ -158,8 +158,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" id="rpm416-button-view-rdf">View RDF</button>
-    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" id="rpm416-button-view">View</button>
+    <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 5px;" id="rpm416-button-view-rdf">View RDF</button>
+    <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 5px;" id="rpm416-button-view">View</button>
     <div class="container rpm416-container">
       <div class="row">
         <div class="col-sm">
@@ -729,7 +729,7 @@
     });
 
     document.querySelector("#rpm416-button-view").addEventListener("click", function () {
-      document.querySelector("#rpm416-rdf-data-graphs").style.display = "block";
+      document.querySelector("#rpm416-data-graphs").style.display = "block";
     });
 
     document.querySelector("#rpm416-button-rdf-file-analysis-close").addEventListener("click", function () {
@@ -737,7 +737,7 @@
     });
 
     document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
-      document.querySelector("#rpm416-rdf-data-graphs").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
     });
   </script>
 </div>
