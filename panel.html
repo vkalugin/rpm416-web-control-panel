@@ -1,5 +1,10 @@
 <div id="rpm416-visualization-container">
   <style>
+    .rpm416-button {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
     .rpm416-container {
       background-color: #c6d3d3;
     }
@@ -158,8 +163,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 5px;" id="rpm416-button-view-rdf">View RDF</button>
-    <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 5px;" id="rpm416-button-view">View</button>
+    <div style="align-content: start;">
+      <button type="button" class="btn btn-primary btn-sm rpm416-button" id="rpm416-button-view-rdf">View RDF</button>
+      <button type="button" class="btn btn-primary btn-sm rpm416-button" id="rpm416-button-view">View</button>
+    </div>
     <div class="container rpm416-container">
       <div class="row">
         <div class="col-sm">
@@ -597,22 +604,22 @@
                     <span class="rpm416-text-value">0</span>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       disabled>Start recording</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       disabled>Reset errors</button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
-                      disabled>Stop recording</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" disabled>Stop
+                      recording</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       disabled>Restart</button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px; width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       disabled>Memory card</button>
-                    <button type="button" class="btn btn-primary btn-sm"
-                      style="margin-top: 5px; width: 45%;">Settings</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button"
+                      style="width: 45%;">Settings</button>
                   </div>
                 </td>
               </tr>
@@ -669,7 +676,8 @@
     </div>
 
     <div class="rpm416-popup-menu" id="rpm416-rdf-file-analysis">
-      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-rdf-file-analysis-close"><span aria-hidden="true">&times;</span></button>
+      <button type="button" class="close close-button" aria-label="Close"
+        id="rpm416-button-rdf-file-analysis-close"><span aria-hidden="true">&times;</span></button>
 
       <header class="rpm416-header">RDF File analysis</header>
 
@@ -677,7 +685,8 @@
     </div>
 
     <div class="rpm416-popup-menu" id="rpm416-data-graphs">
-      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span aria-hidden="true">&times;</span></button>
+      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
+          aria-hidden="true">&times;</span></button>
 
       <header class="rpm416-header">Data graphs</header>
       <div></div>
