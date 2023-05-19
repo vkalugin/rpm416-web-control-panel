@@ -807,6 +807,39 @@
       );
     })();
 
+    (async function () {
+      const data = [];
+
+      new Chart(
+        document.querySelector("#rpm416-history-graph"),
+        {
+          type: "line",
+          options: {
+            animation: false,
+            scales: {
+              x: {
+                min: -6,
+                max: 0,
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return value + " min";
+                  },
+                },
+              },
+              y: {
+                min: 0,
+                max: 1,
+              }
+            },
+          },
+          data: {
+            label: "",
+            data: data,
+          },
+        }
+      );
+    })
+
     document.querySelector("#rpm416-button-view-rdf").addEventListener("click", function () {
       document.querySelector("#rpm416-rdf-file-analysis").style.display = "block";
     });
