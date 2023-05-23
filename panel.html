@@ -805,12 +805,10 @@
     })();
 
     (async function () {
-      const data = [];
-
       new Chart(
         document.querySelector("#rpm416-history-graph"),
         {
-          type: "line",
+          type: "scatter",
           options: {
             animation: false,
             scales: {
@@ -831,7 +829,12 @@
           },
           data: {
             label: "",
-            data: data,
+            datasets: [
+              {
+                label: "",
+                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+              }
+            ]
           },
         }
       );
