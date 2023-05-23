@@ -681,17 +681,6 @@
       </div>
     </div>
 
-    <div class="rpm416-popup-menu" id="rpm416-rdf-file-analysis">
-      <button type="button" class="close close-button" aria-label="Close"
-        id="rpm416-button-rdf-file-analysis-close"><span aria-hidden="true">&times;</span></button>
-
-      <header class="rpm416-header">RDF File analysis</header>
-
-      <div>
-        Stub
-      </div>
-    </div>
-
     <div class="rpm416-popup-menu" id="rpm416-data-graphs">
       <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
           aria-hidden="true">&times;</span></button>
@@ -849,16 +838,8 @@
       );
     })
 
-    document.querySelector("#rpm416-button-view-rdf").addEventListener("click", function () {
-      document.querySelector("#rpm416-rdf-file-analysis").style.display = "block";
-    });
-
     document.querySelector("#rpm416-button-view").addEventListener("click", function () {
       document.querySelector("#rpm416-data-graphs").style.display = "block";
-    });
-
-    document.querySelector("#rpm416-button-rdf-file-analysis-close").addEventListener("click", function () {
-      document.querySelector("#rpm416-rdf-file-analysis").style.display = "none";
     });
 
     document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
