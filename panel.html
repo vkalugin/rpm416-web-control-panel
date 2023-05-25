@@ -146,6 +146,17 @@
       border: 3px solid transparent;
     }
 
+    #rpm416-substrate {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+      background-color: #1c1c1c7f;
+      display: none;
+    }
+
     .rpm416-popup-menu {
       padding: 5px;
       position: absolute;
@@ -681,6 +692,8 @@
       </div>
     </div>
 
+    <div id="rpm416-substrate"></div>
+
     <div class="rpm416-popup-menu" id="rpm416-data-graphs">
       <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
           aria-hidden="true">&times;</span></button>
@@ -841,10 +854,12 @@
     })
 
     document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "block";
       document.querySelector("#rpm416-data-graphs").style.display = "block";
     });
 
     document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
       document.querySelector("#rpm416-data-graphs").style.display = "none";
     });
   </script>
