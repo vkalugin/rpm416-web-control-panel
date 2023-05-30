@@ -707,10 +707,6 @@
             </thead>
             <tbody></tbody>
           </table>
-
-          <div>
-            <canvas id="rpm416-history-graph">Your browser does not support the canvas element.</canvas>
-          </div>
         </div>
       </div>
     </div>
@@ -724,7 +720,9 @@
       <header class="rpm416-header">Data graphs</header>
 
       <div>
-        
+        <div>
+          <canvas id="rpm416-history-graph">Your browser does not support the canvas element.</canvas>
+        </div>
 
         <table id="rpm416-graph-table">
           <colgroup>
@@ -840,40 +838,38 @@
     })();
 
     (async function () {
-      const data = [
-        { channel: 8, value: NaN },
-        { channel: 9, value: NaN },
-      ];
-      
       new Chart(
         document.querySelector("#rpm416-history-graph"),
         {
-          type: "bar",
+          type: "scatter",
           options: {
             animation: false,
+            showLine: true,
             scales: {
               x: {
+                min: -6,
+                max: 0,
                 ticks: {
                   callback: function (value, index, ticks) {
-                    return "channel " + value;
+                    return value + " min";
                   },
                 },
               },
               y: {
-                min: -50,
-                max: 110,
+                min: 0,
+                max: 1,
               }
             },
           },
           data: {
-            labels: data.map(row => row.channel),
+            labels: [],
             datasets: [
               {
-                label: "Temperature (Channels 8 and 9)",
-                data: data.map(row => row.value)
+                label: "history",
+                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
               }
             ]
-          }
+          },
         }
       );
     })();
