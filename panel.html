@@ -844,6 +844,7 @@
           type: "scatter",
           options: {
             animation: false,
+            showLine: true,
             scales: {
               x: {
                 min: -6,
@@ -864,6 +865,7 @@
             labels: [],
             datasets: [
               {
+                label: "history",
                 data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
               }
             ]
