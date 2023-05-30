@@ -1,123 +1,895 @@
-<div id="rpm-416-visualization-container">
+<div id="rpm416-visualization-container">
   <style>
-    .dashboard-header {
-      margin-top: 1em;
-      font-size: larger;
-      font-weight: bold;
-      text-align: center;
-      border-bottom: 1px solid #9a9a9a;
+    .rpm416-button {
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
 
-    .dashboard-group {
+    .rpm416-container {
+      background-color: #c6d3d3;
+    }
+
+    .rpm416-header {
+      font-size: medium;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -1px;
+      margin-bottom: -1px;
+    }
+
+    .rpm416-group {
       margin-top: 8px;
       margin-bottom: 8px;
     }
 
-    .valuebar {
-      min-width: 100px;
-      height: 8px;
-      background-color: #9a9a9a;
+    .rpm416-text-key {
+      color: #990c9e;
     }
 
-    .valuebar-inner {
+    .rpm416-text-key-inline {
+      width: 30%;
+      display: inline-block;
+    }
+
+    .rpm416-text-value {
+      color: #046ffd;
+
+    }
+
+    .rpm416-text-value-right-inline {
+      width: 15%;
+      display: inline-block;
+      text-align: right;
+    }
+
+    .rpm416-valuebar {
+      height: 8px;
+      background-color: #9a9a9a;
+      display: inline-block;
+    }
+
+    .rpm416-valuebar-inner {
       height: 100%;
       width: 0%;
       float: left;
     }
+
+    .rpm416-valuebar-short {
+      width: 60%;
+    }
+
+    .rpm416-valuebar-long {
+      width: 90%;
+    }
+
+    .rpm416-grouping-table {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .rpm416-grouping-table td {
+      border: #aeaeae 1px solid;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 48%;
+    }
+
+    .rpm416-td-leftalign {
+      text-align: left;
+    }
+
+    .rpm416-inner-table td {
+      border: none;
+    }
+
+    .rpm416-group-phase-1 {
+      border: #e8b20a 2px solid;
+      padding: 5px;
+    }
+
+    .rpm416-color-phase-1 {
+      color: #e8b20a;
+    }
+
+    .rpm416-group-phase-2 {
+      border: #1a8e08 2px solid;
+      padding: 5px;
+    }
+
+    .rpm416-color-phase-2 {
+      color: #1a8e08;
+    }
+
+    .rpm416-group-phase-3 {
+      border: #ed210f 2px solid;
+      padding: 5px;
+    }
+
+    .rpm416-color-phase-3 {
+      color: #ed210f;
+    }
+
+    .rpm416-group-three-phase {
+      border: #8663a9 2px solid;
+      padding: 5px;
+    }
+
+    .rpm416-color-three-phase {
+      color: #8663a9;
+    }
+
+    .rpm416-status-indicator {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      border-radius: 50%;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+    }
+
+    #rpm416-errorlist-table {
+      width: 100%;
+    }
+
+    #rpm416-errorlist-table thead tr {
+      height: 1.5em;
+    }
+
+    #rpm416-errorlist-table tbody {
+      background-color: transparent;
+      max-height: 100%;
+      min-width: 100%;
+    }
+
+    #rpm416-errorlist-table th {
+      text-align: center;
+      padding: 4px;
+      border: 3px solid transparent;
+      background-color: whitesmoke;
+      height: 1.5em;
+      position: sticky;
+      top: 0;
+    }
+
+    #rpm416-errorlist-table td {
+      height: 1.5em;
+      text-align: center;
+      padding: 4px;
+      border: 3px solid transparent;
+    }
+
+    #rpm416-substrate {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+      background-color: #1c1c1c7f;
+      display: none;
+    }
+
+    .rpm416-popup-menu {
+      padding: 5px;
+      position: absolute;
+      left: 25%;
+      top: 15%;
+      min-width: 450px;
+      width: 50%;
+      z-index: 100;
+      background-color: whitesmoke;
+      display: none;
+      text-align: left;
+    }
+
+    #rpm416-graph-table td {
+      padding: 5px;
+    }
   </style>
 
-  <div id="rpm-416-html-container">
-    <div class="row">
-      <div class="col-sm">
-        <header class="dashboard-header">Phase 1 (Group)</header>
-        <div class="dashboard-group">
-          <div>Voltage (channel 1)
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
+  <div id="rpm416-html-container">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <div class="container rpm416-container">
+      <div class="row">
+        <div class="col" style="text-align: left;">
+          <button type="button" class="btn btn-primary btn-sm rpm416-button" id="rpm416-button-view">View</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div class="rpm416-group rpm416-group-phase-1">
+            <header class="rpm416-header rpm416-color-phase-1">Phase 1 (Group)</header>
+            <table class="rpm416-grouping-table">
+              <tbody>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>Voltage (channel 1)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>Current (channel 4)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="rpm416-td-leftalign">
+                    Power (channel 16)
+                    <div>
+                      <span class="rpm416-text-key">Full:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Active:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Reactive:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2">
+                    <span class="rpm416-text-key">Power ratio:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
-          <div>Current (channel 4)
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
+          <div class="rpm416-group rpm416-group-phase-2">
+            <header class="rpm416-header rpm416-color-phase-2">Phase 2 (Group)</header>
+            <table class="rpm416-grouping-table">
+              <tbody>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>Voltage (channel 2)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>Current (channel 5)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="rpm416-td-leftalign">
+                    Power (channel 17)
+                    <div>
+                      <span class="rpm416-text-key">Full:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Active:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Reactive:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2">
+                    <span class="rpm416-text-key">Power ratio:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div>Power (channel 16)
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
+          <div class="rpm416-group rpm416-group-phase-3">
+            <header class="rpm416-header rpm416-color-phase-3">Phase 3 (Group)</header>
+            <table class="rpm416-grouping-table">
+              <tbody>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>Voltage (channel 3)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>Current (channel 6)</div>
+
+                    <div>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="rpm416-td-leftalign">
+                    Power (channel 18)
+                    <div>
+                      <span class="rpm416-text-key">Full:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                        <div class="valuevar-inner bg-success"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Active:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                  <td class="rpm416-td-leftalign">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Reactive:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-key rpm416-text-key-inline">Energy:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+
+                    <div class="rpm416-valuebar rpm416-valuebar-long" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2">
+                    <span class="rpm416-text-key">Power ratio:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rpm416-group rpm416-group-three-phase">
+            <header class="rpm416-header rpm416-color-three-phase">Three-phase system</header>
+            <div class="rpm416-group">
+              Line voltage
+              <div>
+                <span class="rpm416-text-key">AB:</span>
+                <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                  <div class="valuevar-inner bg-success"></div>
+                </div>
+                <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+              </div>
+              <div>
+                <span class="rpm416-text-key">BC:</span>
+                <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                  <div class="valuevar-inner bg-success"></div>
+                </div>
+                <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+              </div>
+              <div>
+                <span class="rpm416-text-key">CA:</span>
+                <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                  <div class="valuevar-inner bg-success"></div>
+                </div>
+                <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+              </div>
+
+              <div>
+                <span class="rpm416-text-key">Reverse sequence:</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+                <span class="rpm416-text-key">Direct sequence:</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+                <span class="rpm416-text-key">Zero sequence:</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="dashboard-group">
-          <div><span>Active:</span> <span>Energy:</span>
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-          <div><span>Reactive:</span> <span>Energy:</span>
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <header class="dashboard-header">Phase 2 (Group)</header>
-      </div>
-      <div class="col-sm">
-        <header class="dashboard-header">Phase 3 (Group)</header>
-      </div>
-      <div class="col-sm">
-        <header class="dashboard-header">Three-phase system</header>
-        <div class="dashboard-group">
-          Line voltage
-          <div>AB:
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-          <div>BC:
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-          <div>CA:
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
+        <div class="col-sm">
+
+          <table class="rpm416-grouping-table">
+            <tbody>
+              <tr>
+                <td class="rpm416-td-leftalign">
+                  <div>Analog voltage (Channel 10):</div>
+                  <div>
+                    <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">User scale:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+                <td class="rpm416-td-leftalign">
+                  <div>Analog current (Channel 11):</div>
+                  <div>
+                    <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">User scale:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="rpm416-grouping-table">
+            <tbody>
+              <tr>
+                <td class="rpm416-td-leftalign">
+                  Current (Channel 7):
+                  <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                    <div class="valuevar-inner bg-success"></div>
+                  </div>
+                  <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  <div>
+                    <span class="rpm416-text-key rpm416-text-key-inline">THDr:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-key rpm416-text-key-inline">Frequency:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+                <td rowspan="2">
+                  <div>
+                    <canvas id="rpm416-temperatures-graph">Your browser does not support the canvas element.</canvas>
+                  </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="rpm416-inner-table">
+                    <thead>
+                      <th colspan="3">
+                        Digital inputs (channels 12&mdash;15)
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div><span class="rpm416-text-key">Input:</span> </div>
+                          <div><span class="rpm416-text-key">1:</span> <span
+                              class="rpm416-status-indicator bg-danger"></span>
+                          </div>
+                          <div><span class="rpm416-text-key">2:</span> <span
+                              class="rpm416-status-indicator bg-danger"></span>
+                          </div>
+                          <div><span class="rpm416-text-key">3:</span> <span
+                              class="rpm416-status-indicator bg-danger"></span>
+                          </div>
+                          <div><span class="rpm416-text-key">4:</span> <span
+                              class="rpm416-status-indicator bg-danger"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div><span class="rpm416-text-key">Imp*min:</span> </div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                        </td>
+                        <td>
+                          <div><span class="rpm416-text-key">Counter:</span> </div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value">0</span></div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="rpm416-grouping-table">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="rpm416-text-key">Memory card is not installed</span>
+                </td>
+                <td rowspan="2">
+                  <div>
+                    Status and control
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">Errors present:</span>
+                    <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">Data recording:</span>
+                    <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
+                      <div class="valuevar-inner bg-success"></div>
+                    </div>
+                  </div>
+
+                  <div style="text-align: left;">
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline" style="width:80%">Software version:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline" style="width:80%">Uptime:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                    <div>
+                      <span class="rpm416-text-key rpm416-text-key-inline" style="width:80%">Device time:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      disabled>Start rec.</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      disabled>Reset errors</button>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" disabled>Stop
+                      rec.</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      disabled>Restart</button>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      disabled>Memory card</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button"
+                      style="width: 45%;">Settings</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>Data file</div>
+                  <div>
+                    <span class="rpm416-text-key">File name</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">File size</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div>Events</div>
+                  <div>
+                    <span class="rpm416-text-key">Event counter:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-key">Last event:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table id="rpm416-errorlist-table">
+            <thead>
+              <colgroup>
+                <col span="1" style="width: 15%">
+                <col span="1" style="width: 60%">
+                <col span="1" style="width: 25%">
+              </colgroup>
+              <tr>
+                <th>
+                  Code
+                </th>
+                <th>
+                  Text
+                </th>
+                <th>
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm">
-        <div class="dashboard-group">
-          <div>Analog voltage (Channel 10):
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-          <div>Analog current (Channel 11):
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-          <div>Current (Channel 7):
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
+
+    <div id="rpm416-substrate"></div>
+
+    <div class="rpm416-popup-menu" id="rpm416-data-graphs">
+      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
+          aria-hidden="true">&times;</span></button>
+
+      <header class="rpm416-header">Data graphs</header>
+
+      <div>
+        <div>
+          <canvas id="rpm416-history-graph">Your browser does not support the canvas element.</canvas>
         </div>
-        <div class="dashboard-group">
-          <div>Temperature (Channels 8 and 9):
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-            <div class="valuebar" value="0">
-              <div class="valuevar-inner bg-success"></div>
-            </div>
-          </div>
-        </div>
+
+        <table id="rpm416-graph-table">
+          <colgroup>
+            <col span="1" style="width: 50%">
+          </colgroup>
+          <tbody style="text-align: center;">
+            <tr>
+              <td></td>
+              <td><span class="rpm416-text-key">On/Off</span></td>
+              <td><span class="rpm416-text-key">Channel</span></td>
+              <td><span class="rpm416-text-key">Ratio</span></td>
+              <td><span class="rpm416-text-key">Color</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td rowspan="3">
+                <input type="checkbox" id="rpm416-checkbox-graph-on-top">
+                <label for="rpm416-checkbox-graph-on-top">
+                  On top
+                </label>
+              </td>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+
+  <script>
+    (async function () {
+      const data = [
+        { channel: 8, value: NaN },
+        { channel: 9, value: NaN },
+      ];
+
+      new Chart(
+        document.querySelector("#rpm416-temperatures-graph"),
+        {
+          type: "bar",
+          options: {
+            animation: false,
+            scales: {
+              x: {
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return "channel " + value;
+                  },
+                },
+              },
+              y: {
+                min: -50,
+                max: 110,
+              }
+            },
+          },
+          data: {
+            labels: data.map(row => row.channel),
+            datasets: [
+              {
+                label: "Temperature (Channels 8 and 9)",
+                data: data.map(row => row.value)
+              }
+            ]
+          }
+        }
+      );
+    })();
+
+    (async function () {
+      new Chart(
+        document.querySelector("#rpm416-history-graph"),
+        {
+          type: "scatter",
+          options: {
+            animation: false,
+            showLine: true,
+            scales: {
+              x: {
+                min: -6,
+                max: 0,
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return value + " min";
+                  },
+                },
+              },
+              y: {
+                min: 0,
+                max: 1,
+              }
+            },
+          },
+          data: {
+            labels: [],
+            datasets: [
+              {
+                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+              }
+            ]
+          },
+        }
+      );
+    })();
+
+    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "block";
+      document.querySelector("#rpm416-data-graphs").style.display = "block";
+    });
+
+    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+    });
+
+    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+    });
+  </script>
 </div>
