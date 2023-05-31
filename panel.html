@@ -979,4 +979,38 @@
       return res;
     }
   </script>
+
+  <!-- Registers reading in loop -->
+  <script type="text/javascript">
+    const mapRegisters = new Map();
+
+    async function batchRegistersRead() {
+
+      // regs 101-227, each one of 3
+      for (let i = 0; i <= 42; i++) {
+        const reg = await rawReadRegs(101 + 3*i, 1);
+        if (reg.ok) {
+          mapRegisters.set(101 + 3*i, reg);
+        } else {
+          mapRegisters.set(101 + 3*i, undefined);
+        }
+      }
+    }
+  </script>
+
+  <!-- Thread loop -->
+  <script>
+    const UPDATE_VISUALIZATION_INTERVAL_MS = 1000;
+
+    async function initElements() {
+      await batchRegistersRead();
+    }
+
+    async function updateValuesOnVis() {
+      await batchRegistersRead();
+    }
+
+    initElements();
+    setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+  </script>
 </div>
