@@ -892,4 +892,91 @@
       document.querySelector("#rpm416-data-graphs").style.display = "none";
     });
   </script>
+
+  <!-- Registers processing -->
+  <!-- Note: DEVICE_STR and DEVICE_ID should be defined externally -->
+  <script type="text/javascript">
+    const API_TOKEN = document.querySelector(".vis-view").getAttribute("apitoken");
+    const API_BASE_URL = document.querySelector(".vis-view").getAttribute("apibaseurl");
+
+    async function postResponse(body, url) {
+      const res = await new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.onload = function () {
+          const data = JSON.parse(request.response);
+          resolve(data);
+        }
+
+        request.onerror = function (err) {
+          console.error(err);
+          reject(err)
+        }
+
+        request.open("POST", url);
+        request.setRequestHeader("authorization", `token ${API_TOKEN}`);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(body));
+      });
+
+      return res;
+    }
+
+    async function getResponse(url) {
+      const res = await new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.onload = function () {
+          const data = JSON.parse(request.response);
+          resolve(data);
+        }
+
+        request.onerror = function (err) {
+          console.error(err);
+          reject(err)
+        }
+
+        request.open("GET", url);
+        request.setRequestHeader("authorization", `token ${API_TOKEN}`);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send();
+      });
+
+      return res;
+    }
+
+    async function rawReadRegs(address, registersNum) {
+      const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
+
+      const body = {
+        deviceModbusId: deviceInfo.modbusUnitId,
+        address: address,
+        kind: "holding",
+        registersNum: registersNum,
+        connection: {
+          kind: "net-id",
+          networkId: deviceInfo.netId,
+        }
+      };
+
+      const res = await postResponse(body, `${API_BASE_URL}/v1/raw/read-register-group/`);
+      return res;
+    }
+
+    async function writeRegValues(address, values) {
+      const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
+
+      const body = {
+        deviceModbusId: deviceInfo.modbusUnitId,
+        address: address,
+        kind: "holding",
+        value: values,
+        connection: {
+          kind: "net-id",
+          networkId: deviceInfo.netId,
+        }
+      };
+
+      const res = await postResponse(body, `${API_BASE_URL}/v1/raw/write-register-group/`);
+      return res;
+    }
+  </script>
 </div>
