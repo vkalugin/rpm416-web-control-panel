@@ -1014,7 +1014,9 @@
     // setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
 
     async function readTest() {
-      console.log((await rawReadRegs(101, 1)));
+      console.log(mapRegisters);
+      await batchRegistersRead();
+      console.log(mapRegisters);
     }
 
     readTest();
