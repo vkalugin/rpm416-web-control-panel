@@ -492,11 +492,11 @@
 
               <div>
                 <span class="rpm416-text-key">Reverse sequence:</span>
-                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-negative-sequence-value">0</span>
                 <span class="rpm416-text-key">Direct sequence:</span>
-                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-positive-sequence-value">0</span>
                 <span class="rpm416-text-key">Zero sequence:</span>
-                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%">0</span>
+                <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-zero-sequence-value">0</span>
               </div>
             </div>
           </div>
@@ -995,6 +995,16 @@
           mapRegisters.set(101 + 3*i, undefined);
         }
       }
+
+      // Negative sequence, positive sequence, direct sequence
+      for (let i = 0; i <= 2; i++) {
+        const reg = await rawReadRegs(434 + 3*i, 1);
+        if (reg.ok) {
+          mapRegisters.set(434 + 3*i, reg);
+        } else {
+          mapRegisters.set(434 + 3*i, undefined);
+        }
+      }
     }
   </script>
 
@@ -1004,6 +1014,24 @@
 
     async function updateValuesOnVis() {
       await batchRegistersRead();
+
+      if (mapRegisters.get(434) != undefined) {
+        document.querySelector("#rpm416-negative-sequence-value").innerHTML = (mapRegisters.get(434) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-negative-sequence-value").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(437) != undefined) {
+        document.querySelector("#rpm416-positive-sequence-value").innerHTML = (mapRegisters.get(437) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-positive-sequence-value").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(440) != undefined) {
+        document.querySelector("#rpm416-zero-sequence-value").innerHTML = (mapRegisters.get(440) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-zero-sequence-value").innerHTML = "-";
+      }
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
