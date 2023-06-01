@@ -1002,15 +1002,17 @@
   <script>
     const UPDATE_VISUALIZATION_INTERVAL_MS = 10000;
 
-    async function initElements() {
-      await batchRegistersRead();
-    }
+    // async function initElements() {
+    //   await batchRegistersRead();
+    // }
 
-    async function updateValuesOnVis() {
-      await batchRegistersRead();
-    }
+    // async function updateValuesOnVis() {
+    //   await batchRegistersRead();
+    // }
 
-    initElements();
-    setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    // initElements();
+    // setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+
+    console.log(await rawReadRegs(101, 1));
   </script>
 </div>
