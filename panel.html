@@ -1013,6 +1013,10 @@
     // initElements();
     // setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
 
-    console.log(await rawReadRegs(101, 1));
+    async function readTest() {
+      console.log((await rawReadRegs(101, 1)));
+    }
+
+    readTest();
   </script>
 </div>
