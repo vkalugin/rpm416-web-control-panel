@@ -1002,23 +1002,15 @@
   <script>
     const UPDATE_VISUALIZATION_INTERVAL_MS = 10000;
 
-    // async function initElements() {
-    //   await batchRegistersRead();
-    // }
+    async function initElements() {
+      await batchRegistersRead();
+    }
 
     // async function updateValuesOnVis() {
     //   await batchRegistersRead();
     // }
 
-    // initElements();
+    initElements();
     // setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
-
-    async function readTest() {
-      console.log(mapRegisters);
-      await batchRegistersRead();
-      console.log(mapRegisters);
-    }
-
-    readTest();
   </script>
 </div>
