@@ -963,7 +963,7 @@
 
     async function readLongReg(address) {
       const regs = rawReadRegs(address, 2);
-      console.log(regs);
+      console.log(regs.ok);
       if (regs.ok) {
         console.log(((regs.ok[0])<<16) + regs.ok[1]);
         return ((regs.ok[0])<<16) + regs.ok[1];
