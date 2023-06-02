@@ -961,6 +961,15 @@
       return res;
     }
 
+    async function readLongReg(address) {
+      const regs = rawReadRegs(address, 2);
+      if (regs.ok) {
+        return (regs.ok[0] + regs.ok[1]<<16);
+      } else {
+        return undefined;
+      }
+    }
+
     async function writeRegValues(address, values) {
       const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
 
@@ -998,12 +1007,8 @@
 
       // Negative sequence, positive sequence, direct sequence
       for (let i = 0; i <= 2; i++) {
-        const reg = await rawReadRegs(434 + 3*i, 1);
-        if (reg.ok) {
-          mapRegisters.set(434 + 3*i, reg.ok[0]);
-        } else {
-          mapRegisters.set(434 + 3*i, undefined);
-        }
+        const reg = await readLongReg(434 + 3*i);
+        mapRegisters.set(434 + 3*i, reg);
       }
     }
   </script>
