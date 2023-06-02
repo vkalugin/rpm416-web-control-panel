@@ -998,12 +998,8 @@
 
       // regs 101-227, each one of 3
       for (let i = 0; i <= 42; i++) {
-        const reg = await rawReadRegs(101 + 3*i, 1);
-        if (reg.ok) {
-          mapRegisters.set(101 + 3*i, reg.ok[0]);
-        } else {
-          mapRegisters.set(101 + 3*i, undefined);
-        }
+        const reg = await readLongReg(101 + 3*i);
+        mapRegisters.set(101 + 3*i, reg);
       }
 
       // Negative sequence, positive sequence, direct sequence
