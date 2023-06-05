@@ -229,7 +229,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-amperage-rms-1">0</span>
                       <span class="rpm416-text-unit">A</span>
                     </div>
 
@@ -324,7 +324,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-amperage-rms-2">0</span>
                       <span class="rpm416-text-unit">A</span>
                     </div>
 
@@ -418,7 +418,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline"  id="rpm416-amperage-rms-3">0</span>
                       <span class="rpm416-text-unit">A</span>
                     </div>
 
@@ -1071,6 +1071,24 @@
         document.querySelector("#rpm416-voltage-rms-3").innerHTML = (mapRegisters.get(137) * 0.1).toFixed(1);
       } else {
         document.querySelector("#rpm416-voltage-rms-3").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(155) != undefined) {
+        document.querySelector("#rpm416-amperage-rms-1").innerHTML = (mapRegisters.get(155) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-amperage-rms-1").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(173) != undefined) {
+        document.querySelector("#rpm416-amperage-rms-2").innerHTML = (mapRegisters.get(173) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-amperage-rms-2").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(191) != undefined) {
+        document.querySelector("#rpm416-amperage-rms-3").innerHTML = (mapRegisters.get(191) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-amperage-rms-3").innerHTML = "-";
       }
     }
 
