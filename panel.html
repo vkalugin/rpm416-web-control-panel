@@ -211,7 +211,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-voltage-rms-1">0</span>
                     </div>
 
                     <div>
@@ -300,7 +300,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-voltage-rms-2">0</span>
                     </div>
 
                     <div>
@@ -388,7 +388,7 @@
                       <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                         <div class="valuevar-inner bg-success"></div>
                       </div>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-voltage-rms-3">0</span>
                     </div>
 
                     <div>
@@ -1034,6 +1034,24 @@
         document.querySelector("#rpm416-zero-sequence-value").innerHTML = (mapRegisters.get(440) * 0.1).toFixed(1);
       } else {
         document.querySelector("#rpm416-zero-sequence-value").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(101) != undefined) {
+        document.querySelector("#rpm416-voltage-rms-1").innerHTML = (mapRegisters.get(101) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-voltage-rms-1").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(119) != undefined) {
+        document.querySelector("#rpm416-voltage-rms-2").innerHTML = (mapRegisters.get(119) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-voltage-rms-2").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(137) != undefined) {
+        document.querySelector("#rpm416-voltage-rms-3").innerHTML = (mapRegisters.get(137) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-voltage-rms-3").innerHTML = "-";
       }
     }
 
