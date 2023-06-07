@@ -535,7 +535,7 @@
                   </div>
                   <div>
                     <span class="rpm416-text-key">User scale:</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-analog-voltage-userscale">0</span>
                   </div>
                 </td>
                 <td class="rpm416-td-leftalign">
@@ -548,7 +548,7 @@
                   </div>
                   <div>
                     <span class="rpm416-text-key">User scale:</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-analog-amperage-userscale">0</span>
                   </div>
                 </td>
               </tr>
@@ -1191,6 +1191,18 @@
         document.querySelector("#rpm416-analog-amperage").innerHTML = (mapRegisters.get(281) * 0.01).toFixed(2);
       } else {
         document.querySelector("#rpm416-analog-amperage").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(266) != undefined) {
+        document.querySelector("#rpm416-analog-voltage-userscale").innerHTML = (mapRegisters.get(266) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-analog-voltage-userscale").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(284) != undefined) {
+        document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = (mapRegisters.get(284) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = "-";
       }
     }
 
