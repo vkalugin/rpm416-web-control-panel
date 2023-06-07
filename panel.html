@@ -507,13 +507,13 @@
               </div>
 
               <div>
-                <span class="rpm416-text-key">Reverse sequence:</span>
+                <span class="rpm416-text-key">Reverse seq-ce:</span>
                 <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-negative-sequence-value">0</span>
                 <span class="rpm416-text-unit">V</span>
-                <span class="rpm416-text-key">Direct sequence:</span>
+                <span class="rpm416-text-key">Direct seq-ce:</span>
                 <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-positive-sequence-value">0</span>
                 <span class="rpm416-text-unit">V</span>
-                <span class="rpm416-text-key">Zero sequence:</span>
+                <span class="rpm416-text-key">Zero seq-ce:</span>
                 <span class="rpm416-text-value rpm416-text-value-right-inline" style="width:10%" id="rpm416-zero-sequence-value">0</span>
                 <span class="rpm416-text-unit">V</span>
               </div>
@@ -531,7 +531,7 @@
                     <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                       <div class="valuevar-inner bg-success"></div>
                     </div>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-analog-voltage">0</span>
                   </div>
                   <div>
                     <span class="rpm416-text-key">User scale:</span>
@@ -544,7 +544,7 @@
                     <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                       <div class="valuevar-inner bg-success"></div>
                     </div>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-analog-amperage">0</span>
                   </div>
                   <div>
                     <span class="rpm416-text-key">User scale:</span>
@@ -1179,6 +1179,18 @@
         document.querySelector("#rpm416-voltage-line-ca").innerHTML = (mapRegisters.get(431) * 0.1).toFixed(1);
       } else {
         document.querySelector("#rpm416-voltage-line-ca").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(263) != undefined) {
+        document.querySelector("#rpm416-analog-voltage").innerHTML = (mapRegisters.get(263) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-analog-voltage").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(281) != undefined) {
+        document.querySelector("#rpm416-analog-amperage").innerHTML = (mapRegisters.get(281) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-analog-amperage").innerHTML = "-";
       }
     }
 
