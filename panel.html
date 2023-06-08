@@ -1017,8 +1017,7 @@
 
       // Regs 101-227, each one of 3
       for (let i = 0; i <= 42; i++) {
-        const reg = await readLongReg(101 + 3*i);
-        mapRegisters.set(101 + 3*i, reg);
+        mapRegisters.set(101 + 3*i, await readLongReg(101 + 3*i));
       }
 
       // Temperature
@@ -1034,8 +1033,7 @@
 
       // Negative sequence, positive sequence, direct sequence
       for (let i = 0; i <= 2; i++) {
-        const reg = await readLongReg(434 + 3*i);
-        mapRegisters.set(434 + 3*i, reg);
+        mapRegisters.set(434 + 3*i, await readLongReg(434 + 3*i));
       }
     }
   </script>
