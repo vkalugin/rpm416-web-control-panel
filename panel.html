@@ -1015,11 +1015,22 @@
 
     async function batchRegistersRead() {
 
-      // regs 101-227, each one of 3
+      // Regs 101-227, each one of 3
       for (let i = 0; i <= 42; i++) {
         const reg = await readLongReg(101 + 3*i);
         mapRegisters.set(101 + 3*i, reg);
       }
+
+      // Temperature
+      mapRegisters.set(245, await readLongReg(245));
+
+      // Analog voltage & user scale
+      mapRegisters.set(263, await readLongReg(263));
+      mapRegisters.set(266, await readLongReg(266));
+
+      // Analof current & user scale
+      mapRegisters.set(281, await readLongReg(281));
+      mapRegisters.set(284, await readLongReg(284));
 
       // Negative sequence, positive sequence, direct sequence
       for (let i = 0; i <= 2; i++) {
