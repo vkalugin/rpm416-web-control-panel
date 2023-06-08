@@ -603,18 +603,18 @@
                           </div>
                         </td>
                         <td>
-                          <div><span class="rpm416-text-key">Imp*min:</span> </div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-key">Imp/min:</span> </div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-frequency-1">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-frequency-2">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-frequency-3">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-frequency-4">0</span></div>
                         </td>
                         <td>
                           <div><span class="rpm416-text-key">Counter:</span> </div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
-                          <div><span class="rpm416-text-value">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-counter-1">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-counter-2">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-counter-3">0</span></div>
+                          <div><span class="rpm416-text-value" id="rpm416-impuls-counter-4">0</span></div>
                         </td>
                       </tr>
                     </tbody>
@@ -1230,6 +1230,54 @@
         document.querySelector("#rpm416-amperage-frequency").innerHTML = (mapRegisters.get(212) * 0.01).toFixed(2);
       } else {
         document.querySelector("#rpm416-amperage-frequency").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(302) != undefined) {
+        document.querySelector("#rpm416-impuls-frequency-1").innerHTML = (mapRegisters.get(302) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-impuls-frequency-1").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(305) != undefined) {
+        document.querySelector("#rpm416-impuls-counter-1").innerHTML = mapRegisters.get(305).toString();
+      } else {
+        document.querySelector("#rpm416-impuls-counter-1").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(320) != undefined) {
+        document.querySelector("#rpm416-impuls-frequency-2").innerHTML = (mapRegisters.get(320) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-impuls-frequency-2").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(323) != undefined) {
+        document.querySelector("#rpm416-impuls-counter-2").innerHTML = mapRegisters.get(323).toString();
+      } else {
+        document.querySelector("#rpm416-impuls-counter-2").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(338) != undefined) {
+        document.querySelector("#rpm416-impuls-frequency-3").innerHTML = (mapRegisters.get(338) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-impuls-frequency-3").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(341) != undefined) {
+        document.querySelector("#rpm416-impuls-counter-3").innerHTML = mapRegisters.get(341).toString();
+      } else {
+        document.querySelector("#rpm416-impuls-counter-3").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(356) != undefined) {
+        document.querySelector("#rpm416-impuls-frequency-4").innerHTML = (mapRegisters.get(356) * 0.1).toFixed(1);
+      } else {
+        document.querySelector("#rpm416-impuls-frequency-4").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(359) != undefined) {
+        document.querySelector("#rpm416-impuls-counter-4").innerHTML = mapRegisters.get(359).toString();
+      } else {
+        document.querySelector("#rpm416-impuls-counter-4").innerHTML = "-";
       }
     }
 
