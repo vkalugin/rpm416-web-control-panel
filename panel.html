@@ -1031,6 +1031,16 @@
       mapRegisters.set(281, await readLongReg(281));
       mapRegisters.set(284, await readLongReg(284));
 
+      // Counters & frequencies
+      mapRegisters.set(302, await readLongReg(302));
+      mapRegisters.set(305, await readLongReg(305));
+      mapRegisters.set(320, await readLongReg(320));
+      mapRegisters.set(323, await readLongReg(323));
+      mapRegisters.set(338, await readLongReg(338));
+      mapRegisters.set(341, await readLongReg(341));
+      mapRegisters.set(356, await readLongReg(356));
+      mapRegisters.set(359, await readLongReg(359));
+
       // Negative sequence, positive sequence, direct sequence
       for (let i = 0; i <= 2; i++) {
         mapRegisters.set(434 + 3*i, await readLongReg(434 + 3*i));
