@@ -562,12 +562,12 @@
                   <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
                     <div class="valuevar-inner bg-success"></div>
                   </div>
-                  <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-amperage-rms">0</span>
                   <div>
                     <span class="rpm416-text-key">THDr:</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-amperage-thdr">0</span>
                     <span class="rpm416-text-key">Frequency:</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-amperage-frequency">0</span>
                   </div>
                 </td>
                 <td rowspan="2">
@@ -1203,6 +1203,24 @@
         document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = (mapRegisters.get(284) * 0.01).toFixed(2);
       } else {
         document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(209) != undefined) {
+        document.querySelector("#rpm416-amperage-rms").innerHTML = (mapRegisters.get(209) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-amperage-rms").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(215) != undefined) {
+        document.querySelector("#rpm416-amperage-thdr").innerHTML = mapRegisters.get(215).toString();
+      } else {
+        document.querySelector("#rpm416-amperage-thdr").innerHTML = "-";
+      }
+
+      if (mapRegisters.get(212) != undefined) {
+        document.querySelector("#rpm416-amperage-frequency").innerHTML = (mapRegisters.get(212) * 0.01).toFixed(2);
+      } else {
+        document.querySelector("#rpm416-amperage-frequency").innerHTML = "-";
       }
     }
 
