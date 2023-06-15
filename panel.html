@@ -1027,7 +1027,7 @@
       mapRegisters.set(263, await readLongReg(263));
       mapRegisters.set(266, await readLongReg(266));
 
-      // Analof current & user scale
+      // Analog current & user scale
       mapRegisters.set(281, await readLongReg(281));
       mapRegisters.set(284, await readLongReg(284));
 
@@ -1050,7 +1050,7 @@
 
   <!-- Thread loop -->
   <script>
-    const UPDATE_VISUALIZATION_INTERVAL_MS = 10000;
+    const UPDATE_VISUALIZATION_INTERVAL_MS = (UPDATE_VISUALIZATION_INTERVAL_MS === undefined) ? 10000 : UPDATE_VISUALIZATION_INTERVAL_MS;
 
     async function updateValuesOnVis() {
       console.log(mapRegisters);
