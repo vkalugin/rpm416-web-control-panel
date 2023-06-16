@@ -1048,7 +1048,7 @@
         mapRegisters.set(434 + 3*i, await readLongReg(434 + 3*i));
       }
 
-      console.log("reading process has ended in ", (new Date()) - start);
+      console.log("reading process has ended in ", ((new Date()) - start)/1000.0, " s");
     }
   </script>
 
