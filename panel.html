@@ -1054,8 +1054,15 @@
   <!-- Thread loop -->
   <script>
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
+    var rpm416ReadLock = false;
 
     async function updateValuesOnVis() {
+      if (rpm416ReadLock) {
+        return;
+      } else {
+        rpm416ReadLock = true;
+      }
+
       console.log(mapRegisters);
       await batchRegistersRead();
 
@@ -1292,6 +1299,8 @@
       } else {
         document.querySelector("#rpm416-impuls-counter-4").innerHTML = "-";
       }
+
+      rpm416ReadLock = false;
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
