@@ -1015,6 +1015,7 @@
 
     async function batchRegistersRead() {
       console.log("reading process has started");
+      const start = new Date();
 
       // Regs 101-227, each one of 3
       for (let i = 0; i <= 42; i++) {
@@ -1047,7 +1048,7 @@
         mapRegisters.set(434 + 3*i, await readLongReg(434 + 3*i));
       }
 
-      console.log("reading process has ended");
+      console.log("reading process has ended in ", (new Date()) - start);
     }
   </script>
 
