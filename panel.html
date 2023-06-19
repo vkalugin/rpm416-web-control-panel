@@ -1056,6 +1056,23 @@
     }
   </script>
 
+  <script>
+    function updateDisplayedValue(idStr, address, decimal) {
+      const value = mapRegisters.get(address);
+      if (value === undefined) {
+        document.querySelector("#" + idStr).innerHTML = "-";
+      } else {
+        if (decimal == 0 || decimal === undefined) {
+          document.querySelector("#" + idStr).innerHTML = value.toString();
+        } else if (decimal == 1) {
+          document.querySelector("#" + idStr).innerHTML = (value * 0.1).toFixed(1);
+        } else if (decimal == 2) {
+          document.querySelector("#" + idStr).innerHTML = (value * 0.01).toFixed(2);
+        }
+      }
+    }
+  </script>
+
   <!-- Thread loop -->
   <script>
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
@@ -1071,239 +1088,45 @@
       console.log(mapRegisters);
       await batchRegistersRead();
 
-      if (mapRegisters.get(434) != undefined) {
-        document.querySelector("#rpm416-negative-sequence-value").innerHTML = (mapRegisters.get(434) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-negative-sequence-value").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(437) != undefined) {
-        document.querySelector("#rpm416-positive-sequence-value").innerHTML = (mapRegisters.get(437) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-positive-sequence-value").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(440) != undefined) {
-        document.querySelector("#rpm416-zero-sequence-value").innerHTML = (mapRegisters.get(440) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-zero-sequence-value").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(101) != undefined) {
-        document.querySelector("#rpm416-voltage-rms-1").innerHTML = (mapRegisters.get(101) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-rms-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(107) != undefined) {
-        document.querySelector("#rpm416-voltage-thdr-1").innerHTML = mapRegisters.get(107).toString();
-      } else {
-        document.querySelector("#rpm416-voltage-thdr-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(104) != undefined) {
-        document.querySelector("#rpm416-voltage-frequency-1").innerHTML = (mapRegisters.get(104) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-voltage-frequency-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(119) != undefined) {
-        document.querySelector("#rpm416-voltage-rms-2").innerHTML = (mapRegisters.get(119) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-rms-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(125) != undefined) {
-        document.querySelector("#rpm416-voltage-thdr-2").innerHTML = mapRegisters.get(125).toString();
-      } else {
-        document.querySelector("#rpm416-voltage-thdr-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(122) != undefined) {
-        document.querySelector("#rpm416-voltage-frequency-2").innerHTML = (mapRegisters.get(122) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-voltage-frequency-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(137) != undefined) {
-        document.querySelector("#rpm416-voltage-rms-3").innerHTML = (mapRegisters.get(137) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-rms-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(143) != undefined) {
-        document.querySelector("#rpm416-voltage-thdr-3").innerHTML = mapRegisters.get(143).toString();
-      } else {
-        document.querySelector("#rpm416-voltage-thdr-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(140) != undefined) {
-        document.querySelector("#rpm416-voltage-frequency-3").innerHTML = (mapRegisters.get(140) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-voltage-frequency-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(155) != undefined) {
-        document.querySelector("#rpm416-amperage-rms-1").innerHTML = (mapRegisters.get(155) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-amperage-rms-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(161) != undefined) {
-        document.querySelector("#rpm416-amperage-thdr-1").innerHTML = mapRegisters.get(161).toString();
-      } else {
-        document.querySelector("#rpm416-amperage-thdr-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(158) != undefined) {
-        document.querySelector("#rpm416-amperage-frequency-1").innerHTML = (mapRegisters.get(158) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-amperage-frequency-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(173) != undefined) {
-        document.querySelector("#rpm416-amperage-rms-2").innerHTML = (mapRegisters.get(173) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-amperage-rms-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(179) != undefined) {
-        document.querySelector("#rpm416-amperage-thdr-2").innerHTML = mapRegisters.get(179).toString();
-      } else {
-        document.querySelector("#rpm416-amperage-thdr-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(176) != undefined) {
-        document.querySelector("#rpm416-amperage-frequency-2").innerHTML = (mapRegisters.get(176) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-amperage-frequency-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(191) != undefined) {
-        document.querySelector("#rpm416-amperage-rms-3").innerHTML = (mapRegisters.get(191) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-amperage-rms-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(197) != undefined) {
-        document.querySelector("#rpm416-amperage-thdr-3").innerHTML = mapRegisters.get(197).toString();
-      } else {
-        document.querySelector("#rpm416-amperage-thdr-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(194) != undefined) {
-        document.querySelector("#rpm416-amperage-frequency-3").innerHTML = (mapRegisters.get(194) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-amperage-frequency-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(425) != undefined) {
-        document.querySelector("#rpm416-voltage-line-ab").innerHTML = (mapRegisters.get(425) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-line-ab").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(428) != undefined) {
-        document.querySelector("#rpm416-voltage-line-bc").innerHTML = (mapRegisters.get(428) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-line-bc").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(431) != undefined) {
-        document.querySelector("#rpm416-voltage-line-ca").innerHTML = (mapRegisters.get(431) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-voltage-line-ca").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(263) != undefined) {
-        document.querySelector("#rpm416-analog-voltage").innerHTML = (mapRegisters.get(263) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-analog-voltage").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(281) != undefined) {
-        document.querySelector("#rpm416-analog-amperage").innerHTML = (mapRegisters.get(281) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-analog-amperage").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(266) != undefined) {
-        document.querySelector("#rpm416-analog-voltage-userscale").innerHTML = (mapRegisters.get(266) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-analog-voltage-userscale").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(284) != undefined) {
-        document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = (mapRegisters.get(284) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-analog-amperage-userscale").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(209) != undefined) {
-        document.querySelector("#rpm416-amperage-rms").innerHTML = (mapRegisters.get(209) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-amperage-rms").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(215) != undefined) {
-        document.querySelector("#rpm416-amperage-thdr").innerHTML = mapRegisters.get(215).toString();
-      } else {
-        document.querySelector("#rpm416-amperage-thdr").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(212) != undefined) {
-        document.querySelector("#rpm416-amperage-frequency").innerHTML = (mapRegisters.get(212) * 0.01).toFixed(2);
-      } else {
-        document.querySelector("#rpm416-amperage-frequency").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(302) != undefined) {
-        document.querySelector("#rpm416-impuls-frequency-1").innerHTML = (mapRegisters.get(302) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-impuls-frequency-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(305) != undefined) {
-        document.querySelector("#rpm416-impuls-counter-1").innerHTML = mapRegisters.get(305).toString();
-      } else {
-        document.querySelector("#rpm416-impuls-counter-1").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(320) != undefined) {
-        document.querySelector("#rpm416-impuls-frequency-2").innerHTML = (mapRegisters.get(320) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-impuls-frequency-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(323) != undefined) {
-        document.querySelector("#rpm416-impuls-counter-2").innerHTML = mapRegisters.get(323).toString();
-      } else {
-        document.querySelector("#rpm416-impuls-counter-2").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(338) != undefined) {
-        document.querySelector("#rpm416-impuls-frequency-3").innerHTML = (mapRegisters.get(338) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-impuls-frequency-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(341) != undefined) {
-        document.querySelector("#rpm416-impuls-counter-3").innerHTML = mapRegisters.get(341).toString();
-      } else {
-        document.querySelector("#rpm416-impuls-counter-3").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(356) != undefined) {
-        document.querySelector("#rpm416-impuls-frequency-4").innerHTML = (mapRegisters.get(356) * 0.1).toFixed(1);
-      } else {
-        document.querySelector("#rpm416-impuls-frequency-4").innerHTML = "-";
-      }
-
-      if (mapRegisters.get(359) != undefined) {
-        document.querySelector("#rpm416-impuls-counter-4").innerHTML = mapRegisters.get(359).toString();
-      } else {
-        document.querySelector("#rpm416-impuls-counter-4").innerHTML = "-";
-      }
+      updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
+      updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
+      updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
+      updateDisplayedValue("rpm416-voltage-rms-1", 101, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-1", 107, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-1", 104, 2);
+      updateDisplayedValue("rpm416-voltage-rms-2", 119, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-2", 125, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-2", 122, 2);
+      updateDisplayedValue("rpm416-voltage-rms-3", 137, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-3", 143, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-3", 140, 2);
+      updateDisplayedValue("rpm416-amperage-rms-1", 155, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-1", 161, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-1", 158, 2);
+      updateDisplayedValue("rpm416-amperage-rms-2", 173, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-2", 179, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-2", 176, 2);
+      updateDisplayedValue("rpm416-amperage-rms-3", 191, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-3", 197, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-3", 194, 2);
+      updateDisplayedValue("rpm416-voltage-line-ab", 425, 1);
+      updateDisplayedValue("rpm416-voltage-line-bc", 428, 1);
+      updateDisplayedValue("rpm416-voltage-line-ca", 431, 1);
+      updateDisplayedValue("rpm416-analog-voltage", 263, 2);
+      updateDisplayedValue("rpm416-analog-amperage", 281, 2);
+      updateDisplayedValue("rpm416-analog-voltage-userscale", 266, 2);
+      updateDisplayedValue("rpm416-analog-amperage-userscale", 284, 2);
+      updateDisplayedValue("rpm416-amperage-rms", 209, 2);
+      updateDisplayedValue("rpm416-amperage-thdr", 215, 0);
+      updateDisplayedValue("rpm416-amperage-frequency", 212, 2);
+      updateDisplayedValue("rpm416-impuls-frequency-1", 302, 1);
+      updateDisplayedValue("rpm416-impuls-counter-1", 305, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-2", 320, 1);
+      updateDisplayedValue("rpm416-impuls-counter-2", 323, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-3", 338, 1);
+      updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
+      updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
 
       rpm416ReadLock = false;
     }
