@@ -1013,8 +1013,12 @@
   <script type="text/javascript">
     const mapRegisters = new Map();
 
+    var rpm16ReadingPhase = 0;
+
     async function batchRegistersRead() {
-      console.log("reading process has started");
+      
+      (rpm16ReadingPhase++) %= 10;
+      console.log("reading process has started ", rpm16ReadingPhase);
       const start = new Date();
 
       // Regs 101-227, each one of 3
