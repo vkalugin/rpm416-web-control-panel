@@ -1016,8 +1016,8 @@
     var rpm16ReadingPhase = 0;
 
     async function batchRegistersRead() {
-      
-      (rpm16ReadingPhase++) %= 10;
+      rpm16ReadingPhase++;
+      rpm16ReadingPhase %= 10;
       console.log("reading process has started ", rpm16ReadingPhase);
       const start = new Date();
 
