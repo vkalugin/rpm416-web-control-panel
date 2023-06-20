@@ -1021,10 +1021,24 @@
       console.log("reading process has started ", rpm16ReadingPhase);
       const start = new Date();
 
-      // Regs 101-227, each one of 3
-      for (let i = 0; i <= 42; i++) {
-        mapRegisters.set(101 + 3*i, await readLongReg(101 + 3*i));
-      }
+      mapRegisters.set(101, await readLongReg(101));
+      mapRegisters.set(104, await readLongReg(104));
+      mapRegisters.set(107, await readLongReg(107));
+      mapRegisters.set(119, await readLongReg(119));
+      mapRegisters.set(122, await readLongReg(122));
+      mapRegisters.set(125, await readLongReg(125));
+      mapRegisters.set(137, await readLongReg(137));
+      mapRegisters.set(140, await readLongReg(140));
+      mapRegisters.set(143, await readLongReg(143));
+      mapRegisters.set(155, await readLongReg(155));
+      mapRegisters.set(158, await readLongReg(158));
+      mapRegisters.set(161, await readLongReg(161));
+      mapRegisters.set(173, await readLongReg(173));
+      mapRegisters.set(176, await readLongReg(176));
+      mapRegisters.set(179, await readLongReg(179));
+      mapRegisters.set(191, await readLongReg(191));
+      mapRegisters.set(194, await readLongReg(194));
+      mapRegisters.set(197, await readLongReg(197));
 
       // Temperature
       mapRegisters.set(245, await readLongReg(245));
@@ -1046,6 +1060,11 @@
       mapRegisters.set(341, await readLongReg(341));
       mapRegisters.set(356, await readLongReg(356));
       mapRegisters.set(359, await readLongReg(359));
+
+      // AB, BC, CA
+      mapRegisters.set(425, await readLongReg(425));
+      mapRegisters.set(428, await readLongReg(428));
+      mapRegisters.set(431, await readLongReg(431));
 
       // Negative sequence, positive sequence, direct sequence
       for (let i = 0; i <= 2; i++) {
