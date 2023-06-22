@@ -1115,7 +1115,7 @@
         document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
         const d = new Date(value * 1000);
-        console.log(d);
+        console.log(d.toTimeString());
         document.querySelector("#rpm416-uptime").innerHTML = d.toTimeString();
       }
     }
