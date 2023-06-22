@@ -1108,6 +1108,20 @@
     }
   </script>
 
+  <script>
+    function updateDisplayedUptime() {
+      const value = mapRegisters.get(19);
+      if (value == undefined) {
+        document.querySelector("#rpm416-uptime").innerHTML = "undefined";
+      } else {
+        const hh = (value/3600).toFixed(0);
+        const mm = ((value%3600)/60).toFixed(0);
+        const ss = (value%60).toFixed(0);
+        document.querySelector("#rpm416-uptime").innerHTML = hh + mm + ss;
+      }
+    }
+  </script>
+
   <!-- Thread loop -->
   <script>
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
@@ -1127,7 +1141,7 @@
       console.log(mapRegisters);
       await batchRegistersRead();
 
-      updateDisplayedValue("rpm416-uptime", 19, 0);
+      updateDisplayedUptime();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
