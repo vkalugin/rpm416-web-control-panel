@@ -1114,10 +1114,11 @@
       if (value == undefined) {
         document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
-        const hh = (value/3600).toFixed(0);
+        const dd = (value/86400).toFixed(0);
+        const hh = ((value%86400)/3600).toFixed(0);
         const mm = ((value%3600)/60).toFixed(0);
         const ss = (value%60).toFixed(0);
-        document.querySelector("#rpm416-uptime").innerHTML = hh + mm + ss;
+        document.querySelector("#rpm416-uptime").innerHTML = dd + " days " + hh + ":" + mm + ":" + ss;
       }
     }
   </script>
