@@ -650,7 +650,7 @@
                   <div style="text-align: left;">
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Software version:</span>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-firmware-version">0</span>
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Uptime:</span>
@@ -985,7 +985,6 @@
       if (regs.ok) {
         return ((regs.ok[0])<<16) + regs.ok[1];
       } else {
-        console.log(undefined);
         return undefined;
       }
     }
@@ -1006,6 +1005,17 @@
 
       const res = await postResponse(body, `${API_BASE_URL}/v1/raw/write-register-group/`);
       return res;
+    }
+
+    async function getFirmwareVersion() {
+      const reg = await rawReadRegs(1, 1);
+      if (reg.ok) {
+        const version_major = ((reg & 0xff00) >> 8).toString();
+        const version_minor = (reg && 0x00ff).toString();
+        return version_major + "." + version_minor;
+      } else {
+        return "Error";
+      }
     }
   </script>
 
@@ -1099,6 +1109,8 @@
   <script>
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
     var rpm416ReadLock = false;
+
+    document.querySelector("#rpm416-firmware-version").innerHTML = getFirmwareVersion();
 
     async function updateValuesOnVis() {
       if (rpm416ReadLock) {
