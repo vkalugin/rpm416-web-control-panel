@@ -658,7 +658,7 @@
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Device time:</span>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;" id="rpm416-device-time">0</span>
                     </div>
                   </div>
 
@@ -1034,6 +1034,9 @@
       // Uptime value
       mapRegisters.set(19, await readLongReg(19));
 
+      // Device time
+      mapRegisters.set(21, await readLongReg(21));
+
       mapRegisters.set(101, await readLongReg(101));
       mapRegisters.set(104, await readLongReg(104));
       mapRegisters.set(107, await readLongReg(107));
@@ -1129,6 +1132,18 @@
     }
   </script>
 
+  <script>
+    function updateDisplayedDeviceTime() {
+      const value = mapRegisters.get(21);
+      if (value === undefined) {
+        document.querySelector("#rpm416-device-time").innerHTML = "undefined";
+      } else {
+        const startdate = new Date(1980, 1, 1, 0, 0, 0);
+        document.querySelector("#rpm416-device-time").innerHTML = (startdate + value * 1000).toTimeString();
+      }
+    }
+  </script>
+
   <!-- Thread loop -->
   <script>
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
@@ -1149,6 +1164,7 @@
       await batchRegistersRead();
 
       updateDisplayedUptime();
+      updateDisplayedDeviceTime();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
