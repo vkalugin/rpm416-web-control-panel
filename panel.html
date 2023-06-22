@@ -1114,8 +1114,7 @@
       if (value === undefined) {
         document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
-        const days = value / 86400;
-        const dd = days < 10 ? "0" + days.toFixed(0) : days.toFixed(0);
+        const days = (value / 86400).toFixed(0);
 
         const hours = (value % 86400) / 3600;
         const hh = hours < 10 ? "0" + hours.toFixed(0) : hours.toFixed(0);
@@ -1125,7 +1124,7 @@
 
         const seconds = value % 60;
         const ss = seconds < 10 ? "0" + seconds.toFixed(0) : seconds.toFixed(0);
-        document.querySelector("#rpm416-uptime").innerHTML = dd + " days " + hh + ":" + mm + ":" + ss;
+        document.querySelector("#rpm416-uptime").innerHTML = days + " days " + hh + ":" + mm + ":" + ss;
       }
     }
   </script>
