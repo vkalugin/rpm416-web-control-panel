@@ -654,7 +654,7 @@
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Uptime:</span>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-uptime">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;" id="rpm416-uptime">0</span>
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Device time:</span>
@@ -1114,11 +1114,7 @@
       if (value == undefined) {
         document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
-        const dd = (value/86400).toFixed(0);
-        const hh = ((value%86400)/3600).toFixed(0);
-        const mm = ((value%3600)/60).toFixed(0);
-        const ss = (value%60).toFixed(0);
-        document.querySelector("#rpm416-uptime").innerHTML = dd + " days " + hh + ":" + mm + ":" + ss;
+        document.querySelector("#rpm416-uptime").innerHTML = (new Date(value * 1000)).toString;
       }
     }
   </script>
