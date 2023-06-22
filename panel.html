@@ -1111,7 +1111,7 @@
   <script>
     function updateDisplayedUptime() {
       const value = mapRegisters.get(19);
-      if (value == undefined) {
+      if (value === undefined) {
         document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
         const d = new Date(value * 1000);
