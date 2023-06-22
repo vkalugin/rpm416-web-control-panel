@@ -1110,7 +1110,7 @@
     console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
     var rpm416ReadLock = false;
 
-    document.querySelector("#rpm416-firmware-version").innerHTML = getFirmwareVersion();
+    document.querySelector("#rpm416-firmware-version").innerHTML = await getFirmwareVersion();
 
     async function updateValuesOnVis() {
       if (rpm416ReadLock) {
