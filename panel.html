@@ -1139,8 +1139,9 @@
         document.querySelector("#rpm416-device-time").innerHTML = "undefined";
       } else {
         const startdate = new Date(1980, 1, 1, 0, 0, 0);
-        console.log((startdate + value * 1000).toTimeString());
-        document.querySelector("#rpm416-device-time").innerHTML = (new Date(startdate.valueOf() + value * 1000)).toTimeString();
+        const currentdate = (new Date(startdate.valueOf() + value * 1000)).toTimeString();
+        console.log(currentdate);
+        document.querySelector("#rpm416-device-time").innerHTML = currentdate;
       }
     }
   </script>
