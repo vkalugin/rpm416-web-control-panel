@@ -1010,8 +1010,8 @@
     async function getFirmwareVersion() {
       const reg = await rawReadRegs(1, 1);
       if (reg.ok) {
-        const version_major = ((reg & 0xff00) >> 8).toString();
-        const version_minor = (reg & 0x00ff).toString();
+        const version_major = ((reg.ok[0] & 0xff00) >> 8).toString();
+        const version_minor = (reg.ok[0] & 0x00ff).toString();
         return version_major + "." + version_minor;
       } else {
         return "Error";
