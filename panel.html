@@ -654,7 +654,7 @@
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Uptime:</span>
-                      <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-uptime">0</span>
                     </div>
                     <div>
                       <span class="rpm416-text-key" style="width:80%">Device time:</span>
@@ -1031,6 +1031,9 @@
       console.log("reading process has started ", rpm16ReadingPhase);
       const start = new Date();
 
+      // Uptime value
+      mapRegisters.set(19, await readLongReg(19));
+
       mapRegisters.set(101, await readLongReg(101));
       mapRegisters.set(104, await readLongReg(104));
       mapRegisters.set(107, await readLongReg(107));
@@ -1124,6 +1127,7 @@
       console.log(mapRegisters);
       await batchRegistersRead();
 
+      updateDisplayedValue("rpm416-uptime", 19, 0);
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
