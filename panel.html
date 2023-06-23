@@ -1155,7 +1155,7 @@
       document.querySelector("#rpm416-firmware-version").innerHTML = value;
     });
 
-    async function updateValuesOnVis() {
+    async function updateValues() {
       if (rpm416ReadLock) {
         return;
       } else {
@@ -1165,6 +1165,10 @@
       console.log(mapRegisters);
       await batchRegistersRead();
 
+      rpm416ReadLock = false;
+    }
+
+    function updateValuesOnVis() {
       updateDisplayedUptime();
       updateDisplayedDeviceTime();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
@@ -1207,9 +1211,10 @@
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
 
-      rpm416ReadLock = false;
+      
     }
 
+    setInterval(updateValues, 1000);
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
   </script>
 </div>
