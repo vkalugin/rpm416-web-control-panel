@@ -1091,6 +1091,8 @@
       }
 
       console.log("reading process has ended in ", ((new Date()) - start)/1000.0, " s");
+
+      return false;
     }
   </script>
 
@@ -1157,13 +1159,11 @@
 
     async function updateValuesOnVis() {
       if (rpm416ReadLock) {
-        return;
+        console.log(mapRegisters);
       } else {
         rpm416ReadLock = true;
+        rpm416ReadLock = await batchRegistersRead();
       }
-
-      console.log(mapRegisters);
-      await batchRegistersRead();
 
       updateDisplayedUptime();
       updateDisplayedDeviceTime();
@@ -1206,8 +1206,6 @@
       updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
-
-      rpm416ReadLock = false;
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
