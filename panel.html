@@ -1208,10 +1208,10 @@
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
 
-      rpm416temperatureBars.chart.data.datasets[0].data[0] = mapRegisters.get(227) * 0.1;
-      console.log(rpm416temperatureBars.chart.data.datasets[0].data[0]);
-      rpm416temperatureBars.chart.data.datasets[0].data[1] = mapRegisters.get(245) * 0.1;
-      console.log(rpm416temperatureBars.chart.data.datasets[0].data[1]);
+      rpm416temperatureBars.data.datasets[0].data[0] = mapRegisters.get(227) * 0.1;
+      console.log(rpm416temperatureBars.data.datasets[0].data[0]);
+      rpm416temperatureBars.data.datasets[0].data[1] = mapRegisters.get(245) * 0.1;
+      console.log(rpm416temperatureBars.data.datasets[0].data[1]);
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
