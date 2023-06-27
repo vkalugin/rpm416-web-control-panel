@@ -821,13 +821,13 @@
   </div>
 
   <script>
-    (async function () {
+    var rpm416temperatureBars = (function () {
       const data = [
         { channel: 8, value: NaN },
         { channel: 9, value: NaN },
       ];
 
-      var rpm416temperatureBars = new Chart(
+      return new Chart(
         document.querySelector("#rpm416-temperatures-graph"),
         {
           type: "bar",
@@ -860,7 +860,7 @@
       );
     })();
 
-    (async function () {
+    (function () {
       new Chart(
         document.querySelector("#rpm416-history-graph"),
         {
