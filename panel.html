@@ -702,12 +702,12 @@
                 <td>
                   <div>Data file</div>
                   <div>
-                    <span class="rpm416-text-key">File name</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-key">File name: </span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-id">-</span>
                   </div>
                   <div>
-                    <span class="rpm416-text-key">File size</span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-key">File size: </span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">-</span>
                   </div>
                 </td>
               </tr>
@@ -996,6 +996,15 @@
       return res;
     }
 
+    async function readShortReg(address) {
+      const regs = await rawReadRegs(address, 1);
+      if (regs.ok) {
+        return regs.ok[0];
+      } else {
+        return undefined;
+      }
+    }
+
     async function readLongReg(address) {
       const regs = await rawReadRegs(address, 2);
       if (regs.ok) {
@@ -1048,6 +1057,9 @@
 
       // State register
       mapRegisters.set(8, await readLongReg(8));
+
+      // File identifier
+      mapRegisters.set(16, await readShortReg(16));
 
       // Uptime value
       mapRegisters.set(19, await readLongReg(19));
@@ -1176,6 +1188,15 @@
         }
       }
     }
+
+    function updateFileName() {
+      const id = mapRegisters.get(16);
+      if (id === undefined) {
+        document.querySelector("#rpm416-file-id").innerHTML = "-";
+      } else {
+        document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id.toString() + ".RDF";
+      }
+    }
   </script>
 
   <!-- Thread loop -->
@@ -1195,6 +1216,7 @@
       updateDisplayedUptime();
       updateDisplayedDeviceTime();
       updateSDCardState();
+      updateFileName();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
