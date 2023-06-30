@@ -707,7 +707,7 @@
                   </div>
                   <div>
                     <span class="rpm416-text-key">File size: </span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline">-</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-size">-</span>
                   </div>
                 </td>
               </tr>
@@ -1061,6 +1061,9 @@
       // File identifier
       mapRegisters.set(16, await readShortReg(16));
 
+      // File size
+      mapRegisters.set(17, await readLongReg(17));
+
       // Uptime value
       mapRegisters.set(19, await readLongReg(19));
 
@@ -1171,7 +1174,7 @@
       }
     }
 
-    function updateSDCardState() {
+    function updateDisplayedSDCardState() {
       const value = mapRegisters.get(8);
       if (value === undefined) {
         document.querySelector("#rpm416-memory-card-state").innerHTML = "-";
@@ -1189,7 +1192,7 @@
       }
     }
 
-    function updateFileName() {
+    function updateDisplayedFileName() {
       const id = mapRegisters.get(16);
       if (id === undefined) {
         document.querySelector("#rpm416-file-id").innerHTML = "-";
@@ -1215,6 +1218,15 @@
         document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id_str + ".RDF";
       }
     }
+
+    function updateDisplayedFileSize() {
+      const filesize = mapRegisters.get(17);
+      if (filesize === undefined) {
+        document.querySelector("#rpm416-file-size").innerHTML = "-"
+      } else {
+        document.querySelector("#rpm416-file-size").innerHTML = filesize.toString() + " bytes";
+      }
+    }
   </script>
 
   <!-- Thread loop -->
@@ -1233,8 +1245,9 @@
 
       updateDisplayedUptime();
       updateDisplayedDeviceTime();
-      updateSDCardState();
-      updateFileName();
+      updateDisplayedSDCardState();
+      updateDisplayedFileName();
+      updateDisplayedFileSize();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
