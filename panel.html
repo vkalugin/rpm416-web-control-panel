@@ -1044,7 +1044,6 @@
     async function batchRegistersRead() {
       rpm16ReadingPhase++;
       rpm16ReadingPhase %= 10;
-      console.log("reading process has started ", rpm16ReadingPhase);
       const start = new Date();
 
       // Uptime value
@@ -1107,8 +1106,6 @@
         mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
       }
 
-      console.log("reading process has ended in ", ((new Date()) - start) / 1000.0, " s");
-
       return false;
     }
   </script>
@@ -1159,7 +1156,6 @@
       } else {
         const startdate = new Date(1980, 1, 1, 0, 0, 0);
         const currentdate = (new Date(startdate.valueOf() + value * 1000)).toLocaleString();
-        console.log(currentdate);
         document.querySelector("#rpm416-device-time").innerHTML = currentdate;
       }
     }
@@ -1167,7 +1163,6 @@
 
   <!-- Thread loop -->
   <script>
-    console.log(UPDATE_VISUALIZATION_INTERVAL_MS);
     var rpm416ReadLock = false;
 
     getFirmwareVersion().then((value) => {
@@ -1175,9 +1170,7 @@
     });
 
     async function updateValuesOnVis() {
-      if (rpm416ReadLock) {
-        console.log(mapRegisters);
-      } else {
+      if (!rpm416ReadLock) {
         rpm416ReadLock = true;
         rpm416ReadLock = await batchRegistersRead();
       }
@@ -1225,9 +1218,7 @@
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
 
       rpm416temperatureBars.data.datasets[0].data[0] = mapRegisters.get(227) * 0.1;
-      console.log(rpm416temperatureBars.data.datasets[0].data[0]);
       rpm416temperatureBars.data.datasets[0].data[1] = mapRegisters.get(245) * 0.1;
-      console.log(rpm416temperatureBars.data.datasets[0].data[1]);
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
