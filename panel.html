@@ -1194,7 +1194,25 @@
       if (id === undefined) {
         document.querySelector("#rpm416-file-id").innerHTML = "-";
       } else {
-        document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id.toString() + ".RDF";
+        let id_str = "";
+
+        if (id < 0) {
+          document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
+          console.error("File number is beyond allowable range:", id);
+        } else if (id < 10) {
+          id_str = "000" + id.toString();
+        } else if (id < 100) {
+          id_str = "00" + id.toString();
+        } else if (id < 1000) {
+          id_str = "0" + id.toString();
+        } else if (id < 10000) {
+          id_str = id.toString();
+        } else {
+          document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
+          console.error("File number is beyond allowable range:", id);
+        }
+
+        document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id_str + ".RDF";
       }
     }
   </script>
