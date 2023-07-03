@@ -1227,6 +1227,27 @@
         document.querySelector("#rpm416-file-size").innerHTML = filesize.toString() + " bytes";
       }
     }
+
+    function upateDisplayedTemperatures() {
+      const temp1regvalue = mapRegisters.get(227);
+      const temp2regvalue = mapRegisters.get(245);
+
+      if (temp1regvalue !== undefined) {
+        if ((temp1regvalue > 9000) || temp1regvalue < -9000) { // open circuit fault or short circuit fault
+          rpm416temperatureBars.data.datasets[0].data[0] = undefined;
+        } else {
+          rpm416temperatureBars.data.datasets[0].data[0] = temp1regvalue * 0.1;
+        }
+      }
+
+      if (temp2regvalue !== undefined) {
+        if ((temp2regvalue > 9000) || temp2regvalue < -9000) { // open circuit fault or short circuit fault
+          rpm416temperatureBars.data.datasets[0].data[1] = undefined;
+        } else {
+          rpm416temperatureBars.data.datasets[0].data[1] = temp2regvalue * 0.1;
+        }
+      }
+    }
   </script>
 
   <!-- Thread loop -->
@@ -1248,6 +1269,7 @@
       updateDisplayedSDCardState();
       updateDisplayedFileName();
       updateDisplayedFileSize();
+      upateDisplayedTemperatures();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
@@ -1287,9 +1309,6 @@
       updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
-
-      rpm416temperatureBars.data.datasets[0].data[0] = mapRegisters.get(227) * 0.1;
-      rpm416temperatureBars.data.datasets[0].data[1] = mapRegisters.get(245) * 0.1;
     }
 
     setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
