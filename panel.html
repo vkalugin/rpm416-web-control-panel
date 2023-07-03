@@ -703,11 +703,13 @@
                   <div>Data file</div>
                   <div>
                     <span class="rpm416-text-key">File name: </span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-id" style="width: 40%;">-</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-id"
+                      style="width: 40%;">-</span>
                   </div>
                   <div>
                     <span class="rpm416-text-key">File size: </span>
-                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-size" style="width: 40%;">-</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-size"
+                      style="width: 40%;">-</span>
                   </div>
                 </td>
               </tr>
@@ -1179,8 +1181,7 @@
       if (value === undefined) {
         document.querySelector("#rpm416-memory-card-state").innerHTML = "-";
       } else {
-        const state = value & (1<<4);
-        console.log(state);
+        const state = value & (1 << 4);
         if (state == 0) {
           document.querySelector("#rpm416-memory-card-state").innerHTML = "No memory card installed";
         } else if (state == 1) {
