@@ -684,8 +684,7 @@
         <div>
           <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
             id="rpm416-start-recording">Start rec.</button>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" disabled>Reset
-            errors</button>
+          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" id="rpm416-reset-errors">Reset errors</button>
         </div>
         <div>
           <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
@@ -1302,6 +1301,13 @@
   document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
   document.querySelector("#rpm416-stop-recording").addEventListener("click", stopRecording);
   document.querySelector("#rpm416-restart-registrator").addEventListener("click", restartRegistrator);
+
+  async function resetErrors() {
+    const RESET_ERRORS_COMMAND = 0x5596;
+    console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]));
+  }
+
+  document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
 </script>
 
 <!-- Thread loop -->
