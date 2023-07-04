@@ -681,14 +681,14 @@
                   </div>
 
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;">Start rec.</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" id="rpm416-start-recording">Start rec.</button>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       disabled>Reset errors</button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" disabled>Stop
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" id="rpm416-stop-recording" disabled>Stop
                       rec.</button>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;">Restart</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" id="rpm416-restart-registrator">Restart</button>
                   </div>
                   <div>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
@@ -1247,6 +1247,33 @@
         }
       }
     }
+  </script>
+
+  <script>
+    const COMMAND_REGISTER_ADDRESS = 50;
+
+    async function startRecording() {
+      const START_RECORDING_COMMAND = 0x77A6;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, START_RECORDING_COMMAND));
+      document.querySelector("#rpm416-start-recording").disabled = true;
+      document.querySelector("#rpm416-stop-recording").disabled = false;
+    }
+
+    async function stopRecording() {
+      const STOP_RECORDING_COMMAND = 0x5606;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, STOP_RECORDING_COMMAND));
+      document.querySelector("#rpm416-start-recording").disabled = false;
+      document.querySelector("#rpm416-stop-recording").disabled = true;
+    }
+
+    async function restartRegistrator() {
+      const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, RESTART_REGISTRATOR_COMMAND));
+    }
+
+    document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
+    document.querySelector("#rpm416-stop-recording").addEventListener("click", stopRecording);
+    document.querySelector("#rpm416-restart-registrator").addEventListener("click", restartRegistrator);
   </script>
 
   <!-- Thread loop -->
