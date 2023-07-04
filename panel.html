@@ -125,6 +125,11 @@
       margin-right: 0.25em;
     }
 
+    .rpm416-indicator-big {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
     #rpm416-errorlist-table {
       width: 100%;
     }
@@ -651,14 +656,12 @@
                   </div>
                   <div>
                     <span class="rpm416-text-key">Errors present:</span>
-                    <span class="rpm416-status-indicator bg-secondary" id="rpm416-errors-present"></span>
+                    <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary" id="rpm416-errors-present">!</span>
                   </div>
         </div>
         <div>
           <span class="rpm416-text-key">Data recording:</span>
-          <div class="rpm416-valuebar rpm416-valuebar-short" value="0">
-            <div class="valuebar-inner bg-success"></div>
-          </div>
+          <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary" id="rpm416-data-recording">!</span>
         </div>
 
         <div style="text-align: left;">
