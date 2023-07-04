@@ -1254,21 +1254,21 @@
 
     async function startRecording() {
       const START_RECORDING_COMMAND = 0x77A6;
-      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, START_RECORDING_COMMAND));
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]));
       document.querySelector("#rpm416-start-recording").disabled = true;
       document.querySelector("#rpm416-stop-recording").disabled = false;
     }
 
     async function stopRecording() {
       const STOP_RECORDING_COMMAND = 0x5606;
-      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, STOP_RECORDING_COMMAND));
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]));
       document.querySelector("#rpm416-start-recording").disabled = false;
       document.querySelector("#rpm416-stop-recording").disabled = true;
     }
 
     async function restartRegistrator() {
       const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
-      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, RESTART_REGISTRATOR_COMMAND));
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]));
     }
 
     document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
