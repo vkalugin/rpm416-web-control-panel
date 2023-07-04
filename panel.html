@@ -1234,7 +1234,7 @@
       const temp2regvalue = mapRegisters.get(245);
 
       if (temp1regvalue !== undefined) {
-        if ((temp1regvalue > 9000) || temp1regvalue < -9000) { // open circuit fault or short circuit fault
+        if ((temp1regvalue == 9999) || temp1regvalue == -9999) { // open circuit fault or short circuit fault
           rpm416temperatureBars.data.datasets[0].data[0] = undefined;
         } else {
           rpm416temperatureBars.data.datasets[0].data[0] = temp1regvalue * 0.1;
@@ -1242,7 +1242,7 @@
       }
 
       if (temp2regvalue !== undefined) {
-        if ((temp2regvalue > 9000) || temp2regvalue < -9000) { // open circuit fault or short circuit fault
+        if ((temp2regvalue == 9999) || temp2regvalue == -9999) { // open circuit fault or short circuit fault
           rpm416temperatureBars.data.datasets[0].data[1] = undefined;
         } else {
           rpm416temperatureBars.data.datasets[0].data[1] = temp2regvalue * 0.1;
