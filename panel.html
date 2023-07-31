@@ -1292,12 +1292,11 @@
 
     function updateDisplayedRecordingProcess() {
       const value = mapRegisters.get(8);
-      console.log("asdf", value);
       if (value === undefined) {
         return;
       } else {
         const in_process = value & (1 << 1);
-        if (in_process == 1) {
+        if (in_process != 0) {
           highlightRecordingProcess(true);
         } else {
           highlightRecordingProcess(false);
