@@ -656,712 +656,717 @@
                   </div>
                   <div>
                     <span class="rpm416-text-key">Errors present:</span>
-                    <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary" id="rpm416-errors-present">!</span>
+                    <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary"
+                      id="rpm416-errors-present">!</span>
                   </div>
-        </div>
-        <div>
-          <span class="rpm416-text-key">Data recording:</span>
-          <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary" id="rpm416-data-recording">!</span>
-        </div>
 
-        <div style="text-align: left;">
-          <div>
-            <span class="rpm416-text-key" style="width:80%">Software version:</span>
-            <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-firmware-version">0</span>
-          </div>
-          <div>
-            <span class="rpm416-text-key" style="width:80%">Uptime:</span>
-            <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;"
-              id="rpm416-uptime">0</span>
-          </div>
-          <div>
-            <span class="rpm416-text-key" style="width:80%">Device time:</span>
-            <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;"
-              id="rpm416-device-time">0</span>
-          </div>
-        </div>
+                  <div>
+                    <span class="rpm416-text-key">Data recording:</span>
+                    <span class="rpm416-status-indicator rpm416-indicator-big bg-secondary"
+                      id="rpm416-data-recording">!</span>
+                  </div>
 
-        <div>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-            id="rpm416-start-recording">Start rec.</button>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" id="rpm416-reset-errors">Reset errors</button>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-            id="rpm416-stop-recording" disabled>Stop
-            rec.</button>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-            id="rpm416-restart-registrator">Restart</button>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;" disabled>Memory
-            card</button>
-        </div>
-        </td>
-        </tr>
-        <tr>
-          <td>
-            <div>Data file</div>
-            <div>
-              <span class="rpm416-text-key">File name: </span>
-              <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-id"
-                style="width: 40%;">-</span>
-            </div>
-            <div>
-              <span class="rpm416-text-key">File size: </span>
-              <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-size"
-                style="width: 40%;">-</span>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <div>Events</div>
-            <div>
-              <span class="rpm416-text-key">Event counter:</span>
-              <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
-              <span class="rpm416-text-key">Last event:</span>
-              <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-        </table>
+                  <div style="text-align: left;">
+                    <div>
+                      <span class="rpm416-text-key" style="width:80%">Software version:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline"
+                        id="rpm416-firmware-version">0</span>
+                    </div>
+                    <div>
+                      <span class="rpm416-text-key" style="width:80%">Uptime:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;"
+                        id="rpm416-uptime">0</span>
+                    </div>
+                    <div>
+                      <span class="rpm416-text-key" style="width:80%">Device time:</span>
+                      <span class="rpm416-text-value rpm416-text-value-right-inline" style="width: 60%;"
+                        id="rpm416-device-time">0</span>
+                    </div>
+                  </div>
 
-        <table id="rpm416-errorlist-table">
-          <thead>
-            <colgroup>
-              <col span="1" style="width: 15%">
-              <col span="1" style="width: 60%">
-              <col span="1" style="width: 25%">
-            </colgroup>
-            <tr>
-              <th>
-                Code
-              </th>
-              <th>
-                Text
-              </th>
-              <th>
-                Time
-              </th>
-            </tr>
-          </thead>
-          <tbody id="rpm416-errorlist-table-body"></tbody>
-        </table>
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      id="rpm416-start-recording">Start rec.</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      id="rpm416-reset-errors">Reset errors</button>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      id="rpm416-stop-recording" disabled>Stop
+                      rec.</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      id="rpm416-restart-registrator">Restart</button>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                      disabled>Memory
+                      card</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>Data file</div>
+                  <div>
+                    <span class="rpm416-text-key">File name: </span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-id"
+                      style="width: 40%;">-</span>
+                  </div>
+                  <div>
+                    <span class="rpm416-text-key">File size: </span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline" id="rpm416-file-size"
+                      style="width: 40%;">-</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div>Events</div>
+                  <div>
+                    <span class="rpm416-text-key">Event counter:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                    <span class="rpm416-text-key">Last event:</span>
+                    <span class="rpm416-text-value rpm416-text-value-right-inline">0</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table id="rpm416-errorlist-table">
+            <thead>
+              <colgroup>
+                <col span="1" style="width: 15%">
+                <col span="1" style="width: 60%">
+                <col span="1" style="width: 25%">
+              </colgroup>
+              <tr>
+                <th>
+                  Code
+                </th>
+                <th>
+                  Text
+                </th>
+                <th>
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody id="rpm416-errorlist-table-body"></tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="rpm416-substrate"></div>
+    <div id="rpm416-substrate"></div>
 
-  <div class="rpm416-popup-menu" id="rpm416-data-graphs">
-    <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
-        aria-hidden="true">&times;</span></button>
+    <div class="rpm416-popup-menu" id="rpm416-data-graphs">
+      <button type="button" class="close close-button" aria-label="Close" id="rpm416-button-data-graphs-close"><span
+          aria-hidden="true">&times;</span></button>
 
-    <header class="rpm416-header">Data graphs</header>
+      <header class="rpm416-header">Data graphs</header>
 
-    <div>
       <div>
-        <canvas id="rpm416-history-graph">Your browser does not support the canvas element.</canvas>
-      </div>
+        <div>
+          <canvas id="rpm416-history-graph">Your browser does not support the canvas element.</canvas>
+        </div>
 
-      <table id="rpm416-graph-table">
-        <colgroup>
-          <col span="1" style="width: 50%">
-        </colgroup>
-        <tbody style="text-align: center;">
-          <tr>
-            <td></td>
-            <td><span class="rpm416-text-key">On/Off</span></td>
-            <td><span class="rpm416-text-key">Channel</span></td>
-            <td><span class="rpm416-text-key">Ratio</span></td>
-            <td><span class="rpm416-text-key">Color</span></td>
-          </tr>
-          <tr>
-            <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
-            <td><input type="checkbox" checked></td>
-            <td><select>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number"></td>
-            <td><input type="color"></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox" checked></td>
-            <td><select>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number"></td>
-            <td><input type="color"></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox" checked></td>
-            <td><select>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number"></td>
-            <td><input type="color"></td>
-          </tr>
-          <tr>
-            <td rowspan="3">
-              <input type="checkbox" id="rpm416-checkbox-graph-on-top">
-              <label for="rpm416-checkbox-graph-on-top">
-                On top
-              </label>
-            </td>
-            <td><input type="checkbox"></td>
-            <td><select disabled>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number" disabled></td>
-            <td><input type="color" disabled></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><select disabled>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number" disabled></td>
-            <td><input type="color" disabled></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><select disabled>
-                <option> -select- </option>
-              </select></td>
-            <td><input type="number" disabled></td>
-            <td><input type="color" disabled></td>
-          </tr>
-        </tbody>
-      </table>
+        <table id="rpm416-graph-table">
+          <colgroup>
+            <col span="1" style="width: 50%">
+          </colgroup>
+          <tbody style="text-align: center;">
+            <tr>
+              <td></td>
+              <td><span class="rpm416-text-key">On/Off</span></td>
+              <td><span class="rpm416-text-key">Channel</span></td>
+              <td><span class="rpm416-text-key">Ratio</span></td>
+              <td><span class="rpm416-text-key">Color</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><select>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number"></td>
+              <td><input type="color"></td>
+            </tr>
+            <tr>
+              <td rowspan="3">
+                <input type="checkbox" id="rpm416-checkbox-graph-on-top">
+                <label for="rpm416-checkbox-graph-on-top">
+                  On top
+                </label>
+              </td>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><select disabled>
+                  <option> -select- </option>
+                </select></td>
+              <td><input type="number" disabled></td>
+              <td><input type="color" disabled></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  var rpm416temperatureBars = (function () {
-    const data = [
-      { channel: 8, value: NaN },
-      { channel: 9, value: NaN },
-    ];
+  <script>
+    var rpm416temperatureBars = (function () {
+      const data = [
+        { channel: 8, value: NaN },
+        { channel: 9, value: NaN },
+      ];
 
-    return new Chart(
-      document.querySelector("#rpm416-temperatures-graph"),
-      {
-        type: "bar",
-        options: {
-          animation: false,
-          scales: {
-            x: {
-              ticks: {
-                callback: function (value, index, ticks) {
-                  return "channel " + value;
+      return new Chart(
+        document.querySelector("#rpm416-temperatures-graph"),
+        {
+          type: "bar",
+          options: {
+            animation: false,
+            scales: {
+              x: {
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return "channel " + value;
+                  },
                 },
               },
+              y: {
+                min: -50,
+                max: 110,
+              }
             },
-            y: {
-              min: -50,
-              max: 110,
-            }
           },
-        },
-        data: {
-          labels: data.map(row => row.channel),
-          datasets: [
-            {
-              label: "Temperature (Channels 8 and 9)",
-              data: data.map(row => row.value)
-            }
-          ]
+          data: {
+            labels: data.map(row => row.channel),
+            datasets: [
+              {
+                label: "Temperature (Channels 8 and 9)",
+                data: data.map(row => row.value)
+              }
+            ]
+          }
+        }
+      );
+    })();
+
+    (function () {
+      new Chart(
+        document.querySelector("#rpm416-history-graph"),
+        {
+          type: "scatter",
+          options: {
+            animation: false,
+            showLine: true,
+            scales: {
+              x: {
+                min: -6,
+                max: 0,
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return value + " min";
+                  },
+                },
+              },
+              y: {
+                min: 0,
+                max: 1,
+              }
+            },
+          },
+          data: {
+            labels: [],
+            datasets: [
+              {
+                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+              }
+            ]
+          },
+        }
+      );
+    })();
+
+    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "block";
+      document.querySelector("#rpm416-data-graphs").style.display = "block";
+    });
+
+    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+    });
+
+    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+    });
+  </script>
+
+  <!-- Registers processing -->
+  <!-- Note: DEVICE_STR and DEVICE_ID should be defined externally -->
+  <script type="text/javascript">
+    const API_TOKEN = document.querySelector(".vis-view").getAttribute("apitoken");
+    const API_BASE_URL = document.querySelector(".vis-view").getAttribute("apibaseurl");
+
+    async function postResponse(body, url) {
+      const res = await new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.onload = function () {
+          const data = JSON.parse(request.response);
+          resolve(data);
+        }
+
+        request.onerror = function (err) {
+          console.error(err);
+          reject(err)
+        }
+
+        request.open("POST", url);
+        request.setRequestHeader("authorization", `token ${API_TOKEN}`);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(body));
+      });
+
+      return res;
+    }
+
+    async function getResponse(url) {
+      const res = await new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.onload = function () {
+          const data = JSON.parse(request.response);
+          resolve(data);
+        }
+
+        request.onerror = function (err) {
+          console.error(err);
+          reject(err)
+        }
+
+        request.open("GET", url);
+        request.setRequestHeader("authorization", `token ${API_TOKEN}`);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send();
+      });
+
+      return res;
+    }
+
+    async function rawReadRegs(address, registersNum) {
+      const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
+
+      const body = {
+        deviceModbusId: deviceInfo.modbusUnitId,
+        address: address,
+        kind: "holding",
+        registersNum: registersNum,
+        connection: {
+          kind: "net-id",
+          networkId: deviceInfo.netId,
+        }
+      };
+
+      const res = await postResponse(body, `${API_BASE_URL}/v1/raw/read-register-group/`);
+      return res;
+    }
+
+    async function readShortReg(address) {
+      const regs = await rawReadRegs(address, 1);
+      if (regs.ok) {
+        return regs.ok[0];
+      } else {
+        return undefined;
+      }
+    }
+
+    async function readLongReg(address) {
+      const regs = await rawReadRegs(address, 2);
+      if (regs.ok) {
+        return ((regs.ok[0]) << 16) + regs.ok[1];
+      } else {
+        return undefined;
+      }
+    }
+
+    async function writeRegValues(address, values) {
+      const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
+
+      const body = {
+        deviceModbusId: deviceInfo.modbusUnitId,
+        address: address,
+        kind: "holding",
+        value: values,
+        connection: {
+          kind: "net-id",
+          networkId: deviceInfo.netId,
+        }
+      };
+
+      const res = await postResponse(body, `${API_BASE_URL}/v1/raw/write-register-group/`);
+      return res;
+    }
+
+    async function getFirmwareVersion() {
+      const reg = await rawReadRegs(1, 1);
+      if (reg.ok) {
+        const version_major = ((reg.ok[0] & 0xff00) >> 8).toString();
+        const version_minor = (reg.ok[0] & 0x00ff).toString();
+        return version_major + "." + version_minor;
+      } else {
+        return "Error";
+      }
+    }
+  </script>
+
+  <!-- Registers reading in loop -->
+  <script type="text/javascript">
+    const mapRegisters = new Map();
+
+    var rpm16ReadingPhase = 0;
+
+    async function batchRegistersRead() {
+      rpm16ReadingPhase++;
+      rpm16ReadingPhase %= 10;
+      const start = new Date();
+
+      // State register
+      mapRegisters.set(8, await readLongReg(8));
+
+      // File identifier
+      mapRegisters.set(16, await readShortReg(16));
+
+      // File size
+      mapRegisters.set(17, await readLongReg(17));
+
+      // Uptime value
+      mapRegisters.set(19, await readLongReg(19));
+
+      // Device time
+      mapRegisters.set(21, await readLongReg(21));
+
+      mapRegisters.set(101, await readLongReg(101));
+      mapRegisters.set(104, await readLongReg(104));
+      mapRegisters.set(107, await readLongReg(107));
+      mapRegisters.set(119, await readLongReg(119));
+      mapRegisters.set(122, await readLongReg(122));
+      mapRegisters.set(125, await readLongReg(125));
+      mapRegisters.set(137, await readLongReg(137));
+      mapRegisters.set(140, await readLongReg(140));
+      mapRegisters.set(143, await readLongReg(143));
+      mapRegisters.set(155, await readLongReg(155));
+      mapRegisters.set(158, await readLongReg(158));
+      mapRegisters.set(161, await readLongReg(161));
+      mapRegisters.set(173, await readLongReg(173));
+      mapRegisters.set(176, await readLongReg(176));
+      mapRegisters.set(179, await readLongReg(179));
+      mapRegisters.set(191, await readLongReg(191));
+      mapRegisters.set(194, await readLongReg(194));
+      mapRegisters.set(197, await readLongReg(197));
+      mapRegisters.set(209, await readLongReg(209));
+      mapRegisters.set(212, await readLongReg(212));
+      mapRegisters.set(215, await readLongReg(215));
+
+      // Temperature
+      mapRegisters.set(227, await readLongReg(227));
+      mapRegisters.set(245, await readLongReg(245));
+
+      // Analog voltage & user scale
+      mapRegisters.set(263, await readLongReg(263));
+      mapRegisters.set(266, await readLongReg(266));
+
+      // Analog current & user scale
+      mapRegisters.set(281, await readLongReg(281));
+      mapRegisters.set(284, await readLongReg(284));
+
+      // Counters & frequencies
+      mapRegisters.set(302, await readLongReg(302));
+      mapRegisters.set(305, await readLongReg(305));
+      mapRegisters.set(320, await readLongReg(320));
+      mapRegisters.set(323, await readLongReg(323));
+      mapRegisters.set(338, await readLongReg(338));
+      mapRegisters.set(341, await readLongReg(341));
+      mapRegisters.set(356, await readLongReg(356));
+      mapRegisters.set(359, await readLongReg(359));
+
+      // AB, BC, CA
+      mapRegisters.set(425, await readLongReg(425));
+      mapRegisters.set(428, await readLongReg(428));
+      mapRegisters.set(431, await readLongReg(431));
+
+      // Negative sequence, positive sequence, direct sequence
+      for (let i = 0; i <= 2; i++) {
+        mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
+      }
+
+      return false;
+    }
+  </script>
+
+  <script>
+    function updateDisplayedValue(idStr, address, decimal) {
+      const value = mapRegisters.get(address);
+      if (value === undefined) {
+        document.querySelector("#" + idStr).innerHTML = "-";
+      } else {
+        if (decimal == 0 || decimal === undefined) {
+          document.querySelector("#" + idStr).innerHTML = value.toString();
+        } else if (decimal == 1) {
+          document.querySelector("#" + idStr).innerHTML = (value * 0.1).toFixed(1);
+        } else if (decimal == 2) {
+          document.querySelector("#" + idStr).innerHTML = (value * 0.01).toFixed(2);
         }
       }
-    );
-  })();
-
-  (function () {
-    new Chart(
-      document.querySelector("#rpm416-history-graph"),
-      {
-        type: "scatter",
-        options: {
-          animation: false,
-          showLine: true,
-          scales: {
-            x: {
-              min: -6,
-              max: 0,
-              ticks: {
-                callback: function (value, index, ticks) {
-                  return value + " min";
-                },
-              },
-            },
-            y: {
-              min: 0,
-              max: 1,
-            }
-          },
-        },
-        data: {
-          labels: [],
-          datasets: [
-            {
-              data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
-            }
-          ]
-        },
-      }
-    );
-  })();
-
-  document.querySelector("#rpm416-button-view").addEventListener("click", function () {
-    document.querySelector("#rpm416-substrate").style.display = "block";
-    document.querySelector("#rpm416-data-graphs").style.display = "block";
-  });
-
-  document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
-    document.querySelector("#rpm416-substrate").style.display = "none";
-    document.querySelector("#rpm416-data-graphs").style.display = "none";
-  });
-
-  document.querySelector("#rpm416-substrate").addEventListener("click", function () {
-    document.querySelector("#rpm416-substrate").style.display = "none";
-    document.querySelector("#rpm416-data-graphs").style.display = "none";
-  });
-</script>
-
-<!-- Registers processing -->
-<!-- Note: DEVICE_STR and DEVICE_ID should be defined externally -->
-<script type="text/javascript">
-  const API_TOKEN = document.querySelector(".vis-view").getAttribute("apitoken");
-  const API_BASE_URL = document.querySelector(".vis-view").getAttribute("apibaseurl");
-
-  async function postResponse(body, url) {
-    const res = await new Promise((resolve, reject) => {
-      const request = new XMLHttpRequest();
-      request.onload = function () {
-        const data = JSON.parse(request.response);
-        resolve(data);
-      }
-
-      request.onerror = function (err) {
-        console.error(err);
-        reject(err)
-      }
-
-      request.open("POST", url);
-      request.setRequestHeader("authorization", `token ${API_TOKEN}`);
-      request.setRequestHeader("Content-Type", "application/json");
-      request.send(JSON.stringify(body));
-    });
-
-    return res;
-  }
-
-  async function getResponse(url) {
-    const res = await new Promise((resolve, reject) => {
-      const request = new XMLHttpRequest();
-      request.onload = function () {
-        const data = JSON.parse(request.response);
-        resolve(data);
-      }
-
-      request.onerror = function (err) {
-        console.error(err);
-        reject(err)
-      }
-
-      request.open("GET", url);
-      request.setRequestHeader("authorization", `token ${API_TOKEN}`);
-      request.setRequestHeader("Content-Type", "application/json");
-      request.send();
-    });
-
-    return res;
-  }
-
-  async function rawReadRegs(address, registersNum) {
-    const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
-
-    const body = {
-      deviceModbusId: deviceInfo.modbusUnitId,
-      address: address,
-      kind: "holding",
-      registersNum: registersNum,
-      connection: {
-        kind: "net-id",
-        networkId: deviceInfo.netId,
-      }
-    };
-
-    const res = await postResponse(body, `${API_BASE_URL}/v1/raw/read-register-group/`);
-    return res;
-  }
-
-  async function readShortReg(address) {
-    const regs = await rawReadRegs(address, 1);
-    if (regs.ok) {
-      return regs.ok[0];
-    } else {
-      return undefined;
-    }
-  }
-
-  async function readLongReg(address) {
-    const regs = await rawReadRegs(address, 2);
-    if (regs.ok) {
-      return ((regs.ok[0]) << 16) + regs.ok[1];
-    } else {
-      return undefined;
-    }
-  }
-
-  async function writeRegValues(address, values) {
-    const deviceInfo = await getResponse(`${API_BASE_URL}/v1/device/${DEVICE_ID}/`);
-
-    const body = {
-      deviceModbusId: deviceInfo.modbusUnitId,
-      address: address,
-      kind: "holding",
-      value: values,
-      connection: {
-        kind: "net-id",
-        networkId: deviceInfo.netId,
-      }
-    };
-
-    const res = await postResponse(body, `${API_BASE_URL}/v1/raw/write-register-group/`);
-    return res;
-  }
-
-  async function getFirmwareVersion() {
-    const reg = await rawReadRegs(1, 1);
-    if (reg.ok) {
-      const version_major = ((reg.ok[0] & 0xff00) >> 8).toString();
-      const version_minor = (reg.ok[0] & 0x00ff).toString();
-      return version_major + "." + version_minor;
-    } else {
-      return "Error";
-    }
-  }
-</script>
-
-<!-- Registers reading in loop -->
-<script type="text/javascript">
-  const mapRegisters = new Map();
-
-  var rpm16ReadingPhase = 0;
-
-  async function batchRegistersRead() {
-    rpm16ReadingPhase++;
-    rpm16ReadingPhase %= 10;
-    const start = new Date();
-
-    // State register
-    mapRegisters.set(8, await readLongReg(8));
-
-    // File identifier
-    mapRegisters.set(16, await readShortReg(16));
-
-    // File size
-    mapRegisters.set(17, await readLongReg(17));
-
-    // Uptime value
-    mapRegisters.set(19, await readLongReg(19));
-
-    // Device time
-    mapRegisters.set(21, await readLongReg(21));
-
-    mapRegisters.set(101, await readLongReg(101));
-    mapRegisters.set(104, await readLongReg(104));
-    mapRegisters.set(107, await readLongReg(107));
-    mapRegisters.set(119, await readLongReg(119));
-    mapRegisters.set(122, await readLongReg(122));
-    mapRegisters.set(125, await readLongReg(125));
-    mapRegisters.set(137, await readLongReg(137));
-    mapRegisters.set(140, await readLongReg(140));
-    mapRegisters.set(143, await readLongReg(143));
-    mapRegisters.set(155, await readLongReg(155));
-    mapRegisters.set(158, await readLongReg(158));
-    mapRegisters.set(161, await readLongReg(161));
-    mapRegisters.set(173, await readLongReg(173));
-    mapRegisters.set(176, await readLongReg(176));
-    mapRegisters.set(179, await readLongReg(179));
-    mapRegisters.set(191, await readLongReg(191));
-    mapRegisters.set(194, await readLongReg(194));
-    mapRegisters.set(197, await readLongReg(197));
-    mapRegisters.set(209, await readLongReg(209));
-    mapRegisters.set(212, await readLongReg(212));
-    mapRegisters.set(215, await readLongReg(215));
-
-    // Temperature
-    mapRegisters.set(227, await readLongReg(227));
-    mapRegisters.set(245, await readLongReg(245));
-
-    // Analog voltage & user scale
-    mapRegisters.set(263, await readLongReg(263));
-    mapRegisters.set(266, await readLongReg(266));
-
-    // Analog current & user scale
-    mapRegisters.set(281, await readLongReg(281));
-    mapRegisters.set(284, await readLongReg(284));
-
-    // Counters & frequencies
-    mapRegisters.set(302, await readLongReg(302));
-    mapRegisters.set(305, await readLongReg(305));
-    mapRegisters.set(320, await readLongReg(320));
-    mapRegisters.set(323, await readLongReg(323));
-    mapRegisters.set(338, await readLongReg(338));
-    mapRegisters.set(341, await readLongReg(341));
-    mapRegisters.set(356, await readLongReg(356));
-    mapRegisters.set(359, await readLongReg(359));
-
-    // AB, BC, CA
-    mapRegisters.set(425, await readLongReg(425));
-    mapRegisters.set(428, await readLongReg(428));
-    mapRegisters.set(431, await readLongReg(431));
-
-    // Negative sequence, positive sequence, direct sequence
-    for (let i = 0; i <= 2; i++) {
-      mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
     }
 
-    return false;
-  }
-</script>
-
-<script>
-  function updateDisplayedValue(idStr, address, decimal) {
-    const value = mapRegisters.get(address);
-    if (value === undefined) {
-      document.querySelector("#" + idStr).innerHTML = "-";
-    } else {
-      if (decimal == 0 || decimal === undefined) {
-        document.querySelector("#" + idStr).innerHTML = value.toString();
-      } else if (decimal == 1) {
-        document.querySelector("#" + idStr).innerHTML = (value * 0.1).toFixed(1);
-      } else if (decimal == 2) {
-        document.querySelector("#" + idStr).innerHTML = (value * 0.01).toFixed(2);
-      }
-    }
-  }
-
-  function updateDisplayedUptime() {
-    const value = mapRegisters.get(19);
-    if (value === undefined) {
-      document.querySelector("#rpm416-uptime").innerHTML = "undefined";
-    } else {
-      const days = (value / 86400).toFixed(0);
-
-      const hours = (value % 86400) / 3600;
-      const hh = hours < 10 ? "0" + hours.toFixed(0) : hours.toFixed(0);
-
-      const minutes = (value % 3600) / 60;
-      const mm = minutes < 10 ? "0" + minutes.toFixed(0) : minutes.toFixed(0);
-
-      const seconds = value % 60;
-      const ss = seconds < 10 ? "0" + seconds.toFixed(0) : seconds.toFixed(0);
-      document.querySelector("#rpm416-uptime").innerHTML = days + " days " + hh + ":" + mm + ":" + ss;
-    }
-  }
-
-  function updateDisplayedDeviceTime() {
-    const value = mapRegisters.get(21);
-    if (value === undefined) {
-      document.querySelector("#rpm416-device-time").innerHTML = "undefined";
-    } else {
-      const startdate = new Date(1980, 1, 1, 0, 0, 0);
-      const currentdate = (new Date(startdate.valueOf() + value * 1000)).toLocaleString();
-      document.querySelector("#rpm416-device-time").innerHTML = currentdate;
-    }
-  }
-
-  function updateDisplayedSDCardState() {
-    const value = mapRegisters.get(8);
-    if (value === undefined) {
-      document.querySelector("#rpm416-memory-card-state").innerHTML = "-";
-    } else {
-      const state = value & (1 << 4);
-      if (state == 0) {
-        document.querySelector("#rpm416-memory-card-state").innerHTML = "No memory card installed";
-      } else if (state == 1) {
-        document.querySelector("#rpm416-memory-card-state").innerHTML = "Memory card installed";
+    function updateDisplayedUptime() {
+      const value = mapRegisters.get(19);
+      if (value === undefined) {
+        document.querySelector("#rpm416-uptime").innerHTML = "undefined";
       } else {
-        document.querySelector("#rpm416-memory-card-state").innerHTML = "An error occured!";
-        console.error("impossible state value");
+        const days = (value / 86400).toFixed(0);
+
+        const hours = (value % 86400) / 3600;
+        const hh = hours < 10 ? "0" + hours.toFixed(0) : hours.toFixed(0);
+
+        const minutes = (value % 3600) / 60;
+        const mm = minutes < 10 ? "0" + minutes.toFixed(0) : minutes.toFixed(0);
+
+        const seconds = value % 60;
+        const ss = seconds < 10 ? "0" + seconds.toFixed(0) : seconds.toFixed(0);
+        document.querySelector("#rpm416-uptime").innerHTML = days + " days " + hh + ":" + mm + ":" + ss;
       }
     }
-  }
 
-  function updateDisplayedFileName() {
-    const id = mapRegisters.get(16);
-    if (id === undefined) {
-      document.querySelector("#rpm416-file-id").innerHTML = "-";
-    } else {
-      let id_str = "";
-
-      if (id < 0) {
-        document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
-        console.error("File number is beyond allowable range:", id);
-      } else if (id < 10) {
-        id_str = "000" + id.toString();
-      } else if (id < 100) {
-        id_str = "00" + id.toString();
-      } else if (id < 1000) {
-        id_str = "0" + id.toString();
-      } else if (id < 10000) {
-        id_str = id.toString();
+    function updateDisplayedDeviceTime() {
+      const value = mapRegisters.get(21);
+      if (value === undefined) {
+        document.querySelector("#rpm416-device-time").innerHTML = "undefined";
       } else {
-        document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
-        console.error("File number is beyond allowable range:", id);
+        const startdate = new Date(1980, 1, 1, 0, 0, 0);
+        const currentdate = (new Date(startdate.valueOf() + value * 1000)).toLocaleString();
+        document.querySelector("#rpm416-device-time").innerHTML = currentdate;
       }
-
-      document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id_str + ".RDF";
     }
-  }
 
-  function updateDisplayedFileSize() {
-    const filesize = mapRegisters.get(17);
-    if (filesize === undefined) {
-      document.querySelector("#rpm416-file-size").innerHTML = "-"
-    } else {
-      document.querySelector("#rpm416-file-size").innerHTML = filesize.toString() + " bytes";
-    }
-  }
-
-  function upateDisplayedTemperatures() {
-    const temp1regvalue = mapRegisters.get(227);
-    const temp2regvalue = mapRegisters.get(245);
-
-    if (temp1regvalue !== undefined) {
-      if ((temp1regvalue == 9999) || temp1regvalue == -9999) { // open circuit fault or short circuit fault
-        rpm416temperatureBars.data.datasets[0].data[0] = undefined;
+    function updateDisplayedSDCardState() {
+      const value = mapRegisters.get(8);
+      if (value === undefined) {
+        document.querySelector("#rpm416-memory-card-state").innerHTML = "-";
       } else {
-        rpm416temperatureBars.data.datasets[0].data[0] = temp1regvalue * 0.1;
+        const state = value & (1 << 4);
+        if (state == 0) {
+          document.querySelector("#rpm416-memory-card-state").innerHTML = "No memory card installed";
+        } else if (state == 1) {
+          document.querySelector("#rpm416-memory-card-state").innerHTML = "Memory card installed";
+        } else {
+          document.querySelector("#rpm416-memory-card-state").innerHTML = "An error occured!";
+          console.error("impossible state value");
+        }
       }
     }
 
-    if (temp2regvalue !== undefined) {
-      if ((temp2regvalue == 9999) || temp2regvalue == -9999) { // open circuit fault or short circuit fault
-        rpm416temperatureBars.data.datasets[0].data[1] = undefined;
+    function updateDisplayedFileName() {
+      const id = mapRegisters.get(16);
+      if (id === undefined) {
+        document.querySelector("#rpm416-file-id").innerHTML = "-";
       } else {
-        rpm416temperatureBars.data.datasets[0].data[1] = temp2regvalue * 0.1;
+        let id_str = "";
+
+        if (id < 0) {
+          document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
+          console.error("File number is beyond allowable range:", id);
+        } else if (id < 10) {
+          id_str = "000" + id.toString();
+        } else if (id < 100) {
+          id_str = "00" + id.toString();
+        } else if (id < 1000) {
+          id_str = "0" + id.toString();
+        } else if (id < 10000) {
+          id_str = id.toString();
+        } else {
+          document.querySelector("#rpm416-file-id").innerHTML = "An error occured";
+          console.error("File number is beyond allowable range:", id);
+        }
+
+        document.querySelector("#rpm416-file-id").innerHTML = "FILE" + id_str + ".RDF";
       }
     }
-  }
 
-  function highlightErrorsElement(errors_present) {
-    if (errors_present) {
-      document.querySelector("#rpm416-errors-present").classList.remove("bg-secondary");
-      document.querySelector("#rpm416-errors-present").classList.add("bg-warning");
-    } else {
-      document.querySelector("#rpm416-errors-present").classList.remove("bg-warning");
-      document.querySelector("#rpm416-errors-present").classList.add("bg-secondary");
-    }
-  }
-
-  function updateDisplayedErrorsPresent() {
-    const value = mapRegisters.get(8);
-    if (value === undefined) {
-      return;
-    } else {
-      const is_error = value & (1 << 0);
-      if (is_error == 1) {
-        highlightErrorsElement(true);
+    function updateDisplayedFileSize() {
+      const filesize = mapRegisters.get(17);
+      if (filesize === undefined) {
+        document.querySelector("#rpm416-file-size").innerHTML = "-"
       } else {
-        highlightErrorsElement(false);
+        document.querySelector("#rpm416-file-size").innerHTML = filesize.toString() + " bytes";
       }
     }
-  }
 
-  function highlightRecordingProcess(errors_present) {
-    if (errors_present) {
-      document.querySelector("#rpm416-data-recording").classList.remove("bg-secondary");
-      document.querySelector("#rpm416-data-recording").classList.add("bg-success");
-    } else {
-      document.querySelector("#rpm416-data-recording").classList.remove("bg-success");
-      document.querySelector("#rpm416-data-recording").classList.add("bg-secondary");
+    function upateDisplayedTemperatures() {
+      const temp1regvalue = mapRegisters.get(227);
+      const temp2regvalue = mapRegisters.get(245);
+
+      if (temp1regvalue !== undefined) {
+        if ((temp1regvalue == 9999) || temp1regvalue == -9999) { // open circuit fault or short circuit fault
+          rpm416temperatureBars.data.datasets[0].data[0] = undefined;
+        } else {
+          rpm416temperatureBars.data.datasets[0].data[0] = temp1regvalue * 0.1;
+        }
+      }
+
+      if (temp2regvalue !== undefined) {
+        if ((temp2regvalue == 9999) || temp2regvalue == -9999) { // open circuit fault or short circuit fault
+          rpm416temperatureBars.data.datasets[0].data[1] = undefined;
+        } else {
+          rpm416temperatureBars.data.datasets[0].data[1] = temp2regvalue * 0.1;
+        }
+      }
     }
-  }
 
-  function updateDisplayedRecordingProcess() {
-    const value = mapRegisters.get(8);
-    if (value === undefined) {
-      return;
-    } else {
-      const is_error = value & (1 << 1);
-      if (is_error == 1) {
-        highlightRecordingProcess(true);
+    function highlightErrorsElement(errors_present) {
+      if (errors_present) {
+        document.querySelector("#rpm416-errors-present").classList.remove("bg-secondary");
+        document.querySelector("#rpm416-errors-present").classList.add("bg-warning");
       } else {
-        highlightRecordingProcess(false);
+        document.querySelector("#rpm416-errors-present").classList.remove("bg-warning");
+        document.querySelector("#rpm416-errors-present").classList.add("bg-secondary");
       }
     }
-  }
-</script>
 
-<script>
-  const COMMAND_REGISTER_ADDRESS = 50;
+    function updateDisplayedErrorsPresent() {
+      const value = mapRegisters.get(8);
+      if (value === undefined) {
+        return;
+      } else {
+        const is_error = value & (1 << 0);
+        if (is_error == 1) {
+          highlightErrorsElement(true);
+        } else {
+          highlightErrorsElement(false);
+        }
+      }
+    }
 
-  async function startRecording() {
-    const START_RECORDING_COMMAND = 0x77A6;
-    console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]));
-    document.querySelector("#rpm416-start-recording").disabled = true;
-    document.querySelector("#rpm416-stop-recording").disabled = false;
-  }
+    function highlightRecordingProcess(errors_present) {
+      if (errors_present) {
+        document.querySelector("#rpm416-data-recording").classList.remove("bg-secondary");
+        document.querySelector("#rpm416-data-recording").classList.add("bg-success");
+      } else {
+        document.querySelector("#rpm416-data-recording").classList.remove("bg-success");
+        document.querySelector("#rpm416-data-recording").classList.add("bg-secondary");
+      }
+    }
 
-  async function stopRecording() {
-    const STOP_RECORDING_COMMAND = 0x5606;
-    console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]));
-    document.querySelector("#rpm416-start-recording").disabled = false;
-    document.querySelector("#rpm416-stop-recording").disabled = true;
-  }
+    function updateDisplayedRecordingProcess() {
+      const value = mapRegisters.get(8);
+      if (value === undefined) {
+        return;
+      } else {
+        const is_error = value & (1 << 1);
+        if (is_error == 1) {
+          highlightRecordingProcess(true);
+        } else {
+          highlightRecordingProcess(false);
+        }
+      }
+    }
+  </script>
 
-  async function restartRegistrator() {
-    const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
-    console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]));
-  }
+  <script>
+    const COMMAND_REGISTER_ADDRESS = 50;
 
-  document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
-  document.querySelector("#rpm416-stop-recording").addEventListener("click", stopRecording);
-  document.querySelector("#rpm416-restart-registrator").addEventListener("click", restartRegistrator);
+    async function startRecording() {
+      const START_RECORDING_COMMAND = 0x77A6;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]));
+      document.querySelector("#rpm416-start-recording").disabled = true;
+      document.querySelector("#rpm416-stop-recording").disabled = false;
+    }
 
-  async function resetErrors() {
-    const RESET_ERRORS_COMMAND = 0x5596;
-    console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]));
-  }
+    async function stopRecording() {
+      const STOP_RECORDING_COMMAND = 0x5606;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]));
+      document.querySelector("#rpm416-start-recording").disabled = false;
+      document.querySelector("#rpm416-stop-recording").disabled = true;
+    }
 
-  document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
-</script>
+    async function restartRegistrator() {
+      const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]));
+    }
 
-<!-- Add a row in the table -->
-<script type="text/javascript">
-  function addRow(col1str, col2str, col3str, col4str) {
-    let tableBody = document.querySelector("#rpm416-errorlist-table-body");
+    document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
+    document.querySelector("#rpm416-stop-recording").addEventListener("click", stopRecording);
+    document.querySelector("#rpm416-restart-registrator").addEventListener("click", restartRegistrator);
 
-    let row = document.createElement("tr");
+    async function resetErrors() {
+      const RESET_ERRORS_COMMAND = 0x5596;
+      console.log(await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]));
+    }
 
-    let cell1 = document.createElement("td");
-    let cell2 = document.createElement("td");
-    let cell3 = document.createElement("td");
-    let cell4 = document.createElement("td");
+    document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
+  </script>
 
-    cell1.innerHTML = col1str;
-    cell2.innerHTML = col2str;
-    cell3.innerHTML = col3str;
-    cell4.innerHTML = col4str;
+  <!-- Add a row in the table -->
+  <script type="text/javascript">
+    function addRow(col1str, col2str, col3str, col4str) {
+      let tableBody = document.querySelector("#rpm416-errorlist-table-body");
 
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    row.appendChild(cell3);
-    row.appendChild(cell4);
+      let row = document.createElement("tr");
 
-    tableBody.appendChild(row);
-  }
-</script>
+      let cell1 = document.createElement("td");
+      let cell2 = document.createElement("td");
+      let cell3 = document.createElement("td");
+      let cell4 = document.createElement("td");
 
-<script>
-  function timeString(dateTime) {
+      cell1.innerHTML = col1str;
+      cell2.innerHTML = col2str;
+      cell3.innerHTML = col3str;
+      cell4.innerHTML = col4str;
+
+      row.appendChild(cell1);
+      row.appendChild(cell2);
+      row.appendChild(cell3);
+      row.appendChild(cell4);
+
+      tableBody.appendChild(row);
+    }
+  </script>
+
+  <script>
+    function timeString(dateTime) {
       const hoursNum = dateTime.getHours();
       let hoursStr = hoursNum.toString();
       if (hoursNum < 10) {
@@ -1382,71 +1387,71 @@
 
       return hoursStr + ":" + minutesStr + ":" + secondsStr;
     }
-</script>
+  </script>
 
-<!-- Thread loop -->
-<script>
-  var rpm416ReadLock = false;
+  <!-- Thread loop -->
+  <script>
+    var rpm416ReadLock = false;
 
-  getFirmwareVersion().then((value) => {
-    document.querySelector("#rpm416-firmware-version").innerHTML = value;
-  });
+    getFirmwareVersion().then((value) => {
+      document.querySelector("#rpm416-firmware-version").innerHTML = value;
+    });
 
-  async function updateValuesOnVis() {
-    if (!rpm416ReadLock) {
-      rpm416ReadLock = true;
-      rpm416ReadLock = await batchRegistersRead();
+    async function updateValuesOnVis() {
+      if (!rpm416ReadLock) {
+        rpm416ReadLock = true;
+        rpm416ReadLock = await batchRegistersRead();
+      }
+
+      updateDisplayedUptime();
+      updateDisplayedDeviceTime();
+      updateDisplayedSDCardState();
+      updateDisplayedFileName();
+      updateDisplayedFileSize();
+      upateDisplayedTemperatures();
+      updateDisplayedErrorsPresent();
+      updateDisplayedRecordingProcess()
+      updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
+      updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
+      updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
+      updateDisplayedValue("rpm416-voltage-rms-1", 101, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-1", 107, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-1", 104, 2);
+      updateDisplayedValue("rpm416-voltage-rms-2", 119, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-2", 125, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-2", 122, 2);
+      updateDisplayedValue("rpm416-voltage-rms-3", 137, 1);
+      updateDisplayedValue("rpm416-voltage-thdr-3", 143, 0);
+      updateDisplayedValue("rpm416-voltage-frequency-3", 140, 2);
+      updateDisplayedValue("rpm416-amperage-rms-1", 155, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-1", 161, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-1", 158, 2);
+      updateDisplayedValue("rpm416-amperage-rms-2", 173, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-2", 179, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-2", 176, 2);
+      updateDisplayedValue("rpm416-amperage-rms-3", 191, 1);
+      updateDisplayedValue("rpm416-amperage-thdr-3", 197, 0);
+      updateDisplayedValue("rpm416-amperage-frequency-3", 194, 2);
+      updateDisplayedValue("rpm416-voltage-line-ab", 425, 1);
+      updateDisplayedValue("rpm416-voltage-line-bc", 428, 1);
+      updateDisplayedValue("rpm416-voltage-line-ca", 431, 1);
+      updateDisplayedValue("rpm416-analog-voltage", 263, 2);
+      updateDisplayedValue("rpm416-analog-amperage", 281, 2);
+      updateDisplayedValue("rpm416-analog-voltage-userscale", 266, 2);
+      updateDisplayedValue("rpm416-analog-amperage-userscale", 284, 2);
+      updateDisplayedValue("rpm416-amperage-rms", 209, 2);
+      updateDisplayedValue("rpm416-amperage-thdr", 215, 0);
+      updateDisplayedValue("rpm416-amperage-frequency", 212, 2);
+      updateDisplayedValue("rpm416-impuls-frequency-1", 302, 1);
+      updateDisplayedValue("rpm416-impuls-counter-1", 305, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-2", 320, 1);
+      updateDisplayedValue("rpm416-impuls-counter-2", 323, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-3", 338, 1);
+      updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
+      updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
+      updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
     }
 
-    updateDisplayedUptime();
-    updateDisplayedDeviceTime();
-    updateDisplayedSDCardState();
-    updateDisplayedFileName();
-    updateDisplayedFileSize();
-    upateDisplayedTemperatures();
-    updateDisplayedErrorsPresent();
-    updateDisplayedRecordingProcess()
-    updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
-    updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
-    updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
-    updateDisplayedValue("rpm416-voltage-rms-1", 101, 1);
-    updateDisplayedValue("rpm416-voltage-thdr-1", 107, 0);
-    updateDisplayedValue("rpm416-voltage-frequency-1", 104, 2);
-    updateDisplayedValue("rpm416-voltage-rms-2", 119, 1);
-    updateDisplayedValue("rpm416-voltage-thdr-2", 125, 0);
-    updateDisplayedValue("rpm416-voltage-frequency-2", 122, 2);
-    updateDisplayedValue("rpm416-voltage-rms-3", 137, 1);
-    updateDisplayedValue("rpm416-voltage-thdr-3", 143, 0);
-    updateDisplayedValue("rpm416-voltage-frequency-3", 140, 2);
-    updateDisplayedValue("rpm416-amperage-rms-1", 155, 1);
-    updateDisplayedValue("rpm416-amperage-thdr-1", 161, 0);
-    updateDisplayedValue("rpm416-amperage-frequency-1", 158, 2);
-    updateDisplayedValue("rpm416-amperage-rms-2", 173, 1);
-    updateDisplayedValue("rpm416-amperage-thdr-2", 179, 0);
-    updateDisplayedValue("rpm416-amperage-frequency-2", 176, 2);
-    updateDisplayedValue("rpm416-amperage-rms-3", 191, 1);
-    updateDisplayedValue("rpm416-amperage-thdr-3", 197, 0);
-    updateDisplayedValue("rpm416-amperage-frequency-3", 194, 2);
-    updateDisplayedValue("rpm416-voltage-line-ab", 425, 1);
-    updateDisplayedValue("rpm416-voltage-line-bc", 428, 1);
-    updateDisplayedValue("rpm416-voltage-line-ca", 431, 1);
-    updateDisplayedValue("rpm416-analog-voltage", 263, 2);
-    updateDisplayedValue("rpm416-analog-amperage", 281, 2);
-    updateDisplayedValue("rpm416-analog-voltage-userscale", 266, 2);
-    updateDisplayedValue("rpm416-analog-amperage-userscale", 284, 2);
-    updateDisplayedValue("rpm416-amperage-rms", 209, 2);
-    updateDisplayedValue("rpm416-amperage-thdr", 215, 0);
-    updateDisplayedValue("rpm416-amperage-frequency", 212, 2);
-    updateDisplayedValue("rpm416-impuls-frequency-1", 302, 1);
-    updateDisplayedValue("rpm416-impuls-counter-1", 305, 0);
-    updateDisplayedValue("rpm416-impuls-frequency-2", 320, 1);
-    updateDisplayedValue("rpm416-impuls-counter-2", 323, 0);
-    updateDisplayedValue("rpm416-impuls-frequency-3", 338, 1);
-    updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
-    updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
-    updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
-  }
-
-  setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
-</script>
+    setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+  </script>
 </div>
