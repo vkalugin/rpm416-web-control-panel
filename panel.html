@@ -747,7 +747,7 @@
               </th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="rpm416-errorlist-table-body"></tbody>
         </table>
       </div>
     </div>
@@ -1274,6 +1274,30 @@
       }
     }
   }
+
+  function highlightRecordingProcess(errors_present) {
+    if (errors_present) {
+      document.querySelector("#rpm416-data-recording").classList.remove("bg-secondary");
+      document.querySelector("#rpm416-data-recording").classList.add("bg-success");
+    } else {
+      document.querySelector("#rpm416-data-recording").classList.remove("bg-success");
+      document.querySelector("#rpm416-data-recording").classList.add("bg-secondary");
+    }
+  }
+
+  function updateDisplayedRecordingProcess() {
+    const value = mapRegisters.get(8);
+    if (value === undefined) {
+      return;
+    } else {
+      const is_error = value & (1 << 1);
+      if (is_error == 1) {
+        highlightRecordingProcess(true);
+      } else {
+        highlightRecordingProcess(false);
+      }
+    }
+  }
 </script>
 
 <script>
@@ -1310,6 +1334,56 @@
   document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
 </script>
 
+<!-- Add a row in the table -->
+<script type="text/javascript">
+  function addRow(col1str, col2str, col3str, col4str) {
+    let tableBody = document.querySelector("#rpm416-errorlist-table-body");
+
+    let row = document.createElement("tr");
+
+    let cell1 = document.createElement("td");
+    let cell2 = document.createElement("td");
+    let cell3 = document.createElement("td");
+    let cell4 = document.createElement("td");
+
+    cell1.innerHTML = col1str;
+    cell2.innerHTML = col2str;
+    cell3.innerHTML = col3str;
+    cell4.innerHTML = col4str;
+
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    row.appendChild(cell4);
+
+    tableBody.appendChild(row);
+  }
+</script>
+
+<script>
+  function timeString(dateTime) {
+      const hoursNum = dateTime.getHours();
+      let hoursStr = hoursNum.toString();
+      if (hoursNum < 10) {
+        hoursStr = "0" + hoursStr;
+      }
+
+      const minutesNum = dateTime.getMinutes();
+      let minutesStr = minutesNum.toString();
+      if (minutesNum < 10) {
+        minutesStr = "0" + minutesStr;
+      }
+
+      const secondsNum = dateTime.getSeconds();
+      let secondsStr = secondsNum.toString();
+      if (secondsNum < 10) {
+        secondsStr = "0" + secondsStr;
+      }
+
+      return hoursStr + ":" + minutesStr + ":" + secondsStr;
+    }
+</script>
+
 <!-- Thread loop -->
 <script>
   var rpm416ReadLock = false;
@@ -1331,6 +1405,7 @@
     updateDisplayedFileSize();
     upateDisplayedTemperatures();
     updateDisplayedErrorsPresent();
+    updateDisplayedRecordingProcess()
     updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
     updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
     updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
