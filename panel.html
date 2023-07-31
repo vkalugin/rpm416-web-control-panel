@@ -1280,8 +1280,8 @@
       }
     }
 
-    function highlightRecordingProcess(errors_present) {
-      if (errors_present) {
+    function highlightRecordingProcess(recording_process) {
+      if (recording_process) {
         document.querySelector("#rpm416-data-recording").classList.remove("bg-secondary");
         document.querySelector("#rpm416-data-recording").classList.add("bg-success");
       } else {
@@ -1295,8 +1295,8 @@
       if (value === undefined) {
         return;
       } else {
-        const is_error = value & (1 << 1);
-        if (is_error == 1) {
+        const in_process = value & (1 << 1);
+        if (in_process == 1) {
           highlightRecordingProcess(true);
         } else {
           highlightRecordingProcess(false);
@@ -1410,7 +1410,7 @@
       updateDisplayedFileSize();
       upateDisplayedTemperatures();
       updateDisplayedErrorsPresent();
-      updateDisplayedRecordingProcess()
+      updateDisplayedRecordingProcess();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
