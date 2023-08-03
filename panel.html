@@ -1368,15 +1368,15 @@
     ];
 
     const faultsStates = [undefined, undefined];
+    var faultsStatesIdx = 0;
     const faultsChangesList = new Array(32).fill(0);
 
     function checkFaultsChanged() {
-      let idx = 0;
-      faultsStates[idx] = mapRegisters.get(10);
+      faultsStates[faultsStatesIdx] = mapRegisters.get(10);
 
       console.log("faultsStates", faultsStates);
       if ((faultsStates[0] === undefined) || (faultsStates[1] === undefined)) {
-        idx = (idx + 1) % 2;
+        faultsStatesIdx = (faultsStatesIdx + 1) % 2;
         return;
       }
 
@@ -1393,7 +1393,7 @@
         }
       }
 
-      idx = (idx + 1) % 2;
+      faultsStatesIdx = (faultsStatesIdx + 1) % 2;
     }
 
     function addRow(col1str, col2str, col3str, col4str) {
