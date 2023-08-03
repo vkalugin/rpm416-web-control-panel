@@ -1374,14 +1374,14 @@
       let idx = 0;
       faultsStates[idx] = mapRegisters.get(10);
 
-      console.log(faultsStates);
+      console.log("faultsStates", faultsStates);
       if ((faultsStates[0] === undefined) || (faultsStates[1] === undefined)) {
         idx = (idx + 1) % 2;
         return;
       }
 
       const faultsDiffStates = faultsStates[0] ^ faultsStates[1];
-      console.log(faultsDiffStates);
+      console.log("faultsDiffStates",faultsDiffStates);
 
       for (let i=0; i< 32; i++) {
         if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[idx] & (1<<i) != 0)) { // fault occured
