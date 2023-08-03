@@ -1373,10 +1373,10 @@
     function checkFaultsChanged() {
       let idx = 0;
       faultsStates[idx] = mapRegisters.get(10);
-      idx = (idx + 1) % 2;
 
       console.log(faultsStates);
       if ((faultsStates[0] === undefined) || (faultsStates[1] === undefined)) {
+        idx = (idx + 1) % 2;
         return;
       }
 
@@ -1384,14 +1384,16 @@
       console.log(faultsDiffStates);
 
       for (let i=0; i< 32; i++) {
-        if ((faultsDiffStates & (1<<i) != 0) && (faultsStates & (1<<i) != 0)) { // fault occured
+        if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[idx] & (1<<i) != 0)) { // fault occured
           faultsChangesList[i] = 1;
-        } else if ((faultsDiffStates & (1<<i) != 0) && (faultsStates & (1<<i) == 0)) { // fault resolved
+        } else if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[idx] & (1<<i) == 0)) { // fault resolved
           faultsChangesList[i] = -1;
         } else {
           faultsChangesList[i] = 0;
         }
       }
+
+      idx = (idx + 1) % 2;
     }
 
     function addRow(col1str, col2str, col3str, col4str) {
