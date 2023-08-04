@@ -1300,8 +1300,12 @@
       } else {
         const in_process = value & (1 << 1);
         if (in_process != 0) {
+          document.querySelector("#rpm416-start-recording").disabled = true;
+          document.querySelector("#rpm416-stop-recording").disabled = false;
           highlightRecordingProcess(true);
         } else {
+          document.querySelector("#rpm416-start-recording").disabled = false;
+          document.querySelector("#rpm416-stop-recording").disabled = true;
           highlightRecordingProcess(false);
         }
       }
