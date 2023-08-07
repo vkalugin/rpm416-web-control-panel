@@ -1389,9 +1389,10 @@
 
       const faultsDiffStates = faultsStates[0] ^ faultsStates[1];
 
+      console.log("faultsDiffStates", faultsDiffStates);
+      console.log("faultsStates", faultsStates[faultsStatesIdx]);
+
       for (let i=0; i< 32; i++) {
-        console.log("faultsDiffStates", faultsDiffStates);
-        console.log("faultsStates", faultsStates[faultsStatesIdx]);
         if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[faultsStatesIdx] & (1<<i) != 0)) {
           console.log("fault occured");
           faultsChangesList[i] = RPM416_FAULT_OCCURED;
