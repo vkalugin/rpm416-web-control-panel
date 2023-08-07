@@ -1389,10 +1389,9 @@
 
       const faultsDiffStates = faultsStates[0] ^ faultsStates[1];
 
-      console.log("faultsDiffStates", faultsDiffStates);
-      console.log("faultsStates", faultsStates[faultsStatesIdx]);
-
       for (let i=0; i< 32; i++) {
+        console.log("faultsDiffStates", faultsDiffStates & (1<<i));
+        console.log("faultsStates", faultsStates[faultsStatesIdx] & (1<<i));
         if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[faultsStatesIdx] & (1<<i) != 0)) {
           console.log("fault occured");
           faultsChangesList[i] = RPM416_FAULT_OCCURED;
@@ -1400,7 +1399,6 @@
           console.log("fault resolved");
           faultsChangesList[i] = RPM416_FAULT_RESOLVED;
         } else {
-          console.log("fault unchanged");
           faultsChangesList[i] = RPM416_FAULT_UNCHANGED;
         }
       }
