@@ -1391,8 +1391,10 @@
 
       for (let i=0; i< 32; i++) {
         if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[faultsStatesIdx] & (1<<i) != 0)) {
+          console.log("fault occured");
           faultsChangesList[i] = RPM416_FAULT_OCCURED;
         } else if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[faultsStatesIdx] & (1<<i) == 0)) {
+          console.log("fault resolved");
           faultsChangesList[i] = RPM416_FAULT_RESOLVED;
         } else {
           faultsChangesList[i] = RPM416_FAULT_UNCHANGED;
@@ -1448,9 +1450,9 @@
     }
 
     function updateTable() {
-      console.log("faultsChangesList before", faultsChangesList);
+      // console.log("faultsChangesList before", faultsChangesList);
       checkFaultsChanged();
-      console.log("faultsChangesList after", faultsChangesList);
+      // console.log("faultsChangesList after", faultsChangesList);
     }
   </script>
 
