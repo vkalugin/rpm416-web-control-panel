@@ -1393,7 +1393,7 @@
         if (((faultsDiffStates & (1<<i)) != 0) && ((faultsStates[faultsStatesIdx] & (1<<i)) != 0)) {
           console.log("fault occured");
           faultsChangesList[i] = RPM416_FAULT_OCCURED;
-        } else if ((faultsDiffStates & (1<<i) != 0) && (faultsStates[faultsStatesIdx] & (1<<i) == 0)) {
+        } else if (((faultsDiffStates & (1<<i)) != 0) && ((faultsStates[faultsStatesIdx] & (1<<i)) == 0)) {
           console.log("fault resolved");
           faultsChangesList[i] = RPM416_FAULT_RESOLVED;
         } else {
