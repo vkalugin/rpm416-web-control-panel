@@ -1450,9 +1450,33 @@
     }
 
     function updateTable() {
-      // console.log("faultsChangesList before", faultsChangesList);
       checkFaultsChanged();
-      // console.log("faultsChangesList after", faultsChangesList);
+
+      let rowSign = "";
+      let rowCode = "";
+      let rowText = "";
+      let rowTime = "";
+
+      for (let i=0; i<32; i++) {
+        if (faultsChangesList[i] == RPM416_FAULT_OCCURED) {
+          const currentDateTime = new Date();
+          rowSign = "❌";
+          rowCode = (i + 1).toString(); // Temporary! Check needed
+          rowText = "error text"; // Temporary!
+          rowTime = timeString(currentDateTime);
+
+          addRow(rowSign, rowCode, rowText, rowTime);
+        } else if (faultsChangesList[i] == RPM416_FAULT_RESOLVED) {
+          const currentDateTime = new Date();
+          rowSign = "✅";
+          rowCode = (i + 1).toString(); // Temporary! Check needed
+          rowText = "error text"; // Temporary!
+          rowTime = timeString(currentDateTime);
+
+          addRow(rowSign, rowCode, rowText, rowTime);
+        }
+      }
+
     }
   </script>
 
