@@ -684,20 +684,24 @@
                   </div>
 
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-start-recording">Start rec.</button>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-reset-errors">Reset errors</button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 48%;"
+                      id="rpm416-start-recording">Start rec.<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-start-recording-spinner" style="display: none;"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 48%;"
+                      id="rpm416-reset-errors">Reset errors<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-reset-errors-spinner" style="display: none;"></span></button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 48%;"
                       id="rpm416-stop-recording" disabled>Stop
-                      rec.</button>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-restart-registrator">Restart</button>
+                      rec.<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-stop-recording-spinner" style="display: none;"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 48%;"
+                      id="rpm416-restart-registrator">Restart<span class="spinner-border spinner-border-sm"
+                        role="status" id="rpm416-restart-registrator-spinner" style="display: none;"></span></button>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
+                    <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 48%;"
                       disabled>Memory
                       card</button>
                   </div>
@@ -1061,84 +1065,102 @@
   <script type="text/javascript">
     const mapRegisters = new Map();
 
-    var rpm16ReadingPhase = 0;
+    var rpm416ReadingPhase = 0;
 
     async function batchRegistersRead() {
-      rpm16ReadingPhase++;
-      rpm16ReadingPhase %= 10;
-      const start = new Date();
+      rpm416ReadingPhase %= 8;
 
-      // State register
-      mapRegisters.set(8, await readLongReg(8));
+      if (rpm416ReadingPhase == 3) { // low priority registers group 1
+        // File identifier
+        mapRegisters.set(16, await readShortReg(16));
 
-      // Faults register
-      mapRegisters.set(10, await readLongReg(10));
+        // File size
+        mapRegisters.set(17, await readLongReg(17));
 
-      // File identifier
-      mapRegisters.set(16, await readShortReg(16));
+        // Uptime value
+        mapRegisters.set(19, await readLongReg(19));
 
-      // File size
-      mapRegisters.set(17, await readLongReg(17));
+        // Device time
+        mapRegisters.set(21, await readLongReg(21));
 
-      // Uptime value
-      mapRegisters.set(19, await readLongReg(19));
+        mapRegisters.set(104, await readLongReg(104));
+        mapRegisters.set(107, await readLongReg(107));
 
-      // Device time
-      mapRegisters.set(21, await readLongReg(21));
+        mapRegisters.set(122, await readLongReg(122));
+        mapRegisters.set(125, await readLongReg(125));
 
-      mapRegisters.set(101, await readLongReg(101));
-      mapRegisters.set(104, await readLongReg(104));
-      mapRegisters.set(107, await readLongReg(107));
-      mapRegisters.set(119, await readLongReg(119));
-      mapRegisters.set(122, await readLongReg(122));
-      mapRegisters.set(125, await readLongReg(125));
-      mapRegisters.set(137, await readLongReg(137));
-      mapRegisters.set(140, await readLongReg(140));
-      mapRegisters.set(143, await readLongReg(143));
-      mapRegisters.set(155, await readLongReg(155));
-      mapRegisters.set(158, await readLongReg(158));
-      mapRegisters.set(161, await readLongReg(161));
-      mapRegisters.set(173, await readLongReg(173));
-      mapRegisters.set(176, await readLongReg(176));
-      mapRegisters.set(179, await readLongReg(179));
-      mapRegisters.set(191, await readLongReg(191));
-      mapRegisters.set(194, await readLongReg(194));
-      mapRegisters.set(197, await readLongReg(197));
-      mapRegisters.set(209, await readLongReg(209));
-      mapRegisters.set(212, await readLongReg(212));
-      mapRegisters.set(215, await readLongReg(215));
+        mapRegisters.set(140, await readLongReg(140));
+        mapRegisters.set(143, await readLongReg(143));
 
-      // Temperature
-      mapRegisters.set(227, await readLongReg(227));
-      mapRegisters.set(245, await readLongReg(245));
+        mapRegisters.set(158, await readLongReg(158));
+        mapRegisters.set(161, await readLongReg(161));
 
-      // Analog voltage & user scale
-      mapRegisters.set(263, await readLongReg(263));
-      mapRegisters.set(266, await readLongReg(266));
+        mapRegisters.set(176, await readLongReg(176));
+        mapRegisters.set(179, await readLongReg(179));
 
-      // Analog current & user scale
-      mapRegisters.set(281, await readLongReg(281));
-      mapRegisters.set(284, await readLongReg(284));
+        mapRegisters.set(194, await readLongReg(194));
+        mapRegisters.set(197, await readLongReg(197));
 
-      // Counters & frequencies
-      mapRegisters.set(302, await readLongReg(302));
-      mapRegisters.set(305, await readLongReg(305));
-      mapRegisters.set(320, await readLongReg(320));
-      mapRegisters.set(323, await readLongReg(323));
-      mapRegisters.set(338, await readLongReg(338));
-      mapRegisters.set(341, await readLongReg(341));
-      mapRegisters.set(356, await readLongReg(356));
-      mapRegisters.set(359, await readLongReg(359));
+        mapRegisters.set(212, await readLongReg(212));
+        mapRegisters.set(215, await readLongReg(215));
+      } else if (rpm416ReadingPhase == 7) { // low priority registers group 2
+        // Temperature
+        mapRegisters.set(227, await readLongReg(227));
+        mapRegisters.set(245, await readLongReg(245));
 
-      // AB, BC, CA
-      mapRegisters.set(425, await readLongReg(425));
-      mapRegisters.set(428, await readLongReg(428));
-      mapRegisters.set(431, await readLongReg(431));
+        // Analog voltage ser scale
+        mapRegisters.set(266, await readLongReg(266));
 
-      // Negative sequence, positive sequence, direct sequence
-      for (let i = 0; i <= 2; i++) {
-        mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
+        // Analog current user scale
+        mapRegisters.set(284, await readLongReg(284));
+
+        // Counters & frequencies
+        mapRegisters.set(302, await readLongReg(302));
+        mapRegisters.set(305, await readLongReg(305));
+        mapRegisters.set(320, await readLongReg(320));
+        mapRegisters.set(323, await readLongReg(323));
+        mapRegisters.set(338, await readLongReg(338));
+        mapRegisters.set(341, await readLongReg(341));
+        mapRegisters.set(356, await readLongReg(356));
+        mapRegisters.set(359, await readLongReg(359));
+
+        // AB, BC, CA
+        mapRegisters.set(425, await readLongReg(425));
+        mapRegisters.set(428, await readLongReg(428));
+        mapRegisters.set(431, await readLongReg(431));
+
+        // Negative sequence, positive sequence, zero sequence
+        mapRegisters.set(434, await readLongReg(434));
+        mapRegisters.set(437, await readLongReg(437));
+        mapRegisters.set(440, await readLongReg(440));
+      } else { // high priority registers
+        // State register
+        mapRegisters.set(8, await readLongReg(8));
+
+        // Faults register
+        mapRegisters.set(10, await readLongReg(10));
+
+        // voltages RMS (L1, L2, L3)
+        mapRegisters.set(101, await readLongReg(101));
+        mapRegisters.set(119, await readLongReg(119));
+        mapRegisters.set(137, await readLongReg(137));
+
+        // current RMS (L1, L2, L3)
+        mapRegisters.set(155, await readLongReg(155));
+        mapRegisters.set(173, await readLongReg(173));
+        mapRegisters.set(191, await readLongReg(191));
+
+        // Current RMS
+        mapRegisters.set(209, await readLongReg(209));
+
+        // Analog voltage
+        mapRegisters.set(263, await readLongReg(263));
+
+        // Analog current
+        mapRegisters.set(281, await readLongReg(281));
       }
+
+      rpm416ReadingPhase++;
 
       return false;
     }
@@ -1322,21 +1344,27 @@
 
     async function startRecording() {
       const START_RECORDING_COMMAND = 0x77A6;
+      document.querySelector("#rpm416-start-recording-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]);
+      document.querySelector("#rpm416-start-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = true;
       document.querySelector("#rpm416-stop-recording").disabled = false;
     }
 
     async function stopRecording() {
       const STOP_RECORDING_COMMAND = 0x5606;
+      document.querySelector("#rpm416-stop-recording-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]);
+      document.querySelector("#rpm416-stop-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = false;
       document.querySelector("#rpm416-stop-recording").disabled = true;
     }
 
     async function restartRegistrator() {
       const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
+      document.querySelector("#rpm416-restart-registrator").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]);
+      document.querySelector("#rpm416-restart-registrator").style.display = "none";
     }
 
     document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
@@ -1345,7 +1373,9 @@
 
     async function resetErrors() {
       const RESET_ERRORS_COMMAND = 0x5596;
+      document.querySelector("#rpm416-reset-errors-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]);
+      document.querySelector("#rpm416-reset-errors-spinner").style.display = "none";
     }
 
     document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
