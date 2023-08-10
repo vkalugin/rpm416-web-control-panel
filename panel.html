@@ -1344,7 +1344,7 @@
 
     async function startRecording() {
       const START_RECORDING_COMMAND = 0x77A6;
-      document.querySelector("#rpm416-start-recording-spinner").style.display = "block";
+      document.querySelector("#rpm416-start-recording-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]);
       document.querySelector("#rpm416-start-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = true;
@@ -1353,7 +1353,7 @@
 
     async function stopRecording() {
       const STOP_RECORDING_COMMAND = 0x5606;
-      document.querySelector("#rpm416-stop-recording-spinner").style.display = "block";
+      document.querySelector("#rpm416-stop-recording-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]);
       document.querySelector("#rpm416-stop-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = false;
@@ -1362,7 +1362,7 @@
 
     async function restartRegistrator() {
       const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
-      document.querySelector("#rpm416-restart-registrator").style.display = "block";
+      document.querySelector("#rpm416-restart-registrator").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]);
       document.querySelector("#rpm416-restart-registrator").style.display = "none";
     }
@@ -1373,7 +1373,7 @@
 
     async function resetErrors() {
       const RESET_ERRORS_COMMAND = 0x5596;
-      document.querySelector("#rpm416-reset-errors-spinner").style.display = "block";
+      document.querySelector("#rpm416-reset-errors-spinner").style.display = "inline-block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]);
       document.querySelector("#rpm416-reset-errors-spinner").style.display = "none";
     }
