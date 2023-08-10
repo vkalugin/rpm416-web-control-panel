@@ -1070,9 +1070,8 @@
     async function batchRegistersRead() {
       rpm416ReadingPhase++;
       rpm416ReadingPhase %= 6;
-      console.log(rpm416ReadingPhase);
 
-      console.log("reading process has started ", rpm16ReadingPhase);
+      console.log("reading process has started ", rpm416ReadingPhase);
       const start = new Date();
 
       if (rpm416ReadingPhase == 2) { // low priority registers group 1
