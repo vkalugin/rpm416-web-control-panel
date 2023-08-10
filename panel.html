@@ -140,14 +140,13 @@
 
     #rpm416-errorlist-table tbody {
       background-color: transparent;
-      max-height: 100%;
       min-width: 100%;
     }
 
     #rpm416-errorlist-table th {
       text-align: center;
       padding: 4px;
-      border: 3px solid transparent;
+      border: none;
       background-color: whitesmoke;
       height: 1.5em;
       position: sticky;
@@ -158,7 +157,7 @@
       height: 1.5em;
       text-align: center;
       padding: 4px;
-      border: 3px solid transparent;
+      border: none;
     }
 
     #rpm416-substrate {
@@ -733,27 +732,33 @@
             </tbody>
           </table>
 
-          <table id="rpm416-errorlist-table">
-            <thead>
-              <colgroup>
-                <col span="1" style="width: 15%">
-                <col span="1" style="width: 60%">
-                <col span="1" style="width: 25%">
-              </colgroup>
-              <tr>
-                <th>
-                  Code
-                </th>
-                <th>
-                  Text
-                </th>
-                <th>
-                  Time
-                </th>
-              </tr>
-            </thead>
-            <tbody id="rpm416-errorlist-table-body"></tbody>
-          </table>
+          <div style="padding: 0.75em; overflow-y: auto; max-height: 18em;">
+            <table id="rpm416-errorlist-table">
+              <thead>
+                <colgroup>
+                  <col span="1" style="width: 10%">
+                  <col span="1" style="width: 15%">
+                  <col span="1" style="width: 50%">
+                  <col span="1" style="width: 25%">
+                </colgroup>
+                <tr>
+                  <th>
+
+                  </th>
+                  <th>
+                    Code
+                  </th>
+                  <th>
+                    Text
+                  </th>
+                  <th>
+                    Time
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="rpm416-errorlist-table-body"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -1066,6 +1071,9 @@
       // State register
       mapRegisters.set(8, await readLongReg(8));
 
+      // Faults register
+      mapRegisters.set(10, await readLongReg(10));
+
       // File identifier
       mapRegisters.set(16, await readShortReg(16));
 
@@ -1297,8 +1305,12 @@
       } else {
         const in_process = value & (1 << 1);
         if (in_process != 0) {
+          document.querySelector("#rpm416-start-recording").disabled = true;
+          document.querySelector("#rpm416-stop-recording").disabled = false;
           highlightRecordingProcess(true);
         } else {
+          document.querySelector("#rpm416-start-recording").disabled = false;
+          document.querySelector("#rpm416-stop-recording").disabled = true;
           highlightRecordingProcess(false);
         }
       }
@@ -1339,8 +1351,62 @@
     document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
   </script>
 
-  <!-- Add a row in the table -->
+  <!-- Table -->
   <script type="text/javascript">
+    const RPM416_FAULT_NAMES = [
+      "Real time clock failure",
+      "No access to AD coder",
+      "No access to MI.",
+      "No access to MR.",
+      "No access to RAM.",
+      "No disc in card slot.",
+      "Disc is protected from recording.",
+      "Disc initialization is impossible.",
+      "Disc connection is impossible.",
+      "No free space on disc.",
+      "Data reading from disc is impossible.",
+      "Catalogue cannot be created or opened.",
+      "File name limit (9999) is exceeded.",
+      "Files list is not available.",
+      "File cannot be created.",
+      "Recording in file is impossible.",
+      "Settings failure in flash memory.",
+      "Settings cannot be saved in flash memory.",
+      "Calibration failure in flash memory.",
+      "Memory overflow"
+    ];
+
+    const faultsStates = [undefined, undefined];
+    var faultsStatesIdx = 0;
+    const faultsChangesList = new Array(32).fill(0);
+
+    const RPM416_FAULT_OCCURED = 1;
+    const RPM416_FAULT_RESOLVED = -1;
+    const RPM416_FAULT_UNCHANGED = 0;
+
+    function checkFaultsChanged() {
+      faultsStates[faultsStatesIdx] = mapRegisters.get(10);
+
+      if ((faultsStates[0] === undefined) || (faultsStates[1] === undefined)) {
+        faultsStatesIdx = (faultsStatesIdx + 1) % 2;
+        return;
+      }
+
+      const faultsDiffStates = faultsStates[0] ^ faultsStates[1];
+
+      for (let i = 0; i < 32; i++) {
+        if (((faultsDiffStates & (1 << i)) != 0) && ((faultsStates[faultsStatesIdx] & (1 << i)) != 0)) {
+          faultsChangesList[i] = RPM416_FAULT_OCCURED;
+        } else if (((faultsDiffStates & (1 << i)) != 0) && ((faultsStates[faultsStatesIdx] & (1 << i)) == 0)) {
+          faultsChangesList[i] = RPM416_FAULT_RESOLVED;
+        } else {
+          faultsChangesList[i] = RPM416_FAULT_UNCHANGED;
+        }
+      }
+
+      faultsStatesIdx = (faultsStatesIdx + 1) % 2;
+    }
+
     function addRow(col1str, col2str, col3str, col4str) {
       let tableBody = document.querySelector("#rpm416-errorlist-table-body");
 
@@ -1363,9 +1429,7 @@
 
       tableBody.appendChild(row);
     }
-  </script>
 
-  <script>
     function timeString(dateTime) {
       const hoursNum = dateTime.getHours();
       let hoursStr = hoursNum.toString();
@@ -1386,6 +1450,36 @@
       }
 
       return hoursStr + ":" + minutesStr + ":" + secondsStr;
+    }
+
+    function updateTable() {
+      checkFaultsChanged();
+
+      let rowSign = "";
+      let rowCode = "";
+      let rowText = "";
+      let rowTime = "";
+
+      for (let i = 0; i < 32; i++) {
+        if (faultsChangesList[i] == RPM416_FAULT_OCCURED) {
+          const currentDateTime = new Date();
+          rowSign = "❌";
+          rowCode = (i + 1).toString(); // As bit number, but started from 1 instead of 0
+          rowText = RPM416_FAULT_NAMES[i];
+          rowTime = timeString(currentDateTime);
+
+          addRow(rowSign, rowCode, rowText, rowTime);
+        } else if (faultsChangesList[i] == RPM416_FAULT_RESOLVED) {
+          const currentDateTime = new Date();
+          rowSign = "✅";
+          rowCode = (i + 1).toString(); // As bit number, but started from 1 instead of 0
+          rowText = RPM416_FAULT_NAMES[i];
+          rowTime = timeString(currentDateTime);
+
+          addRow(rowSign, rowCode, rowText, rowTime);
+        }
+      }
+
     }
   </script>
 
@@ -1411,6 +1505,7 @@
       upateDisplayedTemperatures();
       updateDisplayedErrorsPresent();
       updateDisplayedRecordingProcess();
+      updateTable();
       updateDisplayedValue("rpm416-negative-sequence-value", 434, 1);
       updateDisplayedValue("rpm416-positive-sequence-value", 437, 1);
       updateDisplayedValue("rpm416-zero-sequence-value", 440, 1);
