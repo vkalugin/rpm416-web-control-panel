@@ -1070,9 +1070,6 @@
     async function batchRegistersRead() {
       rpm416ReadingPhase %= 8;
 
-      console.log("reading process has started ", rpm416ReadingPhase);
-      const start = new Date();
-
       if (rpm416ReadingPhase == 3) { // low priority registers group 1
         // File identifier
         mapRegisters.set(16, await readShortReg(16));
@@ -1163,7 +1160,6 @@
         mapRegisters.set(281, await readLongReg(281));
       }
 
-      console.log("reading process has ended in ", ((new Date()) - start)/1000.0, " s");
       rpm416ReadingPhase++;
 
       return false;
