@@ -1461,16 +1461,16 @@
         if (faultsChangesList[i] == RPM416_FAULT_OCCURED) {
           const currentDateTime = new Date();
           rowSign = "❌";
-          rowCode = (i + 1).toString(); // Temporary! Check needed
-          rowText = "error text"; // Temporary!
+          rowCode = (i + 1).toString(); // As bit number, but started from 1 instead of 0
+          rowText = RPM416_FAULT_NAMES[i];
           rowTime = timeString(currentDateTime);
 
           addRow(rowSign, rowCode, rowText, rowTime);
         } else if (faultsChangesList[i] == RPM416_FAULT_RESOLVED) {
           const currentDateTime = new Date();
           rowSign = "✅";
-          rowCode = (i + 1).toString(); // Temporary! Check needed
-          rowText = "error text"; // Temporary!
+          rowCode = (i + 1).toString(); // As bit number, but started from 1 instead of 0
+          rowText = RPM416_FAULT_NAMES[i];
           rowTime = timeString(currentDateTime);
 
           addRow(rowSign, rowCode, rowText, rowTime);
