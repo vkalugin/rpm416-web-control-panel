@@ -1061,14 +1061,14 @@
   <script type="text/javascript">
     const mapRegisters = new Map();
 
-    var rpm16ReadingPhase = 0;
+    var rpm416ReadingPhase = 0;
 
     async function batchRegistersRead() {
-      rpm16ReadingPhase++;
-      rpm16ReadingPhase %= 5;
-      console.log(rpm16ReadingPhase);
+      rpm416ReadingPhase++;
+      rpm416ReadingPhase %= 5;
+      console.log(rpm416ReadingPhase);
 
-      if (rpm16ReadingPhase != 4) { // high priority registers
+      if (rpm416ReadingPhase != 4) { // high priority registers
         // State register
         mapRegisters.set(8, await readLongReg(8));
 
