@@ -1072,6 +1072,9 @@
       rpm416ReadingPhase %= 6;
       console.log(rpm416ReadingPhase);
 
+      console.log("reading process has started ", rpm16ReadingPhase);
+      const start = new Date();
+
       if (rpm416ReadingPhase == 2) { // low priority registers group 1
         // File identifier
         mapRegisters.set(16, await readShortReg(16));
@@ -1161,6 +1164,8 @@
         // Analog current
         mapRegisters.set(281, await readLongReg(281));
       }
+
+      console.log("reading process has ended in ", ((new Date()) - start)/1000.0, " s");
 
       return false;
     }
