@@ -1066,7 +1066,6 @@
     async function batchRegistersRead() {
       rpm16ReadingPhase++;
       rpm16ReadingPhase %= 10;
-      const start = new Date();
 
       // State register
       mapRegisters.set(8, await readLongReg(8));
