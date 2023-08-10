@@ -685,16 +685,20 @@
 
                   <div>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-start-recording">Start rec.</button>
+                      id="rpm416-start-recording">Start rec.<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-start-recording-spinner" style="display: none;"></span></button>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-reset-errors">Reset errors</button>
+                      id="rpm416-reset-errors">Reset errors<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-reset-errors-spinner" style="display: none;"></span></button>
                   </div>
                   <div>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
                       id="rpm416-stop-recording" disabled>Stop
-                      rec.</button>
+                      rec.<span class="spinner-border spinner-border-sm" role="status"
+                        id="rpm416-stop-recording-spinner" style="display: none;"></span></button>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
-                      id="rpm416-restart-registrator">Restart</button>
+                      id="rpm416-restart-registrator">Restart<span class="spinner-border spinner-border-sm"
+                        role="status" id="rpm416-restart-registrator-spinner" style="display: none;"></span></button>
                   </div>
                   <div>
                     <button type="button" class="btn btn-primary btn-sm rpm416-button" style="width: 45%;"
@@ -1340,21 +1344,27 @@
 
     async function startRecording() {
       const START_RECORDING_COMMAND = 0x77A6;
+      document.querySelector("#rpm416-start-recording-spinner").style.display = "block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [START_RECORDING_COMMAND]);
+      document.querySelector("#rpm416-start-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = true;
       document.querySelector("#rpm416-stop-recording").disabled = false;
     }
 
     async function stopRecording() {
       const STOP_RECORDING_COMMAND = 0x5606;
+      document.querySelector("#rpm416-stop-recording-spinner").style.display = "block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [STOP_RECORDING_COMMAND]);
+      document.querySelector("#rpm416-stop-recording-spinner").style.display = "none";
       document.querySelector("#rpm416-start-recording").disabled = false;
       document.querySelector("#rpm416-stop-recording").disabled = true;
     }
 
     async function restartRegistrator() {
       const RESTART_REGISTRATOR_COMMAND = 0xF2C5;
+      document.querySelector("#rpm416-restart-registrator").style.display = "block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESTART_REGISTRATOR_COMMAND]);
+      document.querySelector("#rpm416-restart-registrator").style.display = "none";
     }
 
     document.querySelector("#rpm416-start-recording").addEventListener("click", startRecording);
@@ -1363,7 +1373,9 @@
 
     async function resetErrors() {
       const RESET_ERRORS_COMMAND = 0x5596;
+      document.querySelector("#rpm416-reset-errors-spinner").style.display = "block";
       await writeRegValues(COMMAND_REGISTER_ADDRESS, [RESET_ERRORS_COMMAND]);
+      document.querySelector("#rpm416-reset-errors-spinner").style.display = "none";
     }
 
     document.querySelector("#rpm416-reset-errors").addEventListener("click", resetErrors);
