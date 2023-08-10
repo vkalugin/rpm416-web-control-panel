@@ -1068,7 +1068,6 @@
     var rpm416ReadingPhase = 0;
 
     async function batchRegistersRead() {
-      rpm416ReadingPhase++;
       rpm416ReadingPhase %= 6;
 
       console.log("reading process has started ", rpm416ReadingPhase);
@@ -1133,10 +1132,10 @@
         mapRegisters.set(428, await readLongReg(428));
         mapRegisters.set(431, await readLongReg(431));
 
-        // Negative sequence, positive sequence, direct sequence
-        for (let i = 0; i <= 2; i++) {
-          mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
-        }
+        // Negative sequence, positive sequence, zero sequence
+        mapRegisters.set(434, await readLongReg(434));
+        mapRegisters.set(437, await readLongReg(437));
+        mapRegisters.set(440, await readLongReg(440));
       } else { // high priority registers
         // State register
         mapRegisters.set(8, await readLongReg(8));
@@ -1165,6 +1164,7 @@
       }
 
       console.log("reading process has ended in ", ((new Date()) - start)/1000.0, " s");
+      rpm416ReadingPhase++;
 
       return false;
     }
