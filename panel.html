@@ -1065,35 +1065,10 @@
 
     async function batchRegistersRead() {
       rpm416ReadingPhase++;
-      rpm416ReadingPhase %= 5;
+      rpm416ReadingPhase %= 6;
       console.log(rpm416ReadingPhase);
 
-      if (rpm416ReadingPhase != 4) { // high priority registers
-        // State register
-        mapRegisters.set(8, await readLongReg(8));
-
-        // Faults register
-        mapRegisters.set(10, await readLongReg(10));
-
-        // voltages RMS (L1, L2, L3)
-        mapRegisters.set(101, await readLongReg(101));
-        mapRegisters.set(119, await readLongReg(119));
-        mapRegisters.set(137, await readLongReg(137));
-
-        // current RMS (L1, L2, L3)
-        mapRegisters.set(155, await readLongReg(155));
-        mapRegisters.set(173, await readLongReg(173));
-        mapRegisters.set(191, await readLongReg(191));
-
-        // Current RMS
-        mapRegisters.set(209, await readLongReg(209));
-
-        // Analog voltage
-        mapRegisters.set(263, await readLongReg(263));
-
-        // Analog current
-        mapRegisters.set(281, await readLongReg(281));
-      } else { // low priority registers
+      if (rpm416ReadingPhase == 2) { // low priority registers group 1
         // File identifier
         mapRegisters.set(16, await readShortReg(16));
 
@@ -1105,7 +1080,6 @@
 
         // Device time
         mapRegisters.set(21, await readLongReg(21));
-
 
         mapRegisters.set(104, await readLongReg(104));
         mapRegisters.set(107, await readLongReg(107));
@@ -1127,7 +1101,7 @@
 
         mapRegisters.set(212, await readLongReg(212));
         mapRegisters.set(215, await readLongReg(215));
-
+      } else if (rpm416ReadingPhase == 5) { // low priority registers group 2
         // Temperature
         mapRegisters.set(227, await readLongReg(227));
         mapRegisters.set(245, await readLongReg(245));
@@ -1157,6 +1131,31 @@
         for (let i = 0; i <= 2; i++) {
           mapRegisters.set(434 + 3 * i, await readLongReg(434 + 3 * i));
         }
+      } else { // high priority registers
+        // State register
+        mapRegisters.set(8, await readLongReg(8));
+
+        // Faults register
+        mapRegisters.set(10, await readLongReg(10));
+
+        // voltages RMS (L1, L2, L3)
+        mapRegisters.set(101, await readLongReg(101));
+        mapRegisters.set(119, await readLongReg(119));
+        mapRegisters.set(137, await readLongReg(137));
+
+        // current RMS (L1, L2, L3)
+        mapRegisters.set(155, await readLongReg(155));
+        mapRegisters.set(173, await readLongReg(173));
+        mapRegisters.set(191, await readLongReg(191));
+
+        // Current RMS
+        mapRegisters.set(209, await readLongReg(209));
+
+        // Analog voltage
+        mapRegisters.set(263, await readLongReg(263));
+
+        // Analog current
+        mapRegisters.set(281, await readLongReg(281));
       }
 
       return false;
