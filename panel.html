@@ -1068,12 +1068,12 @@
     var rpm416ReadingPhase = 0;
 
     async function batchRegistersRead() {
-      rpm416ReadingPhase %= 6;
+      rpm416ReadingPhase %= 8;
 
       console.log("reading process has started ", rpm416ReadingPhase);
       const start = new Date();
 
-      if (rpm416ReadingPhase == 2) { // low priority registers group 1
+      if (rpm416ReadingPhase == 3) { // low priority registers group 1
         // File identifier
         mapRegisters.set(16, await readShortReg(16));
 
@@ -1106,7 +1106,7 @@
 
         mapRegisters.set(212, await readLongReg(212));
         mapRegisters.set(215, await readLongReg(215));
-      } else if (rpm416ReadingPhase == 5) { // low priority registers group 2
+      } else if (rpm416ReadingPhase == 7) { // low priority registers group 2
         // Temperature
         mapRegisters.set(227, await readLongReg(227));
         mapRegisters.set(245, await readLongReg(245));
