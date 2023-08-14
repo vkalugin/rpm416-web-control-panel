@@ -1426,21 +1426,6 @@
         }
       );
     })();
-
-    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "block";
-      document.querySelector("#rpm416-data-graphs").style.display = "block";
-    });
-
-    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "none";
-      document.querySelector("#rpm416-data-graphs").style.display = "none";
-    });
-
-    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "none";
-      document.querySelector("#rpm416-data-graphs").style.display = "none";
-    });
   </script>
 
   <!-- Registers processing -->
@@ -2011,6 +1996,30 @@
     }
   </script>
 
+  <!-- Switching between main nad graph part of visualization -->
+  <script>
+
+    var visualizationInterval = undefined;
+
+    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "block";
+      document.querySelector("#rpm416-data-graphs").style.display = "block";
+      clearInterval(visualizationInterval);
+    });
+
+    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+      visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    });
+
+    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+      visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    });
+  </script>
+
   <!-- Thread loop -->
   <script>
     var rpm416ReadLock = false;
@@ -2075,6 +2084,6 @@
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
     }
 
-    setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
   </script>
 </div>
