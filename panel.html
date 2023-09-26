@@ -794,8 +794,8 @@
             </tr>
             <tr>
               <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
-              <td><input type="checkbox" checked></td>
-              <td><select>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1" checked></td>
+              <td><select id="rpm416-select-graphvalue-1">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -885,8 +885,8 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" checked></td>
-              <td><select>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2" checked></td>
+              <td><select id="rpm416-select-graphvalue-2">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -976,8 +976,8 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" checked></td>
-              <td><select>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3" checked></td>
+              <td><select id="rpm416-select-graphvalue-3">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1073,8 +1073,8 @@
                   On top
                 </label>
               </td>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"></td>
+              <td><select  id="rpm416-select-graphvalue-4" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1164,8 +1164,8 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5"></td>
+              <td><select id="rpm416-select-graphvalue-5" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1255,8 +1255,8 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6"></td>
+              <td><select id="rpm416-select-graphvalue-6" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -2017,6 +2017,45 @@
       document.querySelector("#rpm416-substrate").style.display = "none";
       document.querySelector("#rpm416-data-graphs").style.display = "none";
       visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    });
+  </script>
+
+  <!-- Graph checkboxes -->
+  <script>
+    document.querySelector("#rpm416-checkbox-graphdata-1").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
+      document.querySelector("#rpm416-select-graphvalue-1").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-1").disabled = state_disabled;
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-2").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-2").checked);
+      document.querySelector("#rpm416-select-graphvalue-2").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-2").disabled = state_disabled;
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-3").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-3").checked);
+      document.querySelector("#rpm416-select-graphvalue-3").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-3").disabled = state_disabled;
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-4").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-4").checked);
+      document.querySelector("#rpm416-select-graphvalue-4").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-4").disabled = state_disabled;
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-5").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-5").checked);
+      document.querySelector("#rpm416-select-graphvalue-5").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-5").disabled = state_disabled;
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-6").addEventListener("onchange", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-6").checked);
+      document.querySelector("#rpm416-select-graphvalue-6").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-6").disabled = state_disabled;
     });
   </script>
 
