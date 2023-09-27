@@ -2160,11 +2160,11 @@
 
     function addToGraph(value, timestamp) {
       rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
-        x: (rpm416starttime - timestamp) / 1000.0,
+        x: (rpm416starttime - timestamp) / 60000.0,
         y: value,
       };
 
-      console.log((rpm416starttime - timestamp) / 1000.0);
+      console.log((rpm416starttime - timestamp) / 60000.0);
 
       rpm416GraphIndex += 1;
       rpm416GraphIndex % RPM416_GRAPH_CAPACITY;
