@@ -2135,22 +2135,6 @@
                 data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
               }
             ],
-            options: {
-              animation: false,
-              showLine: true,
-              scales: {
-                x: {
-                  ticks: {
-                    callback: function (value, index, ticks) {
-                      return value + 's';
-                    },
-                  },
-                  reverse: true,
-                  min: 0,
-                  max: 0,
-                },
-              },
-            },
           },
         }
       );
