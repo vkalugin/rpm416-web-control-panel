@@ -1074,7 +1074,7 @@
                 </label>
               </td>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"></td>
-              <td><select  id="rpm416-select-graphvalue-4" disabled>
+              <td><select id="rpm416-select-graphvalue-4" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -2159,10 +2159,12 @@
     const rpm416starttime = new Date().valueOf();
 
     function addToGraph(value, timestamp) {
-        rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
-          x: (rpm416starttime - timestamp) / 1000.0,
-          y: value,
-        };
+      rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
+        x: (rpm416starttime - timestamp) / 1000.0,
+        y: value,
+      };
+
+      console.log((rpm416starttime - timestamp) / 1000.0);
 
       rpm416GraphIndex += 1;
       rpm416GraphIndex % RPM416_GRAPH_CAPACITY;
@@ -2172,9 +2174,7 @@
 
     async function updateGraphOnVis() {
       const dataDemo = await readLongReg(116);
-
-      const now = new Date().valueOf();
-      addToGraph(dataDemo, now);
+      addToGraph(dataDemo, new Date().valueOf());
     }
   </script>
 </div>
