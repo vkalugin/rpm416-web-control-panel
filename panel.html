@@ -2153,15 +2153,19 @@
         }
       );
 
+    var rpm416GraphIndex = 0;
+
     function addToGraph(value, timestamp) {
       const now = new Date().valueOf();
 
-      for (let i=0; i<360; i++) {
-        rpm416Graph.data.datasets[0].data[360-i] = {
+
+        rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
           x: (now - timestamp) / 1000.0,
           y: value,
         };
-      }
+
+      rpm416GraphIndex += 1;
+      rpm416GraphIndex % 360;
       
       rpm416Graph.update();
     }
