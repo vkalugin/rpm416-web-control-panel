@@ -1391,7 +1391,7 @@
       );
     })();
 
-    (function () {
+    var rpm416Chart = (function () {
       new Chart(
         document.querySelector("#rpm416-history-graph"),
         {
@@ -1419,13 +1419,50 @@
             labels: [],
             datasets: [
               {
+                type: "scatter",
                 data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
               }
-            ]
+            ],
+            options: {
+              animation: false,
+              showLine: true,
+              scales: {
+                x: {
+                  ticks: {
+                    callback: function (value, index, ticks) {
+                      return value + 's';
+                    },
+                  },
+                  reverse: true,
+                  min: 0,
+                  max: 0,
+                },
+              },
+            },
           },
         }
       );
     })();
+
+    function addToChart(value, timestamp) {
+      const now = new Date().valueOf();
+
+      for (let i=0; i<360; i++) {
+        rpm416Chart.data.datasets[0].data[360-i] = {
+          x: (now - timestamp) / 1000.0,
+          y: value,
+        };
+      }
+      
+      rpm416Chart.update();
+    }
+
+    async function updateGraphOnVis() {
+      const dataDemo = await readLongReg(116);
+
+      const now = new Date().valueOf();
+      addToChart(dataDemo, now);
+    }
   </script>
 
   <!-- Registers processing -->
@@ -2000,11 +2037,13 @@
   <script>
 
     var visualizationInterval = undefined;
+    var graphInterval = undefined;
 
     document.querySelector("#rpm416-button-view").addEventListener("click", function () {
       document.querySelector("#rpm416-substrate").style.display = "block";
       document.querySelector("#rpm416-data-graphs").style.display = "block";
       clearInterval(visualizationInterval);
+      graphInterval = setInterval(updateGraphOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
     });
 
     document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
@@ -2127,7 +2166,7 @@
       updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
-    }
+    };
 
     visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
   </script>
