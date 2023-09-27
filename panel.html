@@ -1351,6 +1351,7 @@
     </div>
   </div>
 
+  <!-- Temperature bars -->
   <script>
     var rpm416temperatureBars = (function () {
       const data = [
@@ -1390,78 +1391,6 @@
         }
       );
     })();
-
-    var rpm416Chart =
-      new Chart(
-        document.querySelector("#rpm416-history-graph"),
-        {
-          type: "scatter",
-          options: {
-            animation: false,
-            showLine: true,
-            scales: {
-              x: {
-                min: -6,
-                max: 0,
-                ticks: {
-                  callback: function (value, index, ticks) {
-                    return value + " min";
-                  },
-                },
-              },
-              y: {
-                min: 0,
-                max: 1,
-              }
-            },
-          },
-          data: {
-            labels: [],
-            datasets: [
-              {
-                type: "scatter",
-                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
-              }
-            ],
-            options: {
-              animation: false,
-              showLine: true,
-              scales: {
-                x: {
-                  ticks: {
-                    callback: function (value, index, ticks) {
-                      return value + 's';
-                    },
-                  },
-                  reverse: true,
-                  min: 0,
-                  max: 0,
-                },
-              },
-            },
-          },
-        }
-      );
-
-    function addToChart(value, timestamp) {
-      const now = new Date().valueOf();
-
-      for (let i=0; i<360; i++) {
-        rpm416Chart.data.datasets[0].data[360-i] = {
-          x: (now - timestamp) / 1000.0,
-          y: value,
-        };
-      }
-      
-      rpm416Chart.update();
-    }
-
-    async function updateGraphOnVis() {
-      const dataDemo = await readLongReg(116);
-
-      const now = new Date().valueOf();
-      addToChart(dataDemo, now);
-    }
   </script>
 
   <!-- Registers processing -->
@@ -2168,5 +2097,80 @@
     };
 
     visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+  </script>
+
+  <!-- Graph in the popup window -->
+  <script>
+    var rpm416Graph =
+      new Chart(
+        document.querySelector("#rpm416-history-graph"),
+        {
+          type: "scatter",
+          options: {
+            animation: false,
+            showLine: true,
+            scales: {
+              x: {
+                min: -6,
+                max: 0,
+                ticks: {
+                  callback: function (value, index, ticks) {
+                    return value + " min";
+                  },
+                },
+              },
+              y: {
+                min: 0,
+                max: 1,
+              }
+            },
+          },
+          data: {
+            labels: [],
+            datasets: [
+              {
+                type: "scatter",
+                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+              }
+            ],
+            options: {
+              animation: false,
+              showLine: true,
+              scales: {
+                x: {
+                  ticks: {
+                    callback: function (value, index, ticks) {
+                      return value + 's';
+                    },
+                  },
+                  reverse: true,
+                  min: 0,
+                  max: 0,
+                },
+              },
+            },
+          },
+        }
+      );
+
+    function addToGraph(value, timestamp) {
+      const now = new Date().valueOf();
+
+      for (let i=0; i<360; i++) {
+        rpm416Graph.data.datasets[0].data[360-i] = {
+          x: (now - timestamp) / 1000.0,
+          y: value,
+        };
+      }
+      
+      rpm416Graph.update();
+    }
+
+    async function updateGraphOnVis() {
+      const dataDemo = await readLongReg(116);
+
+      const now = new Date().valueOf();
+      addToGraph(dataDemo, now);
+    }
   </script>
 </div>
