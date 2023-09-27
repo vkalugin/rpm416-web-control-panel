@@ -2101,6 +2101,8 @@
 
   <!-- Graph in the popup window -->
   <script>
+    const RPM416_GRAPH_CAPACITY = 360;
+
     var rpm416Graph =
       new Chart(
         document.querySelector("#rpm416-history-graph"),
@@ -2130,7 +2132,7 @@
             datasets: [
               {
                 type: "scatter",
-                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+                data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
               }
             ],
             options: {
@@ -2154,19 +2156,17 @@
       );
 
     var rpm416GraphIndex = 0;
+    const rpm416starttime = new Date().valueOf();
 
     function addToGraph(value, timestamp) {
-      const now = new Date().valueOf();
-
-
         rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
-          x: (now - timestamp) / 1000.0,
+          x: (rpm416starttime - timestamp) / 1000.0,
           y: value,
         };
 
       rpm416GraphIndex += 1;
-      rpm416GraphIndex % 360;
-      
+      rpm416GraphIndex % RPM416_GRAPH_CAPACITY;
+
       rpm416Graph.update();
     }
 
