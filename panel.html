@@ -1978,12 +1978,14 @@
       document.querySelector("#rpm416-substrate").style.display = "none";
       document.querySelector("#rpm416-data-graphs").style.display = "none";
       visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+      clearInterval(graphInterval);
     });
 
     document.querySelector("#rpm416-substrate").addEventListener("click", function () {
       document.querySelector("#rpm416-substrate").style.display = "none";
       document.querySelector("#rpm416-data-graphs").style.display = "none";
       visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+      clearInterval(graphInterval);
     });
   </script>
 
