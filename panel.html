@@ -2139,7 +2139,7 @@
     const rpm416starttime = new Date().valueOf();
 
     function addToGraph(value, timestamp) {
-      rpm416Graph.data.datasets[0].data[rpm416GraphIndex] = {
+      rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - rpm416GraphIndex] = {
         x: (rpm416starttime - timestamp) / 60000.0,
         y: value,
       };
