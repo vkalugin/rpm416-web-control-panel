@@ -1391,7 +1391,7 @@
       );
     })();
 
-    var rpm416Chart = (function () {
+    var rpm416Chart =
       new Chart(
         document.querySelector("#rpm416-history-graph"),
         {
@@ -1442,7 +1442,6 @@
           },
         }
       );
-    })();
 
     function addToChart(value, timestamp) {
       const now = new Date().valueOf();
