@@ -2157,12 +2157,8 @@
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
         rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - i] = {
           x: (rpm416graphSequencing.queue[i].t - now) / 60000.0,
-          y: value,
+          y: rpm416graphSequencing.queue[i].v,
         };
-
-        if (rpm416graphSequencing.queue[i].t !== undefined) {
-          console.log(i, ":", (rpm416graphSequencing.queue[i].t - now) / 60000.0);
-        }
       }
 
       rpm416Graph.update();
