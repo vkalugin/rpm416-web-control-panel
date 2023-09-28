@@ -2105,53 +2105,63 @@
   <script>
     const RPM416_GRAPH_CAPACITY = 360;
 
-    var rpm416Graph =
-      new Chart(
-        document.querySelector("#rpm416-history-graph"),
-        {
-          type: "scatter",
-          options: {
-            animation: false,
-            showLine: true,
-            scales: {
-              x: {
-                min: -6,
-                max: 0,
-                ticks: {
-                  callback: function (value, index, ticks) {
-                    return value + " min";
-                  },
+    var rpm416Graph = new Chart(
+      document.querySelector("#rpm416-history-graph"),
+      {
+        type: "scatter",
+        options: {
+          animation: false,
+          showLine: true,
+          scales: {
+            x: {
+              min: -6,
+              max: 0,
+              ticks: {
+                callback: function (value, index, ticks) {
+                  return value + " min";
                 },
               },
             },
           },
-          data: {
-            labels: [],
-            datasets: [
-              {
-                type: "scatter",
-                data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
-              }
-            ],
-          },
-        }
-      );
+        },
+        data: {
+          labels: [],
+          datasets: [
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
+            }
+          ],
+        },
+      }
+    );
 
-    var rpm416GraphIndex = 0;
-    const rpm416starttime = new Date().valueOf();
+    var rpm416graphSequencing = {
+      i: 0,
+      queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined});
+    };
+
+   
+    
 
     function addToGraph(value, timestamp) {
-      rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - rpm416GraphIndex] = {
-        x: (rpm416starttime - timestamp) / 60000.0,
-        y: value,
-      };
+      rpm416graphSequencing.queue.push({v: value, t: new Date().valueOf()});
+      rpm416graphSequencing.i++;
+      rpm416graphSequencing.i %= RPM416_GRAPH_CAPACITY;
 
-      console.log((rpm416starttime - timestamp) / 60000.0);
+      const now = new Date().valueOf();
+      
+      for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
+        rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - i] = {
+          x: (now - rpm416graphSequencing[i].t) / 60000.0,
+          y: value,
+        };
+      }
 
-      rpm416GraphIndex += 1;
-      rpm416GraphIndex % RPM416_GRAPH_CAPACITY;
+      console.log((now - timestamp) / 60000.0);
 
       rpm416Graph.update();
+      
     }
 
     async function updateGraphOnVis() {
