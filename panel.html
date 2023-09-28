@@ -2153,7 +2153,7 @@
       
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
         rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - i] = {
-          x: (now - rpm416graphSequencing[i].t) / 60000.0,
+          x: (now - rpm416graphSequencing.queue[i].t) / 60000.0,
           y: value,
         };
       }
