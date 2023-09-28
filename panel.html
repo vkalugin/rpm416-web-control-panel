@@ -2152,8 +2152,6 @@
       rpm416graphSequencing.i++;
       rpm416graphSequencing.i %= RPM416_GRAPH_CAPACITY;
 
-      console.log(rpm416graphSequencing.queue);
-
       const now = new Date().valueOf();
       
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
@@ -2161,6 +2159,10 @@
           x: (now - rpm416graphSequencing.queue[i].t) / 60000.0,
           y: value,
         };
+
+        if (rpm416graphSequencing.queue[i].t !== undefined) {
+          console.log((now - rpm416graphSequencing.queue[i].t) / 60000.0);
+        }
       }
 
       rpm416Graph.update();
