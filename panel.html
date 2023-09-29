@@ -2142,7 +2142,7 @@
     };
 
     if (localStorage.getItem("rpm416GraphData") === null) {
-      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416Graph));
+      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416graphSequencing));
     } else {
       rpm416graphSequencing = localStorage.getItem("rpm416GraphData").parse();
     }
@@ -2155,7 +2155,7 @@
       rpm416graphSequencing.i++;
       rpm416graphSequencing.i %= RPM416_GRAPH_CAPACITY;
 
-      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416Graph));
+      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416graphSequencing));
 
       const now = new Date().valueOf();
       
