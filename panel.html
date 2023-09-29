@@ -2123,8 +2123,28 @@
           datasets: [
             {
               type: "scatter",
-              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
-            }
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
           ],
         },
       }
@@ -2143,38 +2163,37 @@
       rpm416graphSequencing = JSON.parse(localStorage.getItem("rpm416graphSequencing"));
     }
 
-    function addToGraph(value, timestamp) {
-      rpm416graphSequencing[0].queue.push({v: value, t: new Date().valueOf()});
-      while (rpm416graphSequencing[0].queue.length > RPM416_GRAPH_CAPACITY) {
-        rpm416graphSequencing[0].queue.shift();
+    function addToGraph(graphIndex /* 0 to 5 */, value, timestamp) {
+      rpm416graphSequencing[graphIndex].queue.push({v: value, t: new Date().valueOf()});
+      while (rpm416graphSequencing[graphIndex].queue.length > RPM416_GRAPH_CAPACITY) {
+        rpm416graphSequencing[graphIndex].queue.shift();
       }
-      rpm416graphSequencing[0].i++;
-      rpm416graphSequencing[0].i %= RPM416_GRAPH_CAPACITY;
+      rpm416graphSequencing[graphIndex].i++;
+      rpm416graphSequencing[graphIndex].i %= RPM416_GRAPH_CAPACITY;
 
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
 
       const now = new Date().valueOf();
       
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
-        rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - i] = {
-          x: (rpm416graphSequencing[0].queue[i].t - now) / 60000.0,
-          y: rpm416graphSequencing[0].queue[i].v,
+        rpm416Graph.data.datasets[graphIndex].data[RPM416_GRAPH_CAPACITY - i] = {
+          x: (rpm416graphSequencing[graphIndex].queue[i].t - now) / 60000.0,
+          y: rpm416graphSequencing[graphIndex].queue[i].v,
         };
       }
 
       rpm416Graph.update();
     }
 
-    function clearGraphLine(graphIndex) {
+    function clearGraphLine(graphIndex /* 0 to 5 */) {
       rpm416graphSequencing[0].queue.fill({ v: undefined, t: undefined});
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
     }
 
     async function updateGraphOnVis() {
       let regAddr = document.querySelector("#rpm416-select-graphvalue-1").value;
-      console.log(document.querySelector("#rpm416-select-graphvalue-5").value);
       const data = await readLongReg(regAddr);
-      addToGraph(data, new Date().valueOf());
+      addToGraph(0, data, new Date().valueOf());
     }
   </script>
 </div>
