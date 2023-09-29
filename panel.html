@@ -2136,33 +2136,35 @@
       }
     );
 
-    var rpm416graphSequencing = {
-      i: 0,
+    var rpm416graphSequencing = new Array(6).fill().map(function () {
+      return {
+        i: 0,
       queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined}),
-    };
-
-    if (localStorage.getItem("rpm416GraphData") === null) {
-      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416graphSequencing));
+      };
+    });
+  
+    if (localStorage.getItem("rpm416graphSequencing") === null) {
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
     } else {
-      rpm416graphSequencing = JSON.parse(localStorage.getItem("rpm416GraphData"));
+      rpm416graphSequencing = JSON.parse(localStorage.getItem("rpm416graphSequencing"));
     }
 
     function addToGraph(value, timestamp) {
-      rpm416graphSequencing.queue.push({v: value, t: new Date().valueOf()});
-      while (rpm416graphSequencing.queue.length > RPM416_GRAPH_CAPACITY) {
-        rpm416graphSequencing.queue.shift();
+      rpm416graphSequencing[0].queue.push({v: value, t: new Date().valueOf()});
+      while (rpm416graphSequencing[0].queue.length > RPM416_GRAPH_CAPACITY) {
+        rpm416graphSequencing[0].queue.shift();
       }
-      rpm416graphSequencing.i++;
-      rpm416graphSequencing.i %= RPM416_GRAPH_CAPACITY;
+      rpm416graphSequencing[0].i++;
+      rpm416graphSequencing[0].i %= RPM416_GRAPH_CAPACITY;
 
-      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416graphSequencing));
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
 
       const now = new Date().valueOf();
       
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
         rpm416Graph.data.datasets[0].data[RPM416_GRAPH_CAPACITY - i] = {
-          x: (rpm416graphSequencing.queue[i].t - now) / 60000.0,
-          y: rpm416graphSequencing.queue[i].v,
+          x: (rpm416graphSequencing[0].queue[i].t - now) / 60000.0,
+          y: rpm416graphSequencing[0].queue[i].v,
         };
       }
 
