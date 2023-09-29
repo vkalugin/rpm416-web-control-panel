@@ -795,7 +795,7 @@
             <tr>
               <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-1" checked></td>
-              <td><select id="rpm416-select-graphvalue-1">
+              <td><select id="rpm416-select-graphvalue-1" onchange="clearGraphLine(0)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -886,7 +886,7 @@
             </tr>
             <tr>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-2" checked></td>
-              <td><select id="rpm416-select-graphvalue-2">
+              <td><select id="rpm416-select-graphvalue-2" onchange="clearGraphLine(1)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -977,7 +977,7 @@
             </tr>
             <tr>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-3" checked></td>
-              <td><select id="rpm416-select-graphvalue-3">
+              <td><select id="rpm416-select-graphvalue-3" onchange="clearGraphLine(2)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1074,7 +1074,7 @@
                 </label>
               </td>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"></td>
-              <td><select id="rpm416-select-graphvalue-4" disabled>
+              <td><select id="rpm416-select-graphvalue-4" onchange="clearGraphLine(3)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1165,7 +1165,7 @@
             </tr>
             <tr>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-5"></td>
-              <td><select id="rpm416-select-graphvalue-5" disabled>
+              <td><select id="rpm416-select-graphvalue-5" onchange="clearGraphLine(4)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -1256,7 +1256,7 @@
             </tr>
             <tr>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-6"></td>
-              <td><select id="rpm416-select-graphvalue-6" disabled>
+              <td><select id="rpm416-select-graphvalue-6" onchange="clearGraphLine(5)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
                   <option value="107">Channel 1: Voltage THDr L1</option>
@@ -2133,7 +2133,7 @@
     var rpm416graphSequencing = new Array(6).fill().map(function () {
       return {
         i: 0,
-      queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined}),
+        queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined}),
       };
     });
   
@@ -2163,6 +2163,11 @@
       }
 
       rpm416Graph.update();
+    }
+
+    function clearGraphLine(graphIndex) {
+      rpm416graphSequencing[0].queue.fill({ v: undefined, t: undefined});
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
     }
 
     async function updateGraphOnVis() {
