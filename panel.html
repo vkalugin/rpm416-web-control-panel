@@ -2144,7 +2144,7 @@
     if (localStorage.getItem("rpm416GraphData") === null) {
       localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416graphSequencing));
     } else {
-      rpm416graphSequencing = localStorage.getItem("rpm416GraphData").parse();
+      rpm416graphSequencing = JSON.parse(localStorage.getItem("rpm416GraphData"));
     }
 
     function addToGraph(value, timestamp) {
