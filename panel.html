@@ -2141,8 +2141,11 @@
       queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined}),
     };
 
-   
-    
+    if (localStorage.getItem("rpm416GraphData") === null) {
+      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416Graph));
+    } else {
+      rpm416graphSequencing = localStorage.getItem("rpm416GraphData").parse();
+    }
 
     function addToGraph(value, timestamp) {
       rpm416graphSequencing.queue.push({v: value, t: new Date().valueOf()});
@@ -2151,6 +2154,8 @@
       }
       rpm416graphSequencing.i++;
       rpm416graphSequencing.i %= RPM416_GRAPH_CAPACITY;
+
+      localStorage.setItem("rpm416GraphData", JSON.stringify(rpm416Graph));
 
       const now = new Date().valueOf();
       
