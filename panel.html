@@ -2172,7 +2172,7 @@
 
     async function updateGraphOnVis() {
       let regAddr = document.querySelector("#rpm416-select-graphvalue-1").value;
-      console.log(regAddr)
+      console.log(document.querySelector("#rpm416-select-graphvalue-5").value);
       const data = await readLongReg(regAddr);
       addToGraph(data, new Date().valueOf());
     }
