@@ -2196,6 +2196,36 @@
         const data = await readLongReg(regAddr);
         addToGraph(0, data, new Date().valueOf());
       }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-2").disabled) {
+        let regAddr = document.querySelector("#rpm416-select-graphvalue-2").value;
+        const data = await readLongReg(regAddr);
+        addToGraph(1, data, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-3").disabled) {
+        let regAddr = document.querySelector("#rpm416-select-graphvalue-3").value;
+        const data = await readLongReg(regAddr);
+        addToGraph(2, data, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-4").disabled) {
+        let regAddr = document.querySelector("#rpm416-select-graphvalue-4").value;
+        const data = await readLongReg(regAddr);
+        addToGraph(3, data, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-5").disabled) {
+        let regAddr = document.querySelector("#rpm416-select-graphvalue-5").value;
+        const data = await readLongReg(regAddr);
+        addToGraph(4, data, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-6").disabled) {
+        let regAddr = document.querySelector("#rpm416-select-graphvalue-6").value;
+        const data = await readLongReg(regAddr);
+        addToGraph(5, data, new Date().valueOf());
+      }
     }
   </script>
 </div>
