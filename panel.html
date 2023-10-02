@@ -2297,7 +2297,7 @@
         console.log(MULTIPLIERS_MAP);
         const regAddr = document.querySelector("#rpm416-select-graphvalue-1").value;
         const data = await readLongReg(regAddr);
-        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(116);
         console.log(regAddr);
         console.log(multiplier);
         addToGraph(0, data, new Date().valueOf());
