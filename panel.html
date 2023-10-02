@@ -794,7 +794,7 @@
             </tr>
             <tr>
               <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1" onchange="processChangedGraphselectorCheckbox(0)" checked></td>
               <td><select id="rpm416-select-graphvalue-1" onchange="clearGraphLine(0)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -885,7 +885,7 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2" onchange="processChangedGraphselectorCheckbox(1)" checked></td>
               <td><select id="rpm416-select-graphvalue-2" onchange="clearGraphLine(1)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -976,7 +976,7 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3" onchange="processChangedGraphselectorCheckbox(2)" checked></td>
               <td><select id="rpm416-select-graphvalue-3" onchange="clearGraphLine(2)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1073,7 +1073,7 @@
                   On top
                 </label>
               </td>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4" onchange="processChangedGraphselectorCheckbox(3)"></td>
               <td><select id="rpm416-select-graphvalue-4" onchange="clearGraphLine(3)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1164,7 +1164,7 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5" onchange="processChangedGraphselectorCheckbox(4)"></td>
               <td><select id="rpm416-select-graphvalue-5" onchange="clearGraphLine(4)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1255,7 +1255,7 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6" onchange="processChangedGraphselectorCheckbox(5)"></td>
               <td><select id="rpm416-select-graphvalue-6" onchange="clearGraphLine(5)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -2186,8 +2186,14 @@
     }
 
     function clearGraphLine(graphIndex /* 0 to 5 */) {
-      rpm416graphSequencing[0].queue.fill({ v: undefined, t: undefined});
+      rpm416graphSequencing[graphIndex].queue.fill({ v: undefined, t: undefined});
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
+    }
+
+    function processChangedGraphselectorCheckbox(i /* 0 to 5*/) {
+      if (!document.querySelector("#rpm416-checkbox-graphdata-1" + (i+1).toString()).checked) {
+        clearGraphLine(i);
+      }
     }
 
     async function updateGraphOnVis() {
