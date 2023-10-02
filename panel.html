@@ -2295,7 +2295,7 @@
     async function updateGraphOnVis() {
       if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
         console.log(MULTIPLIERS_MAP);
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-1").value.valueOf();
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-1").value);
         console.log(regAddr);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
