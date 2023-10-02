@@ -2295,37 +2295,49 @@
       if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-1").value;
         const data = await readLongReg(regAddr);
-        addToGraph(0, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(0, data, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-2").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-2").value;
         const data = await readLongReg(regAddr);
-        addToGraph(1, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(1, data, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-3").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-3").value;
         const data = await readLongReg(regAddr);
-        addToGraph(2, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(2, data, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-4").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-4").value;
         const data = await readLongReg(regAddr);
-        addToGraph(3, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(3, data, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-5").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-5").value;
         const data = await readLongReg(regAddr);
-        addToGraph(4, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(4, data, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-6").disabled) {
         const regAddr = document.querySelector("#rpm416-select-graphvalue-6").value;
         const data = await readLongReg(regAddr);
-        addToGraph(5, data * MULTIPLIERS_MAP.get(regAddr), new Date().valueOf());
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(multiplier);
+        addToGraph(5, data, new Date().valueOf());
       }
     }
   </script>
