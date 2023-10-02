@@ -2297,6 +2297,7 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-1").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        console.log(regAddr);
         console.log(multiplier);
         addToGraph(0, data, new Date().valueOf());
       }
@@ -2305,7 +2306,6 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-2").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
         addToGraph(1, data, new Date().valueOf());
       }
 
@@ -2313,7 +2313,6 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-3").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
         addToGraph(2, data, new Date().valueOf());
       }
 
@@ -2321,7 +2320,6 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-4").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
         addToGraph(3, data, new Date().valueOf());
       }
 
@@ -2329,7 +2327,6 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-5").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
         addToGraph(4, data, new Date().valueOf());
       }
 
@@ -2337,7 +2334,6 @@
         const regAddr = document.querySelector("#rpm416-select-graphvalue-6").value;
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
         addToGraph(5, data, new Date().valueOf());
       }
     }
