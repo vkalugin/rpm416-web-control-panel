@@ -794,7 +794,8 @@
             </tr>
             <tr>
               <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1" onchange="processChangedGraphselectorCheckbox(0)" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1"
+                  onchange="processChangedGraphselectorCheckbox(0)" checked></td>
               <td><select id="rpm416-select-graphvalue-1" onchange="clearGraphLine(0)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -885,7 +886,8 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2" onchange="processChangedGraphselectorCheckbox(1)" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2"
+                  onchange="processChangedGraphselectorCheckbox(1)" checked></td>
               <td><select id="rpm416-select-graphvalue-2" onchange="clearGraphLine(1)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -976,7 +978,8 @@
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3" onchange="processChangedGraphselectorCheckbox(2)" checked></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3"
+                  onchange="processChangedGraphselectorCheckbox(2)" checked></td>
               <td><select id="rpm416-select-graphvalue-3" onchange="clearGraphLine(2)">
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1073,7 +1076,8 @@
                   On top
                 </label>
               </td>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4" onchange="processChangedGraphselectorCheckbox(3)"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"
+                  onchange="processChangedGraphselectorCheckbox(3)"></td>
               <td><select id="rpm416-select-graphvalue-4" onchange="clearGraphLine(3)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1164,7 +1168,8 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5" onchange="processChangedGraphselectorCheckbox(4)"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5"
+                  onchange="processChangedGraphselectorCheckbox(4)"></td>
               <td><select id="rpm416-select-graphvalue-5" onchange="clearGraphLine(4)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -1255,7 +1260,8 @@
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6" onchange="processChangedGraphselectorCheckbox(5)"></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6"
+                  onchange="processChangedGraphselectorCheckbox(5)"></td>
               <td><select id="rpm416-select-graphvalue-6" onchange="clearGraphLine(5)" disabled>
                   <option value="101">Channel 1: Voltage RMS L1</option>
                   <option value="104">Channel 1: Voltage frequency L1</option>
@@ -2153,10 +2159,10 @@
     var rpm416graphSequencing = new Array(6).fill().map(function () {
       return {
         i: 0,
-        queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined}),
+        queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined }),
       };
     });
-  
+
     if (localStorage.getItem("rpm416graphSequencing") === null) {
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
     } else {
@@ -2164,7 +2170,7 @@
     }
 
     function addToGraph(graphIndex /* 0 to 5 */, value, timestamp) {
-      rpm416graphSequencing[graphIndex].queue.push({v: value, t: new Date().valueOf()});
+      rpm416graphSequencing[graphIndex].queue.push({ v: value, t: new Date().valueOf() });
       while (rpm416graphSequencing[graphIndex].queue.length > RPM416_GRAPH_CAPACITY) {
         rpm416graphSequencing[graphIndex].queue.shift();
       }
@@ -2174,7 +2180,7 @@
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
 
       const now = new Date().valueOf();
-      
+
       for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
         rpm416Graph.data.datasets[graphIndex].data[RPM416_GRAPH_CAPACITY - i] = {
           x: (rpm416graphSequencing[graphIndex].queue[i].t - now) / 60000.0,
@@ -2186,15 +2192,106 @@
     }
 
     function clearGraphLine(graphIndex /* 0 to 5 */) {
-      rpm416graphSequencing[graphIndex].queue.fill({ v: undefined, t: undefined});
+      rpm416graphSequencing[graphIndex].queue.fill({ v: undefined, t: undefined });
       localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
     }
 
     function processChangedGraphselectorCheckbox(i /* 0 to 5*/) {
-      if (!document.querySelector("#rpm416-checkbox-graphdata-" + (i+1).toString()).checked) {
+      if (!document.querySelector("#rpm416-checkbox-graphdata-" + (i + 1).toString()).checked) {
         clearGraphLine(i);
       }
     }
+
+    const MULTIPLIERS_ARR = [
+      [101, 0.1],
+      [104, 0.01],
+      [107, 1],
+      [110, 0.1],
+      [113, 0.1],
+      [116, 0.1],
+      [119, 0.1],
+      [122, 0.01],
+      [125, 1],
+      [128, 0.1],
+      [131, 0.1],
+      [134, 0.1],
+      [137, 0.1],
+      [140, 0.01],
+      [143, 1],
+      [146, 0.1],
+      [149, 0.1],
+      [152, 0.1],
+      [155, 0.01],
+      [158, 0.01],
+      [161, 1],
+      [164, 0.01],
+      [167, 0.01],
+      [170, 0.01],
+      [173, 0.01],
+      [176, 0.01],
+      [179, 1],
+      [182, 0.01],
+      [185, 0.01],
+      [188, 0.01],
+      [191, 0.01],
+      [194, 0.01],
+      [197, 1],
+      [200, 0.01],
+      [203, 0.01],
+      [206, 0.01],
+      [209, 0.01],
+      [212, 0.01],
+      [215, 1],
+      [218, 0.01],
+      [221, 0.01],
+      [224, 0.01],
+      [227, 0.1],
+      [245, 0.1],
+      [263, 0.01],
+      [266, 1],
+      [281, 0.01],
+      [284, 1],
+      [299, 1],
+      [302, 1],
+      [305, 1],
+      [317, 1],
+      [320, 1],
+      [323, 1],
+      [335, 1],
+      [338, 1],
+      [341, 1],
+      [353, 1],
+      [356, 1],
+      [359, 1],
+      [371, 0.1],
+      [374, 0.1],
+      [377, 0.1],
+      [380, 0.001],
+      [383, 1],
+      [386, 1],
+      [389, 0.1],
+      [392, 0.1],
+      [395, 0.1],
+      [398, 0.001],
+      [401, 1],
+      [404, 1],
+      [407, 0.1],
+      [410, 0.1],
+      [413, 0.1],
+      [416, 0.001],
+      [419, 1],
+      [422, 1],
+      [425, 0.1],
+      [428, 0.1],
+      [431, 0.1],
+      [434, 1],
+      [437, 1],
+      [440, 1],
+    ];
+
+    const MULTIPLIERS_MAP = new Map(MULTIPLIERS_ARR);
+
+    console.log(MULTIPLIERS_MAP);
 
     async function updateGraphOnVis() {
       if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
