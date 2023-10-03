@@ -2296,46 +2296,44 @@
       if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
         console.log(MULTIPLIERS_MAP);
         const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-1").value);
-        console.log(regAddr);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        console.log(multiplier);
-        addToGraph(0, data, new Date().valueOf());
+        addToGraph(0, data * multiplier, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-2").disabled) {
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-2").value;
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-2").value);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        addToGraph(1, data, new Date().valueOf());
+        addToGraph(1, data * multiplier, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-3").disabled) {
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-3").value;
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-3").value);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        addToGraph(2, data, new Date().valueOf());
+        addToGraph(2, data * multiplier, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-4").disabled) {
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-4").value;
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-4").value);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        addToGraph(3, data, new Date().valueOf());
+        addToGraph(3, data * multiplier, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-5").disabled) {
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-5").value;
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-5").value);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        addToGraph(4, data, new Date().valueOf());
+        addToGraph(4, data * multiplier, new Date().valueOf());
       }
 
       if (!document.querySelector("#rpm416-select-graphvalue-6").disabled) {
-        const regAddr = document.querySelector("#rpm416-select-graphvalue-6").value;
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-6").value);
         const data = await readLongReg(regAddr);
         const multiplier = MULTIPLIERS_MAP.get(regAddr);
-        addToGraph(5, data, new Date().valueOf());
+        addToGraph(5, data * multiplier, new Date().valueOf());
       }
     }
   </script>
