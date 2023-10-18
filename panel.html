@@ -793,7 +793,8 @@
               <td><span class="rpm416-text-key">Color</span></td>
             </tr>
             <tr>
-              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
+              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm" id="rpm416-button-clear-graph">Clear
+                  graph</button></td>
               <td><input type="checkbox" id="rpm416-checkbox-graphdata-1"
                   onchange="processChangedGraphselectorCheckbox(0)" checked></td>
               <td><select id="rpm416-select-graphvalue-1" onchange="clearGraphLine(0)">
@@ -1995,7 +1996,7 @@
     });
   </script>
 
-  <!-- Graph checkboxes -->
+  <!-- Graph interface elements -->
   <script>
     document.querySelector("#rpm416-checkbox-graphdata-1").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
@@ -2032,6 +2033,12 @@
       document.querySelector("#rpm416-select-graphvalue-6").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-6").disabled = state_disabled;
     });
+
+    document.querySelector("#rpm416-button-clear-graph").addEventListener("click", function () {
+      for (let i = 0; i < 5; i++) {
+        clearGraphLine(i);
+      }
+    })
   </script>
 
   <!-- Thread loop -->
@@ -2290,7 +2297,7 @@
     ];
 
     const MULTIPLIERS_MAP = new Map(MULTIPLIERS_ARR);
-    
+
 
     async function updateGraphOnVis() {
       if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
