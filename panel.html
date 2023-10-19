@@ -2010,36 +2010,48 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
       document.querySelector("#rpm416-select-graphvalue-1").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-1").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[0] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-checkbox-graphdata-2").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-2").checked);
       document.querySelector("#rpm416-select-graphvalue-2").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-2").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[1] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-checkbox-graphdata-3").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-3").checked);
       document.querySelector("#rpm416-select-graphvalue-3").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-3").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[2] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-checkbox-graphdata-4").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-4").checked);
       document.querySelector("#rpm416-select-graphvalue-4").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-4").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[3] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-checkbox-graphdata-5").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-5").checked);
       document.querySelector("#rpm416-select-graphvalue-5").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-5").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[4] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-checkbox-graphdata-6").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-6").checked);
       document.querySelector("#rpm416-select-graphvalue-6").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-6").disabled = state_disabled;
+      rpm416DataCheckboxesEnabled[5] = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
     });
 
     document.querySelector("#rpm416-button-clear-graph").addEventListener("click", function () {
