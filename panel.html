@@ -2002,7 +2002,7 @@
     } else {
       rpm416DataCheckboxesEnabled = JSON.parse(localStorage.getItem("rpm416DataCheckboxesEnabled"));
       for (let i=1; i<=6; i++) {
-        document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).disabled = !rpm416DataCheckboxesEnabled[i-1];
+        document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).checked = rpm416DataCheckboxesEnabled[i-1];
       }
     }
 
