@@ -1970,7 +1970,7 @@
 
     var visualizationInterval = undefined;
     var graphInterval = undefined;
-
+    
     document.querySelector("#rpm416-button-view").addEventListener("click", function () {
       document.querySelector("#rpm416-substrate").style.display = "block";
       document.querySelector("#rpm416-data-graphs").style.display = "block";
@@ -1995,6 +1995,17 @@
 
   <!-- Graph interface elements -->
   <script>
+    var rpm416DataCheckboxesEnabled = [true, true, true, false, false, false];
+
+    if (localStorage.getItem("rpm416DataCheckboxesEnabled") === null) {
+      localStorage.setItem("rpm416DataCheckboxesEnabled", JSON.stringify(rpm416DataCheckboxesEnabled));
+    } else {
+      rpm416DataCheckboxesEnabled = JSON.parse(localStorage.getItem("rpm416DataCheckboxesEnabled"));
+      for (let i=1; i<=6; i++) {
+        document.querySelector("#rpm416-select-graphvalue-" + i.toString()).disabled = !rpm416DataCheckboxesEnabled[i-1];
+      }
+    }
+
     document.querySelector("#rpm416-checkbox-graphdata-1").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
       document.querySelector("#rpm416-select-graphvalue-1").disabled = state_disabled;
@@ -2032,7 +2043,7 @@
     });
 
     document.querySelector("#rpm416-button-clear-graph").addEventListener("click", function () {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i <= 5; i++) {
         clearGraphLine(i);
       }
     })
