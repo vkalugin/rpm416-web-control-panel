@@ -2002,8 +2002,6 @@
       { checked: false, value: "101" },
       { checked: false, value: "101" }
     ];
-    
-    console.log(rpm416DataCheckboxesState);
 
     if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
@@ -2016,8 +2014,6 @@
         document.querySelector("#rpm416-input-ratio-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
       }
     }
-
-    console.log(rpm416DataCheckboxesState);
 
     document.querySelector("#rpm416-checkbox-graphdata-1").addEventListener("click", function () {
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
