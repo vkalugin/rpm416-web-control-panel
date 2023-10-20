@@ -2005,17 +2005,17 @@
     
     console.log(rpm416DataCheckboxesState);
 
-    // if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
+    if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
-    // } else {
-      // rpm416DataCheckboxesState = JSON.parse(localStorage.getItem("rpm416DataCheckboxesState"));
+    } else {
+      rpm416DataCheckboxesState = JSON.parse(localStorage.getItem("rpm416DataCheckboxesState"));
       for (let i = 1; i <= 6; i++) {
         document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).checked = rpm416DataCheckboxesState[i - 1].checked;
         document.querySelector("#rpm416-select-graphvalue-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
         document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value = rpm416DataCheckboxesState[i - 1].value;
         document.querySelector("#rpm416-input-ratio-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
       }
-    // }
+    }
 
     console.log(rpm416DataCheckboxesState);
 
