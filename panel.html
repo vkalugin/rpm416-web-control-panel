@@ -2005,17 +2005,17 @@
     
     console.log(rpm416DataCheckboxesState);
 
-    if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
+    // if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
-    } else {
-      rpm416DataCheckboxesState = JSON.parse(localStorage.getItem("rpm416DataCheckboxesState"));
+    // } else {
+      // rpm416DataCheckboxesState = JSON.parse(localStorage.getItem("rpm416DataCheckboxesState"));
       for (let i = 1; i <= 6; i++) {
         document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).checked = rpm416DataCheckboxesState[i - 1].checked;
         document.querySelector("#rpm416-select-graphvalue-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
         document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value = rpm416DataCheckboxesState[i - 1].value;
         document.querySelector("#rpm416-input-ratio-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
       }
-    }
+    // }
 
     console.log(rpm416DataCheckboxesState);
 
@@ -2023,7 +2023,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
       document.querySelector("#rpm416-select-graphvalue-1").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-1").disabled = state_disabled;
-      rpm416DataCheckboxesState[0].state = !state_disabled;
+      rpm416DataCheckboxesState[0].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
@@ -2031,7 +2031,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-2").checked);
       document.querySelector("#rpm416-select-graphvalue-2").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-2").disabled = state_disabled;
-      rpm416DataCheckboxesState[1].state = !state_disabled;
+      rpm416DataCheckboxesState[1].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
@@ -2039,7 +2039,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-3").checked);
       document.querySelector("#rpm416-select-graphvalue-3").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-3").disabled = state_disabled;
-      rpm416DataCheckboxesState[2].state = !state_disabled;
+      rpm416DataCheckboxesState[2].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
@@ -2047,7 +2047,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-4").checked);
       document.querySelector("#rpm416-select-graphvalue-4").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-4").disabled = state_disabled;
-      rpm416DataCheckboxesState[3].state = !state_disabled;
+      rpm416DataCheckboxesState[3].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
@@ -2055,7 +2055,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-5").checked);
       document.querySelector("#rpm416-select-graphvalue-5").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-5").disabled = state_disabled;
-      rpm416DataCheckboxesState[4].state = !state_disabled;
+      rpm416DataCheckboxesState[4].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
@@ -2063,7 +2063,7 @@
       let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-6").checked);
       document.querySelector("#rpm416-select-graphvalue-6").disabled = state_disabled;
       document.querySelector("#rpm416-input-ratio-6").disabled = state_disabled;
-      rpm416DataCheckboxesState[5].state = !state_disabled;
+      rpm416DataCheckboxesState[5].checked = !state_disabled;
       localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
     });
 
