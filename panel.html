@@ -2010,7 +2010,7 @@
       for (let i = 1; i <= 6; i++) {
         document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).checked = rpm416DataCheckboxesState[i - 1].checked;
         document.querySelector("#rpm416-select-graphvalue-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
-        document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value = !rpm416DataCheckboxesState[i - 1].value;
+        document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value = rpm416DataCheckboxesState[i - 1].value;
         document.querySelector("#rpm416-input-ratio-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
       }
     }
