@@ -2072,8 +2072,8 @@
     });
 
     for (let i = 1; i <= 6; i++) {
-      document.querySelector("#rpm416-select-graphvalue-" + i.toString).addEventListener("change", function () {
-        rpm416DataCheckboxesState[i - 1].value = document.querySelector("#rpm416-select-graphvalue-" + i.toString).value;
+      document.querySelector("#rpm416-select-graphvalue-" + i.toString()).addEventListener("change", function () {
+        rpm416DataCheckboxesState[i - 1].value = document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value;
         localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
       });
     }
