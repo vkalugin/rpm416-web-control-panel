@@ -793,58 +793,560 @@
               <td><span class="rpm416-text-key">Color</span></td>
             </tr>
             <tr>
-              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm">Clear graph</button></td>
-              <td><input type="checkbox" checked></td>
-              <td><select>
-                  <option> -select- </option>
+              <td rowspan="3"> <button type="button" class="btn btn-primary btn-sm" id="rpm416-button-clear-graph">Clear
+                  graph</button></td>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-1"
+                  onchange="processChangedGraphselectorCheckbox(0)" checked></td>
+              <td><select id="rpm416-select-graphvalue-1" onchange="clearGraphLine(0)">
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number"></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-1"></td>
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" checked></td>
-              <td><select>
-                  <option> -select- </option>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-2"
+                  onchange="processChangedGraphselectorCheckbox(1)" checked></td>
+              <td><select id="rpm416-select-graphvalue-2" onchange="clearGraphLine(1)">
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number"></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-2"></td>
               <td><input type="color"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" checked></td>
-              <td><select>
-                  <option> -select- </option>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-3"
+                  onchange="processChangedGraphselectorCheckbox(2)" checked></td>
+              <td><select id="rpm416-select-graphvalue-3" onchange="clearGraphLine(2)">
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number"></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-3"></td>
               <td><input type="color"></td>
             </tr>
             <tr>
               <td rowspan="3">
-                <input type="checkbox" id="rpm416-checkbox-graph-on-top">
-                <label for="rpm416-checkbox-graph-on-top">
-                  On top
-                </label>
+                <!-- Skip -->
               </td>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
-                  <option> -select- </option>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-4"
+                  onchange="processChangedGraphselectorCheckbox(3)"></td>
+              <td><select id="rpm416-select-graphvalue-4" onchange="clearGraphLine(3)" disabled>
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number" disabled></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-4" disabled></td>
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
-                  <option> -select- </option>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-5"
+                  onchange="processChangedGraphselectorCheckbox(4)"></td>
+              <td><select id="rpm416-select-graphvalue-5" onchange="clearGraphLine(4)" disabled>
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number" disabled></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-5" disabled></td>
               <td><input type="color" disabled></td>
             </tr>
             <tr>
-              <td><input type="checkbox"></td>
-              <td><select disabled>
-                  <option> -select- </option>
+              <td><input type="checkbox" id="rpm416-checkbox-graphdata-6"
+                  onchange="processChangedGraphselectorCheckbox(5)"></td>
+              <td><select id="rpm416-select-graphvalue-6" onchange="clearGraphLine(5)" disabled>
+                  <option value="101">Channel 1: Voltage RMS L1</option>
+                  <option value="104">Channel 1: Voltage frequency L1</option>
+                  <option value="107">Channel 1: Voltage THDr L1</option>
+                  <option value="110">Channel 1: Peak + voltage L1</option>
+                  <option value="113">Channel 1: Peak - voltage L1</option>
+                  <option value="116">Channel 1: Instantaneous voltage L1</option>
+                  <option value="119">Channel 2: Voltage RMS L2</option>
+                  <option value="122">Channel 2: Voltage frequency L2</option>
+                  <option value="125">Channel 2: Voltage THDr L2</option>
+                  <option value="128">Channel 2: Peak + voltage L2</option>
+                  <option value="131">Channel 2: Peak - voltage L2</option>
+                  <option value="134">Channel 2: Instantaneous voltage L2</option>
+                  <option value="137">Channel 3: Voltage RMS L3</option>
+                  <option value="140">Channel 3: Voltage frequency L3</option>
+                  <option value="143">Channel 3: Voltage THDr L3</option>
+                  <option value="146">Channel 3: Peak + voltage L3</option>
+                  <option value="149">Channel 3: Peak - voltage L3</option>
+                  <option value="152">Channel 3: Instantaneous voltage L3</option>
+                  <option value="155">Channel 4: Current RMS L1</option>
+                  <option value="158">Channel 4: Current frequency L1</option>
+                  <option value="161">Channel 4: Current THDr L1</option>
+                  <option value="164">Channel 4: Peak + current L1</option>
+                  <option value="167">Channel 4: Peak - current L1</option>
+                  <option value="170">Channel 4: Instantaneous current L1</option>
+                  <option value="173">Channel 5: Current RMS L2</option>
+                  <option value="176">Channel 5: Current frequency L2</option>
+                  <option value="179">Channel 5: Current THDr L2</option>
+                  <option value="182">Channel 5: Peak + current L2</option>
+                  <option value="185">Channel 5: Peak - current L2</option>
+                  <option value="188">Channel 5: Instantaneous current L2</option>
+                  <option value="191">Channel 6: Current RMS L3</option>
+                  <option value="194">Channel 6: Current frequency L3</option>
+                  <option value="197">Channel 6: Current THDr L3</option>
+                  <option value="200">Channel 6: Peak + current L3</option>
+                  <option value="203">Channel 6: Peak - current L3</option>
+                  <option value="206">Channel 6: Instantaneous current L3</option>
+                  <option value="209">Channel 7: Current RMS</option>
+                  <option value="212">Channel 7: Current frequency</option>
+                  <option value="215">Channel 7: Current THDr</option>
+                  <option value="218">Channel 7: Peak + current</option>
+                  <option value="221">Channel 7: Peak - current</option>
+                  <option value="224">Channel 7: Instantaneous current</option>
+                  <option value="227">Channel 8: Temperature</option>
+                  <option value="245">Channel 9: Temperature</option>
+                  <option value="263">Channel 10: Analog voltage 0-10 V</option>
+                  <option value="266">Channel 10: User’s Value</option>
+                  <option value="281">Channel 11: Analog current 0-20 mA</option>
+                  <option value="284">Channel 11: User’s Value</option>
+                  <option value="299">Channel 12: Digital input</option>
+                  <option value="302">Channel 12: Pulse frequency</option>
+                  <option value="305">Channel 12: Pulse scaler</option>
+                  <option value="317">Channel 13: Digital input</option>
+                  <option value="320">Channel 13: Pulse frequency</option>
+                  <option value="323">Channel 13: Pulse scaler</option>
+                  <option value="335">Channel 14: Digital input</option>
+                  <option value="338">Channel 14: Pulse frequency</option>
+                  <option value="341">Channel 14: Pulse scaler</option>
+                  <option value="353">Channel 15: Digital input</option>
+                  <option value="356">Channel 15: Pulse frequency</option>
+                  <option value="359">Channel 15: Pulse scaler</option>
+                  <option value="371">Channel 16: Full power L1</option>
+                  <option value="374">Channel 16: Active power L1</option>
+                  <option value="377">Channel 16: Reactive power L1</option>
+                  <option value="380">Channel 16: Power factor (cos φ) L1</option>
+                  <option value="383">Channel 16: Active Energy Scaler L1</option>
+                  <option value="386">Channel 16: Reactive Energy Scaler L1</option>
+                  <option value="389">Channel 17: Full power L2</option>
+                  <option value="392">Channel 17: Active power L2</option>
+                  <option value="395">Channel 17: Reactive power L2</option>
+                  <option value="398">Channel 17: Power factor (cos φ) L2</option>
+                  <option value="401">Channel 17: Active Energy Scaler L2</option>
+                  <option value="404">Channel 17: Reactive Energy Scaler L2</option>
+                  <option value="407">Channel 18: Full power L3</option>
+                  <option value="410">Channel 18: Active power L3</option>
+                  <option value="413">Channel 18: Reactive power L3</option>
+                  <option value="416">Channel 18: Power factor (cos φ) L3</option>
+                  <option value="419">Channel 18: Active Energy Scaler L3</option>
+                  <option value="422">Channel 18: Reactive Energy Scaler L3</option>
+                  <option value="425">Channel 19: Line voltage AB</option>
+                  <option value="428">Channel 19: Line voltage BC</option>
+                  <option value="431">Channel 19: Line voltage CA</option>
+                  <option value="434">Channel 19: Negative sequence</option>
+                  <option value="437">Channel 19: Positive sequence</option>
+                  <option value="440">Channel 19: Zero sequence</option>
                 </select></td>
-              <td><input type="number" disabled></td>
+              <td><input type="number" step="0.01" value="1" id="rpm416-input-ratio-6" disabled></td>
               <td><input type="color" disabled></td>
             </tr>
           </tbody>
@@ -853,6 +1355,7 @@
     </div>
   </div>
 
+  <!-- Temperature bars -->
   <script>
     var rpm416temperatureBars = (function () {
       const data = [
@@ -892,57 +1395,6 @@
         }
       );
     })();
-
-    (function () {
-      new Chart(
-        document.querySelector("#rpm416-history-graph"),
-        {
-          type: "scatter",
-          options: {
-            animation: false,
-            showLine: true,
-            scales: {
-              x: {
-                min: -6,
-                max: 0,
-                ticks: {
-                  callback: function (value, index, ticks) {
-                    return value + " min";
-                  },
-                },
-              },
-              y: {
-                min: 0,
-                max: 1,
-              }
-            },
-          },
-          data: {
-            labels: [],
-            datasets: [
-              {
-                data: new Array(360).fill({ x: undefined, y: undefined }), // up to 6 mins if data rate is once in a second
-              }
-            ]
-          },
-        }
-      );
-    })();
-
-    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "block";
-      document.querySelector("#rpm416-data-graphs").style.display = "block";
-    });
-
-    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "none";
-      document.querySelector("#rpm416-data-graphs").style.display = "none";
-    });
-
-    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
-      document.querySelector("#rpm416-substrate").style.display = "none";
-      document.querySelector("#rpm416-data-graphs").style.display = "none";
-    });
   </script>
 
   <!-- Registers processing -->
@@ -1513,6 +1965,118 @@
     }
   </script>
 
+  <!-- Switching between main and graph part of visualization -->
+  <script>
+    var visualizationInterval = undefined;
+    var graphInterval = undefined;
+
+    document.querySelector("#rpm416-button-view").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "block";
+      document.querySelector("#rpm416-data-graphs").style.display = "block";
+      clearInterval(visualizationInterval);
+      graphInterval = setInterval(updateGraphOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    });
+
+    document.querySelector("#rpm416-button-data-graphs-close").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+      visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+      clearInterval(graphInterval);
+    });
+
+    document.querySelector("#rpm416-substrate").addEventListener("click", function () {
+      document.querySelector("#rpm416-substrate").style.display = "none";
+      document.querySelector("#rpm416-data-graphs").style.display = "none";
+      visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+      clearInterval(graphInterval);
+    });
+  </script>
+
+  <!-- Graph interface elements -->
+  <script>
+    var rpm416DataCheckboxesState = [
+      { checked: true, value: "101" },
+      { checked: true, value: "101" },
+      { checked: true, value: "101" },
+      { checked: false, value: "101" },
+      { checked: false, value: "101" },
+      { checked: false, value: "101" }
+    ];
+
+    if (localStorage.getItem("rpm416DataCheckboxesState") === null) {
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    } else {
+      rpm416DataCheckboxesState = JSON.parse(localStorage.getItem("rpm416DataCheckboxesState"));
+      for (let i = 1; i <= 6; i++) {
+        document.querySelector("#rpm416-checkbox-graphdata-" + i.toString()).checked = rpm416DataCheckboxesState[i - 1].checked;
+        document.querySelector("#rpm416-select-graphvalue-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
+        document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value = rpm416DataCheckboxesState[i - 1].value;
+        document.querySelector("#rpm416-input-ratio-" + i.toString()).disabled = !rpm416DataCheckboxesState[i - 1].checked;
+      }
+    }
+
+    document.querySelector("#rpm416-checkbox-graphdata-1").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-1").checked);
+      document.querySelector("#rpm416-select-graphvalue-1").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-1").disabled = state_disabled;
+      rpm416DataCheckboxesState[0].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-2").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-2").checked);
+      document.querySelector("#rpm416-select-graphvalue-2").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-2").disabled = state_disabled;
+      rpm416DataCheckboxesState[1].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-3").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-3").checked);
+      document.querySelector("#rpm416-select-graphvalue-3").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-3").disabled = state_disabled;
+      rpm416DataCheckboxesState[2].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-4").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-4").checked);
+      document.querySelector("#rpm416-select-graphvalue-4").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-4").disabled = state_disabled;
+      rpm416DataCheckboxesState[3].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-5").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-5").checked);
+      document.querySelector("#rpm416-select-graphvalue-5").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-5").disabled = state_disabled;
+      rpm416DataCheckboxesState[4].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-checkbox-graphdata-6").addEventListener("click", function () {
+      let state_disabled = !(document.querySelector("#rpm416-checkbox-graphdata-6").checked);
+      document.querySelector("#rpm416-select-graphvalue-6").disabled = state_disabled;
+      document.querySelector("#rpm416-input-ratio-6").disabled = state_disabled;
+      rpm416DataCheckboxesState[5].checked = !state_disabled;
+      localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+    });
+
+    document.querySelector("#rpm416-button-clear-graph").addEventListener("click", function () {
+      for (let i = 0; i <= 5; i++) {
+        clearGraphLine(i);
+      }
+    });
+
+    for (let i = 1; i <= 6; i++) {
+      document.querySelector("#rpm416-select-graphvalue-" + i.toString()).addEventListener("change", function () {
+        rpm416DataCheckboxesState[i - 1].value = document.querySelector("#rpm416-select-graphvalue-" + i.toString()).value;
+        localStorage.setItem("rpm416DataCheckboxesState", JSON.stringify(rpm416DataCheckboxesState));
+      });
+    }
+  </script>
+
   <!-- Thread loop -->
   <script>
     var rpm416ReadLock = false;
@@ -1575,8 +2139,244 @@
       updateDisplayedValue("rpm416-impuls-counter-3", 341, 0);
       updateDisplayedValue("rpm416-impuls-frequency-4", 356, 1);
       updateDisplayedValue("rpm416-impuls-counter-4", 359, 0);
+    };
+
+    visualizationInterval = setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+  </script>
+
+  <!-- Graph in the popup window -->
+  <script>
+    const RPM416_GRAPH_CAPACITY = 360;
+
+    var rpm416Graph = new Chart(
+      document.querySelector("#rpm416-history-graph"),
+      {
+        type: "scatter",
+        options: {
+          animation: false,
+          showLine: true,
+          scales: {
+            x: {
+              min: -6,
+              max: 0,
+              ticks: {
+                callback: function (value, index, ticks) {
+                  return value + " min";
+                },
+              },
+            },
+          },
+        },
+        data: {
+          labels: [],
+          datasets: [
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+            {
+              type: "scatter",
+              data: new Array(RPM416_GRAPH_CAPACITY).fill({ x: undefined, y: undefined }),
+            },
+          ],
+        },
+      }
+    );
+
+    var rpm416graphSequencing = new Array(6).fill().map(function () {
+      return {
+        i: 0,
+        queue: new Array(RPM416_GRAPH_CAPACITY).fill({ v: undefined, t: undefined }),
+      };
+    });
+
+    if (localStorage.getItem("rpm416graphSequencing") === null) {
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
+    } else {
+      rpm416graphSequencing = JSON.parse(localStorage.getItem("rpm416graphSequencing"));
     }
 
-    setInterval(updateValuesOnVis, UPDATE_VISUALIZATION_INTERVAL_MS);
+    function addToGraph(graphIndex /* 0 to 5 */, value, timestamp) {
+      rpm416graphSequencing[graphIndex].queue.push({ v: value, t: new Date().valueOf() });
+      while (rpm416graphSequencing[graphIndex].queue.length > RPM416_GRAPH_CAPACITY) {
+        rpm416graphSequencing[graphIndex].queue.shift();
+      }
+      rpm416graphSequencing[graphIndex].i++;
+      rpm416graphSequencing[graphIndex].i %= RPM416_GRAPH_CAPACITY;
+
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
+
+      const now = new Date().valueOf();
+
+      for (i = 0; i < RPM416_GRAPH_CAPACITY; i++) {
+        rpm416Graph.data.datasets[graphIndex].data[RPM416_GRAPH_CAPACITY - i] = {
+          x: (rpm416graphSequencing[graphIndex].queue[i].t - now) / 60000.0,
+          y: rpm416graphSequencing[graphIndex].queue[i].v,
+        };
+      }
+
+      rpm416Graph.update();
+    }
+
+    function clearGraphLine(graphIndex /* 0 to 5 */) {
+      rpm416graphSequencing[graphIndex].queue.fill({ v: undefined, t: undefined });
+      localStorage.setItem("rpm416graphSequencing", JSON.stringify(rpm416graphSequencing));
+    }
+
+    function processChangedGraphselectorCheckbox(i /* 0 to 5*/) {
+      if (!document.querySelector("#rpm416-checkbox-graphdata-" + (i + 1).toString()).checked) {
+        clearGraphLine(i);
+      }
+    }
+
+    const MULTIPLIERS_ARR = [
+      [101, 0.1],
+      [104, 0.01],
+      [107, 1],
+      [110, 0.1],
+      [113, 0.1],
+      [116, 0.1],
+      [119, 0.1],
+      [122, 0.01],
+      [125, 1],
+      [128, 0.1],
+      [131, 0.1],
+      [134, 0.1],
+      [137, 0.1],
+      [140, 0.01],
+      [143, 1],
+      [146, 0.1],
+      [149, 0.1],
+      [152, 0.1],
+      [155, 0.01],
+      [158, 0.01],
+      [161, 1],
+      [164, 0.01],
+      [167, 0.01],
+      [170, 0.01],
+      [173, 0.01],
+      [176, 0.01],
+      [179, 1],
+      [182, 0.01],
+      [185, 0.01],
+      [188, 0.01],
+      [191, 0.01],
+      [194, 0.01],
+      [197, 1],
+      [200, 0.01],
+      [203, 0.01],
+      [206, 0.01],
+      [209, 0.01],
+      [212, 0.01],
+      [215, 1],
+      [218, 0.01],
+      [221, 0.01],
+      [224, 0.01],
+      [227, 0.1],
+      [245, 0.1],
+      [263, 0.01],
+      [266, 1],
+      [281, 0.01],
+      [284, 1],
+      [299, 1],
+      [302, 1],
+      [305, 1],
+      [317, 1],
+      [320, 1],
+      [323, 1],
+      [335, 1],
+      [338, 1],
+      [341, 1],
+      [353, 1],
+      [356, 1],
+      [359, 1],
+      [371, 0.1],
+      [374, 0.1],
+      [377, 0.1],
+      [380, 0.001],
+      [383, 1],
+      [386, 1],
+      [389, 0.1],
+      [392, 0.1],
+      [395, 0.1],
+      [398, 0.001],
+      [401, 1],
+      [404, 1],
+      [407, 0.1],
+      [410, 0.1],
+      [413, 0.1],
+      [416, 0.001],
+      [419, 1],
+      [422, 1],
+      [425, 0.1],
+      [428, 0.1],
+      [431, 0.1],
+      [434, 0.1],
+      [437, 0.1],
+      [440, 0.1],
+    ];
+
+    const MULTIPLIERS_MAP = new Map(MULTIPLIERS_ARR);
+
+    async function updateGraphOnVis() {
+      if (!document.querySelector("#rpm416-select-graphvalue-1").disabled) {
+        console.log(MULTIPLIERS_MAP);
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-1").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(0, data * multiplier, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-2").disabled) {
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-2").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(1, data * multiplier, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-3").disabled) {
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-3").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(2, data * multiplier, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-4").disabled) {
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-4").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(3, data * multiplier, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-5").disabled) {
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-5").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(4, data * multiplier, new Date().valueOf());
+      }
+
+      if (!document.querySelector("#rpm416-select-graphvalue-6").disabled) {
+        const regAddr = Number(document.querySelector("#rpm416-select-graphvalue-6").value);
+        const data = await readLongReg(regAddr);
+        const multiplier = MULTIPLIERS_MAP.get(regAddr);
+        addToGraph(5, data * multiplier, new Date().valueOf());
+      }
+    }
   </script>
 </div>
